@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-    private readonly string[] tags = { "Player", "Weapon", "Projectile" };
-    private bool collided;
+    private readonly string[] _tags = { "Player", "Weapon", "Projectile" };
+    private bool _collided;
     void OnCollisionEnter(Collision collision)
     {
         string tag = collision.transform.tag;
-        if (Array.IndexOf(tags, tag) == -1 && !collided)
+        if (Array.IndexOf(_tags, tag) == -1 && !_collided)
         {
-            collided = true;
+            _collided = true;
             Destroy(gameObject);
 
             if (tag == "Target")

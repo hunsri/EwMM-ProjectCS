@@ -5,24 +5,24 @@ using UnityEngine;
 public class TargetController : MonoBehaviour
 {
 
-    private MeshRenderer renderer;
-    private int health = 100;
-    private int onHit = 25;
-    private bool shouldUpdate = false;
+    private MeshRenderer _renderer;
+    private int _health = 100;
+    private int _onHit = 25;
+    private bool _shouldUpdate = false;
 
     void Start()
     {
-        renderer = GetComponent<MeshRenderer>();
+        _renderer = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (shouldUpdate)
+        if (_shouldUpdate)
         {
             string shaderPropertyName = "_Color";
             Color color = Color.white;
-            switch (health)
+            switch (_health)
             {
                 case 100:
                     color = Color.white;
@@ -41,8 +41,8 @@ public class TargetController : MonoBehaviour
                     return;
             }
 
-            renderer.material.SetColor(shaderPropertyName, color);
-            shouldUpdate = false;
+            _renderer.material.SetColor(shaderPropertyName, color);
+            _shouldUpdate = false;
         }
 
     }
@@ -54,7 +54,7 @@ public class TargetController : MonoBehaviour
 
     public void ReduceHitpoint()
     {
-        health -= onHit;
-        shouldUpdate = true;
+        _health -= _onHit;
+        _shouldUpdate = true;
     }
 }
