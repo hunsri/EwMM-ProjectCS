@@ -94,6 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e959f09791e9f46a6bfafa55e47747d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
-  projectile: {fileID: 6458389267632297779, guid: c1576c3e7dc8849b490989ad6317198e, type: 3}
-  projectileSpeed: 50
+  _camera: {fileID: 0}
+  _projectile: {fileID: 6458389267632297779, guid: c1576c3e7dc8849b490989ad6317198e, type: 3}
+  _projectileSpeed: 50

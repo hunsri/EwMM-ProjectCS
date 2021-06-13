@@ -5,34 +5,32 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
 
- public float mouseSensitivity = 100f;
- public Transform cameraTransform;
+    [SerializeField] private float _mouseSensitivity = 100f;
+    [SerializeField] private Transform _cameraTransform;
 
- // keep changes of rotation around the x-axis (looking up + down)
- private float xRotation;
+    // keep changes of rotation around the x-axis (looking up + down)
+    private float _xRotation;
 
- void Start()
- {
-  Cursor.lockState = CursorLockMode.Locked; // hide cursor.
- }
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked; // hide cursor.
+    }
 
- // Update is called once per frame
- void Update()
- {
-  // * tuts: https://www.youtube.com/watch?v=_QajrabyTJc&ab_channel=UnityUnityVerified
-  float mouseX = getNormalized(Input.GetAxis("Mouse X")); // unity premapped
-  float mouseY = getNormalized(Input.GetAxis("Mouse Y")); // unity premapped
+    void Update()
+    {
+        float mouseX = getNormalized(Input.GetAxis("Mouse X")); // unity premapped
+        float mouseY = getNormalized(Input.GetAxis("Mouse Y")); // unity premapped
 
-  // rotate around x axis for looking up and down
-  xRotation -= mouseY; // decreasing instead of increasing => rotation is flipped otherwise
-  xRotation = Mathf.Clamp(xRotation, -90, 90); // prevent (up+dpwn) rotation for more than +- 90 deg
+        // rotate around x axis for looking up and down
+        _xRotation -= mouseY; // decreasing instead of increasing => rotation is flipped otherwise
+        _xRotation = Mathf.Clamp(_xRotation, -90, 90); // prevent (up+dpwn) rotation for more than +- 90 deg
 
-  cameraTransform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-  transform.Rotate(Vector3.up * mouseX);
- }
+        _cameraTransform.localRotation = Quaternion.Euler(_xRotation, 0, 0);
+        transform.Rotate(Vector3.up * mouseX);
+    }
 
- float getNormalized(float value)
- {
-  return value * mouseSensitivity * Time.deltaTime;
- }
+    float getNormalized(float value)
+    {
+        return value * _mouseSensitivity * Time.deltaTime;
+    }
 }
