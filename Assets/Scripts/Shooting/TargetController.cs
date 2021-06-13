@@ -53,7 +53,7 @@ public class TargetController : MonoBehaviour
 
     public void ReduceHitpoint(int damage)
     {
-        _health -= damage;
+        _health = _health - damage >= 0 ? _health - damage : 0;
         _shouldUpdate = true;
     }
 }
