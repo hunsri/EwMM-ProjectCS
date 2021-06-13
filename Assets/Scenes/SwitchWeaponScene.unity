@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 812648528}
     m_Modifications:
+    - target: {fileID: 1236936993915159555, guid: af755518d32664370a7bfc816122f3c2, type: 3}
+      propertyPath: _projectileSpeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1236936993915159678, guid: af755518d32664370a7bfc816122f3c2, type: 3}
       propertyPath: m_Name
       value: Weapon1
@@ -629,7 +633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3184f66b93b834d2f9edd8f6969dabda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  _speed: 2
 --- !u!114 &695888385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,8 +646,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d00e3a37b4345cba9c749bc69ecdf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
-  cameraTransform: {fileID: 351555770}
+  _mouseSensitivity: 100
+  _cameraTransform: {fileID: 351555770}
 --- !u!136 &695888386
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1190,6 +1194,10 @@ PrefabInstance:
       propertyPath: projectileSpeed
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 1236936993915159555, guid: 6964fed8bbe66431eb76ea060f29e771, type: 3}
+      propertyPath: _projectileSpeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1236936993915159678, guid: 6964fed8bbe66431eb76ea060f29e771, type: 3}
       propertyPath: m_Name
       value: Weapon3
@@ -1567,6 +1575,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 812648528}
     m_Modifications:
+    - target: {fileID: 1236936993915159555, guid: 4f12b891312a0458587487ea9f2f9225, type: 3}
+      propertyPath: _projectileSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1236936993915159678, guid: 4f12b891312a0458587487ea9f2f9225, type: 3}
       propertyPath: m_Name
       value: Weapon2
