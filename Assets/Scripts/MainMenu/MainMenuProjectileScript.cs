@@ -8,6 +8,7 @@ public class MainMenuProjectileScript : MonoBehaviour
     private readonly string[] tags = { "Player", "Weapon", "Projectile" };
     private bool collided;
 
+    // Let an object with the tag "target" react to collision
     void OnCollisionEnter(Collision collision)
     {
         string tag = collision.transform.tag;
@@ -18,8 +19,16 @@ public class MainMenuProjectileScript : MonoBehaviour
 
             if (tag == "Target")
             {
-                SliderSettingScript target = collision.transform.GetComponent<SliderSettingScript>();
-                target.TargetReact();
+                if (collision.transform.GetComponent<SliderSettingScript>())
+                {
+                    SliderSettingScript target = collision.transform.GetComponent<SliderSettingScript>();
+                    target.TargetReact();
+                }
+                else if (collision.transform.GetComponent<DifficultySettingScript>())
+                {
+                    DifficultySettingScript target = collision.transform.GetComponent<DifficultySettingScript>();
+                    target.TargetReact();
+                }
             }
         }
     }

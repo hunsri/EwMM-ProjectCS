@@ -13,63 +13,110 @@ public class SliderSettingScript : MonoBehaviour
     private AudioMixer _audioMixer;
 
     private MeshRenderer _renderer;
-    private bool _isUpdated = false;
-    private float _volumeNumber;
-    private string _shaderPropertyName = "_Color";
-    private Color color = Color.white;
 
-    
+    private bool _musicIsUpdated = false;
+    private float _musicVolumeNumber;
+
+    private bool _sfxIsUpdated = false;
+    private float _sfxVolumeNumber;
+
+    private string _shaderPropertyName = "_Color";
+    private Color _color = Color.white;
 
     // Start is called before the first frame update
     void Start()
     {
         _renderer = GetComponent<MeshRenderer>();
-        _audioMixer.GetFloat("volume", out _volumeNumber);
-        _slider.value = _volumeNumber;
+
+        if (_slider.name == "Music Slider")
+        {
+            _audioMixer.GetFloat("musicVolume", out _musicVolumeNumber);
+            _slider.value = _musicVolumeNumber;
+        } 
+        else if (_slider.name == "SFX Slider")
+        {
+            _audioMixer.GetFloat("sfxVolume", out _sfxVolumeNumber);
+            _slider.value = _sfxVolumeNumber;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_isUpdated)
+        if (_musicIsUpdated)
         {
-            SetVolume(_volumeNumber);
-            _renderer.material.SetColor(_shaderPropertyName, color);
-            _isUpdated = false;
+            SetMusicVolume(_musicVolumeNumber);
+            _renderer.material.SetColor(_shaderPropertyName, _color);
+            _musicIsUpdated = false;
+        }
+        if (_sfxIsUpdated)
+        {
+            SetSFXVolume(_sfxVolumeNumber);
+            _renderer.material.SetColor(_shaderPropertyName, _color);
+            _sfxIsUpdated = false;
         }
     }
 
-    public void SetVolume(float volume)
+    // Will set the current volume to the slider and the audio mixer
+    // The audio mixer will ajust the music volume of the game
+    public void SetMusicVolume(float volume)
     {
         _slider.value = volume;
-        _audioMixer.SetFloat("volume", volume);
+        _audioMixer.SetFloat("musicVolume", volume);
     }
 
+    // Will set the current volume to the slider and the audio mixer
+    // The audio mixer will ajust the SFX volume of the game
+    public void SetSFXVolume(float volume)
+    {
+        _slider.value = volume;
+        _audioMixer.SetFloat("sfxVolume", volume);
+    }
+
+    // Will be called if the user hits one of the arrows
     public void TargetReact()
     {
-        _audioMixer.GetFloat("volume", out _volumeNumber);
-        Debug.Log(name + " Game Object Clicked!");
-        _renderer.material.SetColor(_shaderPropertyName, Color.black);
-        if (name == "Plus Button")
+        if (_slider.name == "Music Slider")
         {
-            if (_volumeNumber !< 0)
+            _audioMixer.GetFloat("musicVolume", out _musicVolumeNumber);
+            _renderer.material.SetColor(_shaderPropertyName, Color.black);
+
+            if (name == "Right Arrow Music Button")
             {
-                _volumeNumber = _volumeNumber + 10;
-                _isUpdated = true;
-            } else
-            {
-                _renderer.material.SetColor(_shaderPropertyName, color);
+                if (_musicVolumeNumber < -1)
+                {
+                    _musicVolumeNumber = _musicVolumeNumber + 10;
+                    _musicIsUpdated = true;
+                }
             }
-        }
-        else if (name == "Minus Button")
+            else if (name == "Left Arrow Music Button")
+            {
+                if (_musicVolumeNumber != -80)
+                {
+                    _musicVolumeNumber = _musicVolumeNumber - 10;
+                    _musicIsUpdated = true;
+                }
+            }
+        } else if (_slider.name == "SFX Slider")
         {
-            if (_volumeNumber != -80)
+            _audioMixer.GetFloat("sfxVolume", out _sfxVolumeNumber);
+            _renderer.material.SetColor(_shaderPropertyName, Color.black);
+
+            if (name == "Right Arrow SFX Button")
             {
-                _volumeNumber = _volumeNumber - 10;
-                _isUpdated = true;
-            } else
+                if (_sfxVolumeNumber < -1)
+                {
+                    _sfxVolumeNumber = _sfxVolumeNumber + 10;
+                    _sfxIsUpdated = true;
+                }
+            }
+            else if (name == "Left Arrow SFX Button")
             {
-                _renderer.material.SetColor(_shaderPropertyName, color);
+                if (_sfxVolumeNumber != -80)
+                {
+                    _sfxVolumeNumber = _sfxVolumeNumber - 10;
+                    _sfxIsUpdated = true;
+                }
             }
         }
     }

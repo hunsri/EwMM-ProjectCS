@@ -1,0 +1,168 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DifficultySettingScript : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject easyPlane;
+    [SerializeField]
+    private GameObject mediumPlane;
+    [SerializeField]
+    private GameObject hardPlane;
+
+    private MeshRenderer _easyRenderer;
+    private MeshRenderer _mediumRenderer;
+    private MeshRenderer _hardRenderer;
+
+    private int _difficulty = 0;
+    private int _minDif = 0;
+    private int _maxDif = 2;
+
+    private string _shaderPropertyName = "_Color";
+    private Color _colorWhite = Color.white;
+    private Color _colorBlack = Color.black;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _easyRenderer = easyPlane.GetComponent<MeshRenderer>();
+        _easyRenderer.material.SetColor(_shaderPropertyName, _colorBlack);
+        _mediumRenderer = mediumPlane.GetComponent<MeshRenderer>();
+        _hardRenderer = hardPlane.GetComponent<MeshRenderer>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    // Changes the difficulty of all levels
+    public void setDifficulty()
+    {
+        // TODO
+    }
+
+    // Changes the color of the planes which are showing the difficulty
+    public void planeColorChange()
+    {
+        if (_difficulty == 0)
+        {
+            _easyRenderer.material.SetColor(_shaderPropertyName, _colorBlack);
+            _mediumRenderer.material.SetColor(_shaderPropertyName, _colorWhite);
+            _hardRenderer.material.SetColor(_shaderPropertyName, _colorWhite);
+        }
+        else if (_difficulty == 1)
+        {
+            _easyRenderer.material.SetColor(_shaderPropertyName, _colorBlack);
+            _mediumRenderer.material.SetColor(_shaderPropertyName, _colorBlack);
+            _hardRenderer.material.SetColor(_shaderPropertyName, _colorWhite);
+        }
+        else if (_difficulty == 2)
+        {
+            _easyRenderer.material.SetColor(_shaderPropertyName, _colorBlack);
+            _mediumRenderer.material.SetColor(_shaderPropertyName, _colorBlack);
+            _hardRenderer.material.SetColor(_shaderPropertyName, _colorBlack);
+        }
+        else
+        {
+            Debug.Log("Something went bad at planeColorChange at DifficultySettingScript");
+        }
+    }
+
+    // Gets the color of the plane
+    // Evoids miscoloration
+    // Returns an int which indicates the difficulty
+    public int getDifficultyThroughPlaneColor()
+    {
+        if (_hardRenderer.material.GetColor(_shaderPropertyName) == _colorBlack)
+        {
+            return 2;
+        }
+        else if (_mediumRenderer.material.GetColor(_shaderPropertyName) == _colorBlack)
+        {
+            return 1;
+        }
+        else if (_easyRenderer.material.GetColor(_shaderPropertyName) == _colorBlack)
+        {
+            return 0;
+        } else
+        {
+            Debug.Log("Something went bad at getDifficultyThroughPlaneColor at DifficultySettingScript");
+            return 4;
+        }
+    }
+
+    // Will be used when the arrows next to the difficulty are triggered
+    public void TargetReact()
+    {
+        _difficulty = getDifficultyThroughPlaneColor();
+
+        if (name == "Left Arrow Difficulty Button")
+        {
+            if (_difficulty != _minDif)
+            {
+                _difficulty--;
+                setDifficulty();
+                planeColorChange();
+            } 
+            else
+            {
+                Debug.Log("The difficulty is already as low as it can be!");
+            }
+        } 
+        else if (name == "Right Arrow Difficulty Button")
+        {
+            if (_difficulty != _maxDif)
+            {
+                _difficulty++;
+                setDifficulty();
+                planeColorChange();
+            } 
+            else
+            {
+                Debug.Log("The difficulty is already as high as it can be!");
+            }
+        } 
+        else if (name == "Difficulty Easy Plane")
+        {
+            if (_difficulty != _minDif)
+            {
+                _difficulty = 0;
+                setDifficulty();
+                planeColorChange();
+            }
+            else
+            {
+                Debug.Log("The difficulty is already easy!");
+            }
+        }
+        else if (name == "Difficulty Medium Plane")
+        {
+            if (_difficulty != 1)
+            {
+                _difficulty = 1;
+                setDifficulty();
+                planeColorChange();
+            }
+            else
+            {
+                Debug.Log("The difficulty is already medium!");
+            }
+        } 
+        else if (name == "Difficulty Hard Plane")
+        {
+            if (_difficulty != _maxDif)
+            {
+                _difficulty = 2;
+                setDifficulty();
+                planeColorChange();
+            }
+            else
+            {
+                Debug.Log("The difficulty is already hard!");
+            }
+        }
+    }
+}
