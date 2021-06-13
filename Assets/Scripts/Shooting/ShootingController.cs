@@ -13,7 +13,10 @@ public class ShootingController : MonoBehaviour
 
     void Start()
     {
-
+        if (!camera)
+        {
+            camera = Camera.main;
+        }
     }
 
     // Update is called once per frame

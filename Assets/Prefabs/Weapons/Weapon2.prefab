@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1236936993915159553}
   - component: {fileID: 1236936993915159555}
   m_Layer: 0
-  m_Name: SampleWeapon
+  m_Name: Weapon2
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236936993915159678}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1236936993915159553
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7a22a24977f3d4c1095a49b7e3e9beb5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,5 +95,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
-  projectile: {fileID: 8379783872912795496, guid: 9347056774d74430ba95bad4cbfdc7c6, type: 3}
+  projectile: {fileID: 6458389267632297779, guid: b8af8b62f1e8046099b8a79b2b1c9f01, type: 3}
   projectileSpeed: 50

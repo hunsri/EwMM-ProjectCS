@@ -52,7 +52,7 @@ public class TargetController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void ReduceHitpoint()
+    public void ReduceHitpoint(int damage)
     {
         _health -= _onHit;
         _shouldUpdate = true;

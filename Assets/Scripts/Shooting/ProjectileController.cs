@@ -7,6 +7,7 @@ public class ProjectileController : MonoBehaviour
 {
     private readonly string[] _tags = { "Player", "Weapon", "Projectile" };
     private bool _collided;
+
     void OnCollisionEnter(Collision collision)
     {
         string tag = collision.transform.tag;
@@ -18,7 +19,7 @@ public class ProjectileController : MonoBehaviour
             if (tag == "Target")
             {
                 TargetController target = collision.transform.GetComponent<TargetController>();
-                target.ReduceHitpoint();
+                target.ReduceHitpoint(_damage);
             }
         }
     }

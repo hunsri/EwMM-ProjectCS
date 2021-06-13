@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1236936993915159553}
   - component: {fileID: 1236936993915159555}
   m_Layer: 0
-  m_Name: SampleWeapon
+  m_Name: Weapon1
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,5 +95,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
-  projectile: {fileID: 8379783872912795496, guid: 9347056774d74430ba95bad4cbfdc7c6, type: 3}
+  projectile: {fileID: 6458389267632297779, guid: c1576c3e7dc8849b490989ad6317198e, type: 3}
   projectileSpeed: 50
