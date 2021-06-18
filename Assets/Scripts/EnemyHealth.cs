@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
 
     private float _startHealth = 100;
     //current health
-    private float _health; 
+    private float _health;
     void Start()
     {
         _health = _startHealth;
@@ -26,13 +26,13 @@ public class EnemyHealth : MonoBehaviour
     // fillAmount: float between  0 and 1
     // 0 = all red
     // 1 = all green
-    void healthImproved(float amount)
+    public void HealthImproved(float amount)
     {
         _health += amount;
         healthbar.fillAmount = _health / _startHealth;
     }
 
-    void healthDecreased(float amount)
+    public void HealthDecreased(float amount)
     {
         _health -= amount;
         healthbar.fillAmount = _health / _startHealth;

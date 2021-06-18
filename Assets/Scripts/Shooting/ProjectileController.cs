@@ -22,6 +22,12 @@ public class ProjectileController : MonoBehaviour
                 TargetController target = collision.transform.GetComponent<TargetController>();
                 target.ReduceHitpoint(_damage);
             }
+
+            if (tag == "Enemy")
+            {
+                EnemyHealth enemyHealth = collision.transform.GetComponent<EnemyHealth>();
+                enemyHealth.HealthDecreased(_damage);
+            }
         }
     }
 }
