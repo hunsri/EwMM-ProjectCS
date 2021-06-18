@@ -26,7 +26,7 @@ public class ProjectileController : MonoBehaviour
             if (tag == "Enemy")
             {
                 EnemyHealth enemyHealth = collision.transform.GetComponent<EnemyHealth>();
-                enemyHealth.HealthDecreased(_damage);
+                enemyHealth.HealthImproved(_damage);
             }
         }
     }
