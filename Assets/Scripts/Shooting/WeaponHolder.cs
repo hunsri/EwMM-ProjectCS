@@ -114,6 +114,9 @@ public class WeaponHolder : MonoBehaviour
         shootingController.SetAmmo(index == -1 ? 0 : _weaponData[index, 1]);
     }
 
+    /// <summary>
+    /// Update WeaponAmmo's UI field
+    /// </summary>
     public void UpdateUI(int ammoCount, int maxAmmo)
     {
         if (!_canvas)
@@ -134,5 +137,7 @@ public class WeaponHolder : MonoBehaviour
         }
 
         _weaponAmmo.text = ammoCount + " / " + maxAmmo;
+
+        // todo mutate data on `PlayerData` class to enable saving.
     }
 }
