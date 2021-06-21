@@ -31,7 +31,7 @@ public class ShootingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && _ammo != 0)
+        if (Input.GetButtonDown("Fire1") && _ammo > 0)
         {
             ShootProjectile();
         }
