@@ -9,6 +9,12 @@ public class ShootingController : MonoBehaviour
     [SerializeField] private Transform _projectile;
     [SerializeField] private float _projectileSpeed = 50;
 
+    [SerializeField] private int _maxAmmo;
+    [SerializeField] private int _weaponIndex;
+
+    private int _ammo;
+    private WeaponHolder _weaponHolder;
+
     private Vector3 _projectileDestination;
 
     void Start()
@@ -17,12 +23,15 @@ public class ShootingController : MonoBehaviour
         {
             _camera = Camera.main;
         }
+
+        _ammo = _maxAmmo;
+        _weaponHolder = GetComponentInParent<WeaponHolder>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && _ammo > 0)
         {
             ShootProjectile();
         }
@@ -47,5 +56,17 @@ public class ShootingController : MonoBehaviour
         Vector3 projectileStartPoint = transform.position;
         var projectileObj = Instantiate(_projectile, projectileStartPoint, Quaternion.identity);
         projectileObj.GetComponent<Rigidbody>().velocity = (_projectileDestination - projectileStartPoint).normalized * _projectileSpeed;
+        SetAmmo(_ammo - 1);
+    }
+
+    public void SetAmmo(int ammoCount)
+    {
+        _ammo = ammoCount;
+        _weaponHolder.UpdateUI(ammoCount, _maxAmmo);
+    }
+
+    public int GetWeaponIndex()
+    {
+        return _weaponIndex;
     }
 }
