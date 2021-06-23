@@ -35,7 +35,7 @@ public class DifficultySettingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Curently not needed
     }
 
     // Changes the difficulty of all levels
@@ -67,7 +67,7 @@ public class DifficultySettingScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("Something went bad at planeColorChange at DifficultySettingScript");
+            Debug.Log("Something went bad on planeColorChange in DifficultySettingScript!");
         }
     }
 
@@ -89,7 +89,7 @@ public class DifficultySettingScript : MonoBehaviour
             return 0;
         } else
         {
-            Debug.Log("Something went bad at getDifficultyThroughPlaneColor at DifficultySettingScript");
+            Debug.Log("Something went bad on getDifficultyThroughPlaneColor() in DifficultySettingScript!");
             return 4;
         }
     }

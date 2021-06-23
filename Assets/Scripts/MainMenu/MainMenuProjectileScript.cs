@@ -29,6 +29,10 @@ public class MainMenuProjectileScript : MonoBehaviour
                     DifficultySettingScript target = collision.transform.GetComponent<DifficultySettingScript>();
                     target.TargetReact();
                 }
+                else
+                {
+                    Debug.Log("Something went bad on OnCollisionEnter() in MainMenuProjectileScript!");
+                }
             }
         }
     }
