@@ -8,6 +8,8 @@ TagManager:
   - Projectile
   - Target
   - Enemy
+  - Save
+  - Load
   layers:
   - Default
   - TransparentFX

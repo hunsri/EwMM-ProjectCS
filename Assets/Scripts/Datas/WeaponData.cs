@@ -1,3 +1,4 @@
+[System.Serializable]
 public class WeaponData
 {
     private int _weaponIndex;
@@ -17,16 +18,6 @@ public class WeaponData
     public void SetAmmoCount(int newAmmoCount)
     {
         _ammoCount = newAmmoCount;
-    }
-
-    public void IncreaseAmmo(int increaseBy)
-    {
-        SetAmmoCount(_ammoCount += increaseBy);
-    }
-
-    public void DecreaseAmmo(int decreaseBy)
-    {
-        SetAmmoCount(_ammoCount -= decreaseBy);
     }
 
     public int GetWeaponIndex()

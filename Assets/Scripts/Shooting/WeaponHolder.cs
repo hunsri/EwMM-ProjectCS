@@ -12,8 +12,6 @@ public class WeaponHolder : MonoBehaviour
     private Canvas _canvas;
     private Text _weaponAmmo;
     private KeyCode[] _weaponKeys = { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3 };
-    // mock player's weapon data
-    private int[,] _weaponData = { { 0, 30 }, { 1, 30 }, { 2, 5 } }; // array of int array (index 0: weapon index, index 1: ammo count.)
     private PlayerDataManager _playerData;
     private WeaponData _activeWeaponData;
 
@@ -22,7 +20,7 @@ public class WeaponHolder : MonoBehaviour
         _playerData = FindObjectOfType<PlayerDataManager>();
         InstantiateWeapons();
         SelectWeapon();
-        // todo: load data from PlayerData.cs script 
+
     }
 
     // Update is called once per frame
@@ -113,9 +111,6 @@ public class WeaponHolder : MonoBehaviour
         }
 
         _activeWeaponData = active;
-        Debug.Log(active.GetWeaponIndex());
-        Debug.Log(active.GetAmmoCount());
-
         shootingController.SetAmmo(_activeWeaponData.GetAmmoCount());
     }
 
@@ -145,6 +140,10 @@ public class WeaponHolder : MonoBehaviour
         _activeWeaponData.SetAmmoCount(ammoCount);
     }
 
+
+    /// <summary>
+    /// Instantiate weapons based on the weapons in the player data.
+    /// </summary>
     void InstantiateWeapons()
     {
         WeaponData[] weaponDatas = _playerData.GetAllWeapons();

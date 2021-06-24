@@ -1,22 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerDataManager : MonoBehaviour
 {
     private PlayerData _data;
+    private BinaryFormatter _formatter = new BinaryFormatter();
+
+    /// <summary>
+    /// Don't destroy class on load -> prevent `Start` method from being called when scene is reloaded.
+    /// </summary>
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         _data = new PlayerData();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     /// <summary>
@@ -59,5 +65,37 @@ public class PlayerDataManager : MonoBehaviour
         GameObject go = Instantiate(loadedObject, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         go.transform.SetParent(parent.transform);
         go.transform.position = parent.position;
+    }
+
+    /// <summary>
+    /// Save player data by serializing the `PlayerData` class and saving it to `player.data` file
+    /// </summary>
+    public void SaveGame()
+    {
+        string path = Application.persistentDataPath + "/player.data";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        _formatter.Serialize(stream, _data);
+        stream.Close();
+    }
+
+    /// <summary>
+    /// Load player data by deserializing the "player.data" file
+    /// </summary>
+    public void LoadGame()
+    {
+        string path = Application.persistentDataPath + "/player.data";
+        if (File.Exists(path))
+        {
+            FileStream stream = new FileStream(path, FileMode.Open);
+            _data = _formatter.Deserialize(stream) as PlayerData;
+            // reload scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        else
+        {
+            Debug.Log("No save files!");
+            return;
+        }
     }
 }
