@@ -1,0 +1,237 @@
+fileFormatVersion: 2
+guid: 14c5f54ea5c6844a489e23714fe0df39
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe.001_Sphere.007_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe.002_Sphere.008_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe.003_Sphere.009_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe.004_Sphere.010_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe.005_Sphere.011_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe.006_Sphere.012_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe.007_Sphere.013_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe.008_Sphere.014_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe.009_Sphere.015_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe.010_Sphere.016_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe.011_Sphere.017_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe.012_Sphere.018_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe.013_Sphere.019_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe.014_Sphere.020_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampe_Sphere.004_LampeMat
+    second: {fileID: 2100000, guid: 824bfc4faed91451384caa78e282a17b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plattform_Cube.001_BodenMat
+    second: {fileID: 2100000, guid: dba54937e2b5849fea4659e0dc70a667, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "S\xE4ule.001_Cube.009_S\xE4ulenMat"
+    second: {fileID: 2100000, guid: 0ee4bd5215b46420b9b4e348e81089a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "S\xE4ule.002_Cube.011_S\xE4ulenMat"
+    second: {fileID: 2100000, guid: 0ee4bd5215b46420b9b4e348e81089a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "S\xE4ule.003_Cube.012_S\xE4ulenMat"
+    second: {fileID: 2100000, guid: 0ee4bd5215b46420b9b4e348e81089a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "S\xE4ule.004_Cube.013_S\xE4ulenMat"
+    second: {fileID: 2100000, guid: 0ee4bd5215b46420b9b4e348e81089a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "S\xE4ule.005_Cube.014_S\xE4ulenMat"
+    second: {fileID: 2100000, guid: 0ee4bd5215b46420b9b4e348e81089a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "S\xE4ule.006_Cube.015_S\xE4ulenMat"
+    second: {fileID: 2100000, guid: 0ee4bd5215b46420b9b4e348e81089a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "S\xE4ule.007_Cube.016_S\xE4ulenMat"
+    second: {fileID: 2100000, guid: 0ee4bd5215b46420b9b4e348e81089a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "S\xE4ule.008_Cube.017_S\xE4ulenMat"
+    second: {fileID: 2100000, guid: 0ee4bd5215b46420b9b4e348e81089a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "S\xE4ule.009_Cube.018_S\xE4ulenMat"
+    second: {fileID: 2100000, guid: 0ee4bd5215b46420b9b4e348e81089a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "S\xE4ule_Cube.004_S\xE4ulenMat"
+    second: {fileID: 2100000, guid: 0ee4bd5215b46420b9b4e348e81089a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Walls_Cube.003_WandMat
+    second: {fileID: 2100000, guid: 9d05a890aeeea4202b8595ba3eff33af, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
