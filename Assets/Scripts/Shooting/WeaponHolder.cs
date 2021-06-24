@@ -14,9 +14,13 @@ public class WeaponHolder : MonoBehaviour
     private KeyCode[] _weaponKeys = { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3 };
     // mock player's weapon data
     private int[,] _weaponData = { { 0, 30 }, { 1, 30 }, { 2, 5 } }; // array of int array (index 0: weapon index, index 1: ammo count.)
+    private PlayerDataManager _playerData;
+    private WeaponData _activeWeaponData;
 
     void Start()
     {
+        _playerData = FindObjectOfType<PlayerDataManager>();
+        InstantiateWeapons();
         SelectWeapon();
         // todo: load data from PlayerData.cs script 
     }
@@ -101,17 +105,18 @@ public class WeaponHolder : MonoBehaviour
     void LoadWeaponData(ShootingController shootingController)
     {
         int weaponIndex = shootingController.GetWeaponIndex();
-        int index = -1;
-
-        for (int i = 0; i <= _weaponData.Rank; i++)
+        WeaponData active = _playerData.GetWeapon(weaponIndex);
+        if (active == null)
         {
-            if (_weaponData[i, 0] == weaponIndex)
-            {
-                index = i;
-            }
+            Debug.Log("Weapon not found!");
+            return;
         }
 
-        shootingController.SetAmmo(index == -1 ? 0 : _weaponData[index, 1]);
+        _activeWeaponData = active;
+        Debug.Log(active.GetWeaponIndex());
+        Debug.Log(active.GetAmmoCount());
+
+        shootingController.SetAmmo(_activeWeaponData.GetAmmoCount());
     }
 
     /// <summary>
@@ -137,7 +142,18 @@ public class WeaponHolder : MonoBehaviour
         }
 
         _weaponAmmo.text = ammoCount + " / " + maxAmmo;
+        _activeWeaponData.SetAmmoCount(ammoCount);
+    }
 
-        // todo mutate data on `PlayerData` class to enable saving.
+    void InstantiateWeapons()
+    {
+        WeaponData[] weaponDatas = _playerData.GetAllWeapons();
+        foreach (WeaponData weaponData in weaponDatas)
+        {
+            if (weaponData != null)
+            {
+                _playerData.LoadResource("Weapons/Weapon" + weaponData.GetWeaponIndex(), transform);
+            }
+        }
     }
 }
