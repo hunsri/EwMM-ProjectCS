@@ -5,24 +5,26 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class PlayerDataManager : MonoBehaviour
 {
     private PlayerData _data;
     private BinaryFormatter _formatter = new BinaryFormatter();
 
-    /// <summary>
-    /// Don't destroy class on load -> prevent `Start` method from being called when scene is reloaded.
-    /// </summary>
-    void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        _data = new PlayerData();
+        if (!SceneParameters.UseLoadedGame)
+        {
+            _data = new PlayerData();
+        }
+        else
+        {
+            _data = SceneParameters.PlayerData;
+
+            // cleanup
+            SceneParameters.PlayerData = null;
+            SceneParameters.UseLoadedGame = false;
+        }
     }
 
     /// <summary>
@@ -88,8 +90,9 @@ public class PlayerDataManager : MonoBehaviour
         if (File.Exists(path))
         {
             FileStream stream = new FileStream(path, FileMode.Open);
-            _data = _formatter.Deserialize(stream) as PlayerData;
+            SceneParameters.PlayerData = _formatter.Deserialize(stream) as PlayerData;
             // reload scene
+            SceneParameters.UseLoadedGame = true;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else

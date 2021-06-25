@@ -8,8 +8,8 @@ public class PlayerData
 
     public PlayerData()
     {
-        _weaponDatas[0] = Weapons.Syringe;
-        _weaponDatas[1] = Weapons.Weapon1;
+        _weaponDatas[0] = Weapons.Syringe();
+        _weaponDatas[1] = Weapons.Weapon1();
     }
 
     public void AddWeapon(WeaponData weapon)

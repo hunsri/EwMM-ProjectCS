@@ -23,8 +23,6 @@ public class ShootingController : MonoBehaviour
         {
             _camera = Camera.main;
         }
-
-        _ammo = _maxAmmo;
         GetWeaponHolder();
     }
 
