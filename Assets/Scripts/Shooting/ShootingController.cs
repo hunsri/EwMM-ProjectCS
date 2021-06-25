@@ -23,9 +23,7 @@ public class ShootingController : MonoBehaviour
         {
             _camera = Camera.main;
         }
-
-        _ammo = _maxAmmo;
-        _weaponHolder = GetComponentInParent<WeaponHolder>();
+        GetWeaponHolder();
     }
 
     // Update is called once per frame
@@ -62,11 +60,28 @@ public class ShootingController : MonoBehaviour
     public void SetAmmo(int ammoCount)
     {
         _ammo = ammoCount;
+
+        // It is possible that weapon holder is not yet defined as parent when the `Start()` method is called.
+        if (!_weaponHolder)
+        {
+            GetWeaponHolder();
+        }
         _weaponHolder.UpdateUI(ammoCount, _maxAmmo);
     }
 
     public int GetWeaponIndex()
     {
         return _weaponIndex;
+    }
+
+    public int GetMaxAmmo()
+    {
+        return _maxAmmo;
+    }
+
+    void GetWeaponHolder()
+    {
+        _weaponHolder = GetComponentInParent<WeaponHolder>();
+        gameObject.transform.TransformPoint(Vector3.zero);
     }
 }

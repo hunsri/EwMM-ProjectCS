@@ -28,6 +28,16 @@ public class ProjectileController : MonoBehaviour
                 EnemyHealth enemyHealth = collision.transform.GetComponent<EnemyHealth>();
                 enemyHealth.HealthImproved(_damage);
             }
+
+            if (tag == "Save")
+            {
+                FindObjectOfType<PlayerDataManager>().SaveGame();
+            }
+
+            if (tag == "Load")
+            {
+                FindObjectOfType<PlayerDataManager>().LoadGame();
+            }
         }
     }
 }
