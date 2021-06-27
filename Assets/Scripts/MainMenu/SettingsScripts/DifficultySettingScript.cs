@@ -41,13 +41,13 @@ public class DifficultySettingScript : MonoBehaviour
     }
 
     // Changes the difficulty of all levels
-    public void setDifficulty()
+    public void SetDifficulty()
     {
         // TODO
     }
 
     // Changes the color of the planes which are showing the difficulty
-    public void planeColorChange()
+    public void PlaneColorChange()
     {
         if (_difficulty == 0)
         {
@@ -76,7 +76,7 @@ public class DifficultySettingScript : MonoBehaviour
     // Gets the color of the plane
     // Evoids miscoloration
     // Returns an int which indicates the difficulty
-    public int getDifficultyThroughPlaneColor()
+    public int GetDifficultyThroughPlaneColor()
     {
         if (_hardRenderer.material.GetColor(_shaderPropertyName) == _colorBlack)
         {
@@ -99,15 +99,15 @@ public class DifficultySettingScript : MonoBehaviour
     // Will be used when the arrows next to the difficulty are triggered
     public void TargetReact()
     {
-        _difficulty = getDifficultyThroughPlaneColor();
+        _difficulty = GetDifficultyThroughPlaneColor();
 
         if (name == "Left Arrow Difficulty Button")
         {
             if (_difficulty != _minDif)
             {
                 _difficulty--;
-                setDifficulty();
-                planeColorChange();
+                SetDifficulty();
+                PlaneColorChange();
             } 
             else
             {
@@ -119,8 +119,8 @@ public class DifficultySettingScript : MonoBehaviour
             if (_difficulty != _maxDif)
             {
                 _difficulty++;
-                setDifficulty();
-                planeColorChange();
+                SetDifficulty();
+                PlaneColorChange();
             } 
             else
             {
@@ -132,8 +132,8 @@ public class DifficultySettingScript : MonoBehaviour
             if (_difficulty != _minDif)
             {
                 _difficulty = 0;
-                setDifficulty();
-                planeColorChange();
+                SetDifficulty();
+                PlaneColorChange();
             }
             else
             {
@@ -145,8 +145,8 @@ public class DifficultySettingScript : MonoBehaviour
             if (_difficulty != 1)
             {
                 _difficulty = 1;
-                setDifficulty();
-                planeColorChange();
+                SetDifficulty();
+                PlaneColorChange();
             }
             else
             {
@@ -158,8 +158,8 @@ public class DifficultySettingScript : MonoBehaviour
             if (_difficulty != _maxDif)
             {
                 _difficulty = 2;
-                setDifficulty();
-                planeColorChange();
+                SetDifficulty();
+                PlaneColorChange();
             }
             else
             {

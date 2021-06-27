@@ -21,13 +21,13 @@ public class InfoScript : MonoBehaviour
     {
         if (_planeIsTriggered == true)
         {
-            _planeText.text = randomCovid19Text(Random.Range(0 , 11));
+            _planeText.text = RandomCovid19Text(Random.Range(0 , 11));
             _planeIsTriggered = false;
         }
     }
 
     // Will return one of many text of covid 19
-    private string randomCovid19Text(int number)
+    private string RandomCovid19Text(int number)
     {
         switch(number)
         {

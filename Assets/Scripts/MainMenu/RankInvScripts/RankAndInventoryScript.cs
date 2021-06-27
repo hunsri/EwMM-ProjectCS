@@ -20,11 +20,11 @@ public class RankAndInventoryScript : MonoBehaviour
     {
         if (_rankCanvas.activeSelf == true)
         {
-            changeCanvas(_inventoryCanvas);
+            ChangeCanvas(_inventoryCanvas);
         }
         else if (_inventoryCanvas.activeSelf == true)
         {
-            changeCanvas(_rankCanvas);
+            ChangeCanvas(_rankCanvas);
         }
         else
         {
@@ -33,7 +33,7 @@ public class RankAndInventoryScript : MonoBehaviour
     }
 
     // Changes so that the given gameObject is now active an the other one are not
-    public void changeCanvas(GameObject gameObject)
+    public void ChangeCanvas(GameObject gameObject)
     {
         if (gameObject.name == _rankCanvas.name)
         {

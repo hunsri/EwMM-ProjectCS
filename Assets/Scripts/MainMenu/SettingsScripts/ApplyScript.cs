@@ -60,6 +60,6 @@ public class ApplyScript : MonoBehaviour
             Debug.Log("Something went bad on OnTriggerEnter() in ApplyScript!");
         }
 
-        PlayerData.saveSettings(vfxVolume, musicVolume, difficulty);
+        PlayerData.SaveSettings(vfxVolume, musicVolume, difficulty);
     }
 }

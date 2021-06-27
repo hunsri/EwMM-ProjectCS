@@ -14,7 +14,7 @@ public class QuitGameScript : MonoBehaviour
     }
 
     // Will quit the game
-    public void quitGame()
+    public void QuitGame()
     {
         if (_areYouSureNumber == 1)
         {
@@ -36,6 +36,6 @@ public class QuitGameScript : MonoBehaviour
     // Will trigger when the game object is triggered
     private void OnTriggerEnter(Collider other)
     {
-        quitGame();
+        QuitGame();
     }
 }

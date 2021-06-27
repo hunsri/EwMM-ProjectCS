@@ -9,7 +9,7 @@ public class PlayerData : MonoBehaviour
     private static float _difficulty;
 
     // Saves all settings in this class
-    public static void saveSettings(float vfxVolume, float musicVolume, float difficulty)
+    public static void SaveSettings(float vfxVolume, float musicVolume, float difficulty)
     {
         _vfxVolume = vfxVolume;
         _musicVolume = musicVolume;
