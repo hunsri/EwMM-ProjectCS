@@ -5,11 +5,11 @@ using UnityEngine;
 public class DifficultySettingScript : MonoBehaviour
 {
     [SerializeField]
-    private GameObject easyPlane;
+    private GameObject _easyPlane;
     [SerializeField]
-    private GameObject mediumPlane;
+    private GameObject _mediumPlane;
     [SerializeField]
-    private GameObject hardPlane;
+    private GameObject _hardPlane;
 
     private MeshRenderer _easyRenderer;
     private MeshRenderer _mediumRenderer;
@@ -26,10 +26,12 @@ public class DifficultySettingScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _easyRenderer = easyPlane.GetComponent<MeshRenderer>();
+        _easyRenderer = _easyPlane.GetComponent<MeshRenderer>();
         _easyRenderer.material.SetColor(_shaderPropertyName, _colorBlack);
-        _mediumRenderer = mediumPlane.GetComponent<MeshRenderer>();
-        _hardRenderer = hardPlane.GetComponent<MeshRenderer>();
+        _mediumRenderer = _mediumPlane.GetComponent<MeshRenderer>();
+        _mediumRenderer.material.SetColor(_shaderPropertyName, _colorWhite);
+        _hardRenderer = _hardPlane.GetComponent<MeshRenderer>();
+        _hardRenderer.material.SetColor(_shaderPropertyName, _colorWhite);
     }
 
     // Update is called once per frame

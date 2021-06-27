@@ -5,26 +5,26 @@ using UnityEngine;
 public class QuitGameScript : MonoBehaviour
 {
     private int _areYouSureNumber = 0;
-    private Animator _animatior;
+    private Animator _animator;
 
     // Will be used at the start of the application
     private void Start()
     {
-        _animatior = transform.GetComponent<Animator>();
+        _animator = transform.GetComponent<Animator>();
     }
 
     // Will quit the game
-    public void QuitGame()
+    public void quitGame()
     {
         if (_areYouSureNumber == 1)
         {
-            _animatior.SetTrigger("openFull");
+            _animator.SetTrigger("openFull");
             Debug.Log("Game will quit!");
             Application.Quit();
         }
         else if (_areYouSureNumber == 0)
         {
-            _animatior.SetTrigger("openHalf");
+            _animator.SetTrigger("openHalf");
             _areYouSureNumber++;
         }
         else
@@ -36,6 +36,6 @@ public class QuitGameScript : MonoBehaviour
     // Will trigger when the game object is triggered
     private void OnTriggerEnter(Collider other)
     {
-        QuitGame();
+        quitGame();
     }
 }

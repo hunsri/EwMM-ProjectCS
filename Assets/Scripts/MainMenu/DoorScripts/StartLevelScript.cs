@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class StartLevelScript : MonoBehaviour
 {
     private int _areYouSureNumber = 0;
+    private bool _isWaiting = false;
     private Animator _animator;
 
     // Start is called before the first frame update
@@ -17,19 +18,19 @@ public class StartLevelScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Curently not needed
+
     }
 
     // Will load a level
     // Needs to be changed if new level will be added
-    public void SelectLevel(int addLevel)
+    public void selectLevel(int addLevel)
     {
         Debug.Log("Level " + addLevel + " will be started!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + addLevel);
     }
 
     // Will be called if one of the level door is hitten
-    public void TargetReact()
+    public void targetReact()
     {
         if (name == "Door Level1")
         {
@@ -56,7 +57,7 @@ public class StartLevelScript : MonoBehaviour
         else if (_areYouSureNumber == 1)
         {
             _animator.SetTrigger("openFull");
-            SelectLevel(sceneNumber);
+            selectLevel(sceneNumber);
         }
         else
         {
@@ -67,6 +68,6 @@ public class StartLevelScript : MonoBehaviour
     // Will trigger when the game object is triggered
     private void OnTriggerEnter(Collider other)
     {
-        TargetReact();
+        targetReact();
     }
 }

@@ -12,22 +12,15 @@ public class SliderSettingScript : MonoBehaviour
     [SerializeField]
     private AudioMixer _audioMixer;
 
-    private MeshRenderer _renderer;
-
     private bool _musicIsUpdated = false;
     private float _musicVolumeNumber;
 
     private bool _sfxIsUpdated = false;
     private float _sfxVolumeNumber;
 
-    private string _shaderPropertyName = "_Color";
-    private Color _color = Color.white;
-
     // Start is called before the first frame update
     void Start()
     {
-        _renderer = GetComponent<MeshRenderer>();
-
         if (_slider.name == "Music Slider")
         {
             _audioMixer.GetFloat("musicVolume", out _musicVolumeNumber);
@@ -46,13 +39,11 @@ public class SliderSettingScript : MonoBehaviour
         if (_musicIsUpdated)
         {
             SetMusicVolume(_musicVolumeNumber);
-            _renderer.material.SetColor(_shaderPropertyName, _color);
             _musicIsUpdated = false;
         }
         if (_sfxIsUpdated)
         {
             SetSFXVolume(_sfxVolumeNumber);
-            _renderer.material.SetColor(_shaderPropertyName, _color);
             _sfxIsUpdated = false;
         }
     }
@@ -79,7 +70,6 @@ public class SliderSettingScript : MonoBehaviour
         if (_slider.name == "Music Slider")
         {
             _audioMixer.GetFloat("musicVolume", out _musicVolumeNumber);
-            _renderer.material.SetColor(_shaderPropertyName, Color.black);
 
             if (name == "Right Arrow Music Button")
             {
@@ -91,7 +81,7 @@ public class SliderSettingScript : MonoBehaviour
             }
             else if (name == "Left Arrow Music Button")
             {
-                if (_musicVolumeNumber != -80)
+                if (_musicVolumeNumber > -80)
                 {
                     _musicVolumeNumber = _musicVolumeNumber - 10;
                     _musicIsUpdated = true;
@@ -100,7 +90,6 @@ public class SliderSettingScript : MonoBehaviour
         } else if (_slider.name == "SFX Slider")
         {
             _audioMixer.GetFloat("sfxVolume", out _sfxVolumeNumber);
-            _renderer.material.SetColor(_shaderPropertyName, Color.black);
 
             if (name == "Right Arrow SFX Button")
             {
@@ -112,7 +101,7 @@ public class SliderSettingScript : MonoBehaviour
             }
             else if (name == "Left Arrow SFX Button")
             {
-                if (_sfxVolumeNumber != -80)
+                if (_sfxVolumeNumber > -80)
                 {
                     _sfxVolumeNumber = _sfxVolumeNumber - 10;
                     _sfxIsUpdated = true;
