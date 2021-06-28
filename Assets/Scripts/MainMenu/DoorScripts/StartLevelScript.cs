@@ -40,6 +40,7 @@ public class StartLevelScript : MonoBehaviour
         }
     }
 
+    // Will activate the right animation
     private void AnimatorAndCounter(int sceneNumber)
     {
         if (_areYouSureNumber == 0)

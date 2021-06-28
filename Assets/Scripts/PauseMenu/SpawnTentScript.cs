@@ -7,10 +7,13 @@ public class SpawnTentScript : MonoBehaviour
     [SerializeField]
     private GameObject _tent;
 
+    //private Animator _animator;
+
     // Start is called before the first frame update
     void Start()
     {
         _tent.SetActive(false);
+        //_animator = _tent.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -21,9 +24,11 @@ public class SpawnTentScript : MonoBehaviour
             if (!_tent.activeSelf)
             {
                 _tent.SetActive(true);
+                //_animator.SetTrigger("shouldSpawn");
             }
             else if (_tent.activeSelf)
             {
+                //_animator.SetTrigger("shouldDespawn");
                 _tent.SetActive(false);
             }
             else
@@ -36,9 +41,11 @@ public class SpawnTentScript : MonoBehaviour
             if (!_tent.activeSelf)
             {
                 _tent.SetActive(true);
+                //_animator.SetTrigger("shouldSpawn");
             }
             else if (_tent.activeSelf)
             {
+                //_animator.SetTrigger("shouldDespawn");
                 _tent.SetActive(false);
             }
             else
