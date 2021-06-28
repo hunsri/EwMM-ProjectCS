@@ -24,24 +24,27 @@ public class EnemyHealth : MonoBehaviour
         }
 
         _health = _startHealth;
-
-        /*
-        if(Enemy.Infected){ 
-            _health = 0;
-        } else {
-            _health = _startHealth;
-        } */
     }
 
     // fillAmount: float between  0 and 1
-    // 0 = all red
-    // 1 = all green
+    // 0 = all red for npc, transparent for player
+    // 1 = all green for npc, red for player
+
+    /* Fills up the healthbar with colour 
+    Use when:
+    - player health decreases (red)
+    - npc health improves (green) */
     public void HealthImproved(float amount)
     {
         _health += amount;
         UpdateHealthBar();
     }
 
+    /* 'takes' colour FROM the healthbar
+    Use when:
+    - player health improves (transparent)
+    - npc health decreases (red)
+    */
     public void HealthDecreased(float amount)
     {
         _health -= amount;
