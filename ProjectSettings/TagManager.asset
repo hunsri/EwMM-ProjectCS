@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - Target
   - Enemy
+  - Border
   layers:
   - Default
   - TransparentFX
