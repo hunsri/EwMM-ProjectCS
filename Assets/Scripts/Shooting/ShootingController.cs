@@ -11,12 +11,14 @@ public class ShootingController : MonoBehaviour
 
     [SerializeField] private int _maxAmmo;
     [SerializeField] private int _weaponIndex;
+    [SerializeField] private float _fireRate = 50f;
 
     private int _ammo;
     private WeaponHolder _weaponHolder;
 
     private Vector3 _projectileDestination;
     private Animator _animator;
+    private float _nextTimeToFire;
 
     void Start()
     {
@@ -33,8 +35,9 @@ public class ShootingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && _ammo > 0)
+        if (Input.GetButtonDown("Fire1") && _ammo > 0 && Time.time >= _nextTimeToFire)
         {
+            _nextTimeToFire = Time.time + 1f / _fireRate;
             ShootProjectile();
         }
         if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))

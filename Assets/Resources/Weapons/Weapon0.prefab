@@ -214,6 +214,7 @@ MonoBehaviour:
   _projectileSpeed: 50
   _maxAmmo: 30
   _weaponIndex: 0
+  _fireRate: 2
 --- !u!95 &7811730098049959124
 Animator:
   serializedVersion: 3
