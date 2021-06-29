@@ -10,6 +10,8 @@ TagManager:
   - Enemy
   - Border
   - KillBorder
+  - Save
+  - Load
   layers:
   - Default
   - TransparentFX
@@ -17,8 +19,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Minimap
+  - Character
   - 
   - 
   - 
