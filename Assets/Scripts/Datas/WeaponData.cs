@@ -3,11 +3,18 @@ public class WeaponData
 {
     private int _weaponIndex;
     private int _ammoCount;
+    private float[] _defaultPosition;
 
-    public WeaponData(int weaponIndex, int maxAmmo)
+    /// <summary>
+    /// weaponIndex: Index of the weapon
+    /// maxAmmo: Max ammo of the weapon
+    /// defaultPosition: Position of the weapon on render (useful to "snap" weapon to its holder)
+    /// </summary>
+    public WeaponData(int weaponIndex, int maxAmmo, float[] defaultPosition)
     {
         _weaponIndex = weaponIndex;
         _ammoCount = maxAmmo;
+        _defaultPosition = defaultPosition;
     }
 
     public int GetAmmoCount()
@@ -23,5 +30,10 @@ public class WeaponData
     public int GetWeaponIndex()
     {
         return _weaponIndex;
+    }
+
+    public float[] GetDefaultPosition()
+    {
+        return _defaultPosition;
     }
 }
