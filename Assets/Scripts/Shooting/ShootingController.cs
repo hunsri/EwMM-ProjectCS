@@ -16,6 +16,7 @@ public class ShootingController : MonoBehaviour
     private WeaponHolder _weaponHolder;
 
     private Vector3 _projectileDestination;
+    private Animator _animator;
 
     void Start()
     {
@@ -24,6 +25,9 @@ public class ShootingController : MonoBehaviour
             _camera = Camera.main;
         }
         GetWeaponHolder();
+        _animator = GetComponent<Animator>();
+        _animator.SetInteger("WeaponIndex", _weaponIndex);
+        // _animator.Play("Idle", 0);
     }
 
     // Update is called once per frame
@@ -33,10 +37,15 @@ public class ShootingController : MonoBehaviour
         {
             ShootProjectile();
         }
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
+        {
+            _animator.SetBool("IsFiring", false);
+        }
     }
 
     void ShootProjectile()
     {
+        _animator.SetBool("IsFiring", true);
         Ray shootingRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         if (Physics.Raycast(shootingRay, out RaycastHit hit))
         {
@@ -51,10 +60,11 @@ public class ShootingController : MonoBehaviour
     }
     void InstantiateProjectile()
     {
-        Vector3 projectileStartPoint = transform.position;
+        Vector3 projectileStartPoint = transform.parent.position;
         var projectileObj = Instantiate(_projectile, projectileStartPoint, Quaternion.identity);
         projectileObj.GetComponent<Rigidbody>().velocity = (_projectileDestination - projectileStartPoint).normalized * _projectileSpeed;
         SetAmmo(_ammo - 1);
+
     }
 
     public void SetAmmo(int ammoCount)

@@ -156,8 +156,8 @@ public class WeaponHolder : MonoBehaviour
             if (weaponData != null)
             {
                 float[] defaultPosition = weaponData.GetDefaultPosition();
-                Vector3 weaponPosition = new Vector3(defaultPosition[0], defaultPosition[1], defaultPosition[2]);
-                _playerData.LoadResource("Weapons/Weapon" + weaponData.GetWeaponIndex(), transform, weaponPosition);
+                Vector3 position = new Vector3(defaultPosition[0], defaultPosition[1], defaultPosition[2]);
+                _playerData.LoadResource("Weapons/Weapon" + weaponData.GetWeaponIndex(), transform, position);
             }
         }
     }

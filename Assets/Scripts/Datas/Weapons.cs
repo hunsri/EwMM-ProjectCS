@@ -3,7 +3,7 @@ public class Weapons
 {
     public static WeaponData Syringe()
     {
-        return new WeaponData(0, 30, new float[] { 0.12f, -0.04f, 0.01f });
+        return new WeaponData(0, 30, new float[] { 0.04f, -0.04f, 0.01f });
     }
     // ! initiate syringe as default weapon
     // ! double check the syringe prefab at
