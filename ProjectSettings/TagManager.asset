@@ -8,6 +8,8 @@ TagManager:
   - Projectile
   - Target
   - Enemy
+  - Border
+  - KillBorder
   - Save
   - Load
   layers:
