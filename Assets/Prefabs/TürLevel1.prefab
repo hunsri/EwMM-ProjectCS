@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6445493161997404506}
   - component: {fileID: -2588929863038918696}
   m_Layer: 0
-  m_Name: "T\xFCr Level1"
+  m_Name: "T\xFCrLevel1"
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

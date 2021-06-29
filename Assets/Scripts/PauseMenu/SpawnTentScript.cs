@@ -2,55 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnTentScript : MonoBehaviour
+namespace PauseMenu
 {
-    [SerializeField]
-    private GameObject _tent;
-
-    //private Animator _animator;
-
-    // Start is called before the first frame update
-    void Start()
+    public class SpawnTentScript : MonoBehaviour
     {
-        _tent.SetActive(false);
-        //_animator = _tent.GetComponent<Animator>();
-    }
+        [SerializeField]
+        private GameObject _tent;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        private Animator _animator;
+
+        private bool _isDown = false;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            if (!_tent.activeSelf)
-            {
-                _tent.SetActive(true);
-                //_animator.SetTrigger("shouldSpawn");
-            }
-            else if (_tent.activeSelf)
-            {
-                //_animator.SetTrigger("shouldDespawn");
-                _tent.SetActive(false);
-            }
-            else
-            {
-                Debug.Log("Something went bad on Update() in SpawnTentScript!");
-            }
+            _animator = _tent.GetComponent<Animator>();
         }
-        else if (Input.GetKeyDown(KeyCode.X))
+
+        // Update is called once per frame
+        void Update()
         {
-            if (!_tent.activeSelf)
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X))
             {
-                _tent.SetActive(true);
-                //_animator.SetTrigger("shouldSpawn");
-            }
-            else if (_tent.activeSelf)
-            {
-                //_animator.SetTrigger("shouldDespawn");
-                _tent.SetActive(false);
-            }
-            else
-            {
-                Debug.Log("Something went bad on Update() in SpawnTentScript!");
+                if (!_isDown)
+                {
+                    _animator.ResetTrigger("shouldDespawn");
+                    _animator.SetTrigger("shouldSpawn");
+                    _isDown = true;
+                }
+                else if (_isDown)
+                {
+                    _animator.ResetTrigger("shouldSpawn");
+                    _animator.SetTrigger("shouldDespawn");
+                    _isDown = false;
+                }
+                else
+                {
+                    Debug.Log("Something went bad on Update() in SpawnTentScript!");
+                }
             }
         }
     }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1391514032464378494}
   - component: {fileID: 2558938143423597809}
   m_Layer: 0
-  m_Name: "T\xFCr Exit"
+  m_Name: "T\xFCrExit"
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

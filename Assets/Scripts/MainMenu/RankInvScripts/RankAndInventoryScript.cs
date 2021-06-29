@@ -2,54 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RankAndInventoryScript : MonoBehaviour
+namespace MainMenu
 {
-    [SerializeField]
-    private GameObject _rankCanvas;
-    [SerializeField]
-    private GameObject _inventoryCanvas;
-
-    // Start is called before the first frame update
-    void Start()
+    public class RankAndInventoryScript : MonoBehaviour
     {
-        _rankCanvas.SetActive(true);
-        _inventoryCanvas.SetActive(false);
-    }
+        [SerializeField]
+        private GameObject _rankCanvas;
+        [SerializeField]
+        private GameObject _inventoryCanvas;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (_rankCanvas.activeSelf == true)
-        {
-            ChangeCanvas(_inventoryCanvas);
-        }
-        else if (_inventoryCanvas.activeSelf == true)
-        {
-            ChangeCanvas(_rankCanvas);
-        }
-        else
-        {
-            Debug.Log("Something went bad on OnTriggerEnter() in ArchivementAndRewardsScript!");
-        }
-    }
-
-    // Changes so that the given gameObject is now active an the other one are not
-    public void ChangeCanvas(GameObject gameObject)
-    {
-        if (gameObject.name == _rankCanvas.name)
+        // Start is called before the first frame update
+        void Start()
         {
             _rankCanvas.SetActive(true);
             _inventoryCanvas.SetActive(false);
         }
-        else if (gameObject.name == _inventoryCanvas.name)
+
+        private void OnTriggerEnter(Collider other)
         {
-            _rankCanvas.SetActive(false);
-            _inventoryCanvas.SetActive(true);
+            if (_rankCanvas.activeSelf == true)
+            {
+                ChangeCanvas(_inventoryCanvas);
+            }
+            else if (_inventoryCanvas.activeSelf == true)
+            {
+                ChangeCanvas(_rankCanvas);
+            }
+            else
+            {
+                Debug.Log("Something went bad on OnTriggerEnter() in ArchivementAndRewardsScript!");
+            }
         }
-        else
+
+        // Changes so that the given gameObject is now active an the other one are not
+        public void ChangeCanvas(GameObject gameObject)
         {
-            Debug.Log("Something went bad on changeCanvas() in ArchivementAndRewardsScript!");
-            _rankCanvas.SetActive(false);
-            _inventoryCanvas.SetActive(false);
+            if (gameObject.name == _rankCanvas.name)
+            {
+                _rankCanvas.SetActive(true);
+                _inventoryCanvas.SetActive(false);
+            }
+            else if (gameObject.name == _inventoryCanvas.name)
+            {
+                _rankCanvas.SetActive(false);
+                _inventoryCanvas.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Something went bad on changeCanvas() in ArchivementAndRewardsScript!");
+                _rankCanvas.SetActive(false);
+                _inventoryCanvas.SetActive(false);
+            }
         }
     }
 }

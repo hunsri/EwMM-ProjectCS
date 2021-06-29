@@ -285,7 +285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 043f772c2647fbe44ab5aa4d19bd8a1b, type: 3}
       propertyPath: m_Name
-      value: Doorframe Exit
+      value: DoorframeExit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 043f772c2647fbe44ab5aa4d19bd8a1b, type: 3}
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 35691018}
   - component: {fileID: 35691017}
   m_Layer: 5
-  m_Name: Left Arrow AW
+  m_Name: LeftArrow_AW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 111094197}
   - component: {fileID: 111094200}
   m_Layer: 5
-  m_Name: Difficulty Easy Plane
+  m_Name: DifficultyEasyPlane
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 128942780}
   - component: {fileID: 128942779}
   m_Layer: 5
-  m_Name: Difficulty Hard Text
+  m_Name: DifficultyHardText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -665,7 +665,7 @@ GameObject:
   - component: {fileID: 150140502}
   - component: {fileID: 150140505}
   m_Layer: 0
-  m_Name: Left Arrow Music Button
+  m_Name: LeftArrowMusicButton
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -777,7 +777,7 @@ GameObject:
   - component: {fileID: 157086379}
   - component: {fileID: 157086378}
   m_Layer: 0
-  m_Name: Right Arrow Difficulty Button
+  m_Name: RightArrowDifficultyButton
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1016,7 +1016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02c06dcc855eea5419e8b52d34fd92ee, type: 3}
       propertyPath: m_Name
-      value: Right Lightning Bolb
+      value: RightLightningBolb
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02c06dcc855eea5419e8b52d34fd92ee, type: 3}
@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 170615383}
   - component: {fileID: 170615386}
   m_Layer: 5
-  m_Name: Right Arrow AV Plane
+  m_Name: RightArrow_AV_Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1147,7 +1147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 180215263}
   m_Layer: 5
-  m_Name: SFX Part
+  m_Name: SFX_Part
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1233,7 +1233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 69d9309e04ba94a49995054046397f39, type: 3}
       propertyPath: m_Name
-      value: Smale Table Left
+      value: SmaleTableLeft
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69d9309e04ba94a49995054046397f39, type: 3}
@@ -1351,7 +1351,7 @@ GameObject:
   - component: {fileID: 200479594}
   - component: {fileID: 200479593}
   m_Layer: 5
-  m_Name: Current Rank Text
+  m_Name: CurrentRankText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1518,7 +1518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02c06dcc855eea5419e8b52d34fd92ee, type: 3}
       propertyPath: m_Name
-      value: Left Lightning Bolb
+      value: LeftLightningBolb
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02c06dcc855eea5419e8b52d34fd92ee, type: 3}
@@ -1535,7 +1535,7 @@ GameObject:
   - component: {fileID: 208415648}
   - component: {fileID: 208415647}
   m_Layer: 0
-  m_Name: Out Wall
+  m_Name: OutWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1629,7 +1629,7 @@ GameObject:
   - component: {fileID: 234845851}
   - component: {fileID: 234845850}
   m_Layer: 5
-  m_Name: SFX Text
+  m_Name: SFX_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1709,7 +1709,7 @@ GameObject:
   - component: {fileID: 237691802}
   - component: {fileID: 237691801}
   m_Layer: 5
-  m_Name: Wall -Z Canvas
+  m_Name: Wall-ZCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1811,7 +1811,7 @@ GameObject:
   - component: {fileID: 240137930}
   - component: {fileID: 240137929}
   m_Layer: 5
-  m_Name: Right Arrow
+  m_Name: RightArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1995,7 +1995,7 @@ GameObject:
   - component: {fileID: 266204322}
   - component: {fileID: 266204323}
   m_Layer: 0
-  m_Name: Spot Light (1)
+  m_Name: SpotLight2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2090,7 +2090,7 @@ GameObject:
   - component: {fileID: 279122012}
   - component: {fileID: 279122011}
   m_Layer: 5
-  m_Name: Inv5 Picture Plane
+  m_Name: Inv5PicturePlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2217,7 +2217,7 @@ GameObject:
   - component: {fileID: 285635263}
   - component: {fileID: 285635262}
   m_Layer: 0
-  m_Name: Wall -Z Part 5
+  m_Name: Wall-Z_Part5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2309,7 +2309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 286562344}
   m_Layer: 0
-  m_Name: Point Lights
+  m_Name: PointLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2398,7 +2398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 31e3656f721337746a47bad375f518ce, type: 3}
       propertyPath: m_Name
-      value: Board +Z
+      value: Board+Z
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31e3656f721337746a47bad375f518ce, type: 3}
@@ -2452,7 +2452,7 @@ GameObject:
   - component: {fileID: 361704511}
   - component: {fileID: 361704510}
   m_Layer: 5
-  m_Name: Inv1 Picture Plane
+  m_Name: Inv1PicturePlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2547,7 +2547,7 @@ GameObject:
   - component: {fileID: 361774850}
   - component: {fileID: 361774849}
   m_Layer: 5
-  m_Name: Music Text
+  m_Name: MusicText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2707,7 +2707,7 @@ GameObject:
   - component: {fileID: 391512413}
   - component: {fileID: 391512412}
   m_Layer: 5
-  m_Name: Board +X Rank Canvas
+  m_Name: Board+X_RankCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2811,7 +2811,7 @@ GameObject:
   - component: {fileID: 403674335}
   - component: {fileID: 403674334}
   m_Layer: 0
-  m_Name: Score Plane
+  m_Name: ScorePlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2943,7 +2943,7 @@ GameObject:
   - component: {fileID: 435716175}
   - component: {fileID: 435716174}
   m_Layer: 0
-  m_Name: Last Info Preview Text
+  m_Name: LastInfoPreviewText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3024,7 +3024,7 @@ GameObject:
   - component: {fileID: 480588854}
   - component: {fileID: 480588857}
   m_Layer: 5
-  m_Name: Default Plane
+  m_Name: DefaultPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3143,7 +3143,7 @@ GameObject:
   - component: {fileID: 505611538}
   - component: {fileID: 505611537}
   m_Layer: 5
-  m_Name: Inv6 Picture Plane
+  m_Name: Inv6PicturePlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3238,7 +3238,7 @@ GameObject:
   - component: {fileID: 548491391}
   - component: {fileID: 548491390}
   m_Layer: 5
-  m_Name: Difficulty Easy Text
+  m_Name: DifficultyEasyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3319,7 +3319,7 @@ GameObject:
   - component: {fileID: 574484063}
   - component: {fileID: 574484066}
   m_Layer: 0
-  m_Name: Random Plane
+  m_Name: RandomPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3462,7 +3462,7 @@ GameObject:
   - component: {fileID: 592049248}
   - component: {fileID: 592049249}
   m_Layer: 0
-  m_Name: Right Door Point Light
+  m_Name: RightDoorPointLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3632,7 +3632,7 @@ GameObject:
   - component: {fileID: 598454483}
   - component: {fileID: 598454482}
   m_Layer: 5
-  m_Name: 'Board +X Inv Canvas '
+  m_Name: 'Board+X_InvCanvas '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3790,7 +3790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02c06dcc855eea5419e8b52d34fd92ee, type: 3}
       propertyPath: m_Name
-      value: Left Door Lightning Bolb
+      value: LeftDoorLightningBolb
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02c06dcc855eea5419e8b52d34fd92ee, type: 3}
@@ -3812,7 +3812,7 @@ GameObject:
   - component: {fileID: 638880818}
   - component: {fileID: 638880817}
   m_Layer: 0
-  m_Name: Wall -Z Part 4
+  m_Name: Wall-Z_Part4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3906,7 +3906,7 @@ GameObject:
   - component: {fileID: 663576143}
   - component: {fileID: 663576142}
   m_Layer: 0
-  m_Name: Last Info Preview Text
+  m_Name: LastInfoPreviewText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3983,7 +3983,7 @@ GameObject:
   m_Component:
   - component: {fileID: 665324359}
   m_Layer: 5
-  m_Name: Difficulty Part
+  m_Name: DifficultyPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4026,7 +4026,7 @@ GameObject:
   - component: {fileID: 677372012}
   - component: {fileID: 677372011}
   m_Layer: 5
-  m_Name: Inv Headline Text
+  m_Name: InvHeadlineText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4186,7 +4186,7 @@ GameObject:
   - component: {fileID: 721409750}
   - component: {fileID: 721409749}
   m_Layer: 0
-  m_Name: Doorframe Exit Plane
+  m_Name: DoorframeExitPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4296,7 +4296,7 @@ GameObject:
   - component: {fileID: 742180513}
   - component: {fileID: 742180516}
   m_Layer: 5
-  m_Name: Apply Plane
+  m_Name: ApplyPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4415,7 +4415,7 @@ GameObject:
   - component: {fileID: 750133204}
   - component: {fileID: 750133203}
   m_Layer: 0
-  m_Name: Wall +Z
+  m_Name: Wall+Z
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4509,7 +4509,7 @@ GameObject:
   - component: {fileID: 826596816}
   - component: {fileID: 826596815}
   m_Layer: 5
-  m_Name: Fill Image
+  m_Name: Fill_Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4586,7 +4586,7 @@ GameObject:
   - component: {fileID: 828563034}
   - component: {fileID: 828563033}
   m_Layer: 0
-  m_Name: Doorframe Level1 Plane
+  m_Name: DoorframeLevel1_Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4694,7 +4694,7 @@ GameObject:
   - component: {fileID: 830898182}
   - component: {fileID: 830898181}
   m_Layer: 5
-  m_Name: Rank Progess Image
+  m_Name: RankProgessImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4774,7 +4774,7 @@ GameObject:
   - component: {fileID: 833034936}
   - component: {fileID: 833034939}
   m_Layer: 5
-  m_Name: Difficulty Medium Plane
+  m_Name: DifficultyMediumPlane
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4926,7 +4926,7 @@ GameObject:
   - component: {fileID: 865259659}
   - component: {fileID: 865259658}
   m_Layer: 5
-  m_Name: Difficulty Text
+  m_Name: DifficultyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5124,7 +5124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6b3a48c400303e249a1aad0fc0425397, type: 3}
       propertyPath: m_Name
-      value: Vase Left
+      value: VaseLeft
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b3a48c400303e249a1aad0fc0425397, type: 3}
@@ -5145,7 +5145,7 @@ GameObject:
   - component: {fileID: 905981030}
   - component: {fileID: 905981029}
   m_Layer: 0
-  m_Name: Score Headline Text
+  m_Name: ScoreHeadlineText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5259,7 +5259,7 @@ GameObject:
   - component: {fileID: 959029764}
   - component: {fileID: 959029763}
   m_Layer: 0
-  m_Name: Left Arrow SFX Button
+  m_Name: LeftArrowSFX_Button
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5484,7 +5484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6b3a48c400303e249a1aad0fc0425397, type: 3}
       propertyPath: m_Name
-      value: Vase Right
+      value: VaseRight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b3a48c400303e249a1aad0fc0425397, type: 3}
@@ -5507,7 +5507,7 @@ GameObject:
   - component: {fileID: 1009648473}
   - component: {fileID: 1009648476}
   m_Layer: 0
-  m_Name: Right Arrow Music Button
+  m_Name: RightArrowMusicButton
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5618,7 +5618,7 @@ GameObject:
   - component: {fileID: 1015744857}
   - component: {fileID: 1015744856}
   m_Layer: 0
-  m_Name: Lower Ground
+  m_Name: LowerGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5711,7 +5711,7 @@ GameObject:
   - component: {fileID: 1038428242}
   - component: {fileID: 1038428243}
   m_Layer: 0
-  m_Name: Right Point Light
+  m_Name: RightPointLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5806,7 +5806,7 @@ GameObject:
   - component: {fileID: 1049937627}
   - component: {fileID: 1049937626}
   m_Layer: 0
-  m_Name: Wall -Z Part 3
+  m_Name: Wall-Z_Part3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5931,7 +5931,7 @@ GameObject:
   - component: {fileID: 1066035068}
   - component: {fileID: 1066035067}
   m_Layer: 5
-  m_Name: Level2 Text
+  m_Name: Level2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6063,7 +6063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 043f772c2647fbe44ab5aa4d19bd8a1b, type: 3}
       propertyPath: m_Name
-      value: Doorframe Level2
+      value: DoorframeLevel2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 043f772c2647fbe44ab5aa4d19bd8a1b, type: 3}
@@ -6086,7 +6086,7 @@ GameObject:
   - component: {fileID: 1077049515}
   - component: {fileID: 1077049518}
   m_Layer: 5
-  m_Name: Board +Z Canvas
+  m_Name: Board+Z_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6202,7 +6202,7 @@ GameObject:
   - component: {fileID: 1088074873}
   - component: {fileID: 1088074872}
   m_Layer: 0
-  m_Name: Up Upper Ground
+  m_Name: UpUpperGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6297,7 +6297,7 @@ GameObject:
   - component: {fileID: 1102070819}
   - component: {fileID: 1102070818}
   m_Layer: 5
-  m_Name: Apply Text
+  m_Name: ApplyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6378,7 +6378,7 @@ GameObject:
   - component: {fileID: 1144117671}
   - component: {fileID: 1144117670}
   m_Layer: 0
-  m_Name: Left Arrow Difficulty Button
+  m_Name: LeftArrowDifficultyButton
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6538,7 +6538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 31e3656f721337746a47bad375f518ce, type: 3}
       propertyPath: m_Name
-      value: Board -X
+      value: Board-X
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31e3656f721337746a47bad375f518ce, type: 3}
@@ -6559,7 +6559,7 @@ GameObject:
   - component: {fileID: 1187353980}
   - component: {fileID: 1187353979}
   m_Layer: 5
-  m_Name: Left Level Text
+  m_Name: LeftLevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6638,7 +6638,7 @@ GameObject:
   - component: {fileID: 1191990596}
   - component: {fileID: 1191990595}
   m_Layer: 5
-  m_Name: Right Level Text
+  m_Name: RightLevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6869,7 +6869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1255167552}
   m_Layer: 5
-  m_Name: Music Part
+  m_Name: MusicPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6963,7 +6963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 02c06dcc855eea5419e8b52d34fd92ee, type: 3}
       propertyPath: m_Name
-      value: Right Door Lightning Bolb
+      value: RightDoorLightningBolb
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02c06dcc855eea5419e8b52d34fd92ee, type: 3}
@@ -6982,7 +6982,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1268272371}
   m_Layer: 0
-  m_Name: Info Part
+  m_Name: InfoPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7020,7 +7020,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1272159177}
   m_Layer: 5
-  m_Name: Fill Area
+  m_Name: FillArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7058,7 +7058,7 @@ GameObject:
   - component: {fileID: 1277169593}
   - component: {fileID: 1277169592}
   m_Layer: 5
-  m_Name: Needed Points Text
+  m_Name: NeededPointsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7169,7 +7169,7 @@ GameObject:
   - component: {fileID: 1292540830}
   - component: {fileID: 1292540829}
   m_Layer: 5
-  m_Name: Inv3 Picture Plane
+  m_Name: Inv3PicturePlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7265,7 +7265,7 @@ GameObject:
   - component: {fileID: 1296591054}
   - component: {fileID: 1296591053}
   m_Layer: 0
-  m_Name: Last Info Preview Plane
+  m_Name: LastInfoPreviewPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7449,7 +7449,7 @@ GameObject:
   - component: {fileID: 1301504845}
   - component: {fileID: 1301504844}
   m_Layer: 5
-  m_Name: Setting Text
+  m_Name: SettingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7528,7 +7528,7 @@ GameObject:
   - component: {fileID: 1353676022}
   - component: {fileID: 1353676021}
   m_Layer: 5
-  m_Name: Left Arrow
+  m_Name: LeftArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7607,7 +7607,7 @@ GameObject:
   - component: {fileID: 1359891976}
   - component: {fileID: 1359891975}
   m_Layer: 5
-  m_Name: Exit Text
+  m_Name: ExitText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7687,7 +7687,7 @@ GameObject:
   - component: {fileID: 1364595218}
   - component: {fileID: 1364595217}
   m_Layer: 5
-  m_Name: Inv4 Picture Plane
+  m_Name: Inv4PicturePlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7827,7 +7827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 69d9309e04ba94a49995054046397f39, type: 3}
       propertyPath: m_Name
-      value: Smale Table Right
+      value: SmaleTableRight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69d9309e04ba94a49995054046397f39, type: 3}
@@ -7903,7 +7903,7 @@ GameObject:
   - component: {fileID: 1411695535}
   - component: {fileID: 1411695534}
   m_Layer: 5
-  m_Name: Right Arrow
+  m_Name: RightArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7980,7 +7980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1422803253}
   m_Layer: 5
-  m_Name: Fill Area
+  m_Name: FillArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8019,7 +8019,7 @@ GameObject:
   - component: {fileID: 1436285614}
   - component: {fileID: 1436285613}
   m_Layer: 0
-  m_Name: Wall -Z Part 1
+  m_Name: Wall-Z_Part1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8113,7 +8113,7 @@ GameObject:
   - component: {fileID: 1456483771}
   - component: {fileID: 1456483770}
   m_Layer: 5
-  m_Name: Default Text
+  m_Name: DefaultText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8193,7 +8193,7 @@ GameObject:
   - component: {fileID: 1461712568}
   - component: {fileID: 1461712567}
   m_Layer: 0
-  m_Name: Upper Ground
+  m_Name: UpperGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8392,7 +8392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 043f772c2647fbe44ab5aa4d19bd8a1b, type: 3}
       propertyPath: m_Name
-      value: Doorframe Level1
+      value: DoorframeLevel1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 043f772c2647fbe44ab5aa4d19bd8a1b, type: 3}
@@ -8414,7 +8414,7 @@ GameObject:
   - component: {fileID: 1501846936}
   - component: {fileID: 1501846935}
   m_Layer: 0
-  m_Name: Default Canvas
+  m_Name: DefaultCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8515,7 +8515,7 @@ GameObject:
   - component: {fileID: 1512021703}
   - component: {fileID: 1512021702}
   m_Layer: 5
-  m_Name: Rank Headline Text
+  m_Name: RankHeadlineText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8661,7 +8661,7 @@ GameObject:
   - component: {fileID: 1549924279}
   - component: {fileID: 1549924278}
   m_Layer: 0
-  m_Name: Extra Roof
+  m_Name: ExtraRoof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8784,7 +8784,7 @@ GameObject:
   - component: {fileID: 1564948101}
   - component: {fileID: 1564948102}
   m_Layer: 5
-  m_Name: SFX Slider
+  m_Name: SFX_Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8875,7 +8875,7 @@ GameObject:
   - component: {fileID: 1602171731}
   - component: {fileID: 1602171730}
   m_Layer: 5
-  m_Name: Inv2 Picture Plane
+  m_Name: Inv2PicturePlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8970,7 +8970,7 @@ GameObject:
   - component: {fileID: 1618949543}
   - component: {fileID: 1618949542}
   m_Layer: 5
-  m_Name: Level1 Text
+  m_Name: Level1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9050,7 +9050,7 @@ GameObject:
   - component: {fileID: 1621130882}
   - component: {fileID: 1621130881}
   m_Layer: 0
-  m_Name: Wall +X
+  m_Name: Wall+X
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9229,7 +9229,7 @@ GameObject:
   - component: {fileID: 1646284791}
   - component: {fileID: 1646284790}
   m_Layer: 0
-  m_Name: Wall -X
+  m_Name: Wall-X
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9322,7 +9322,7 @@ GameObject:
   - component: {fileID: 1648780628}
   - component: {fileID: 1648780629}
   m_Layer: 0
-  m_Name: Left Door Point Light
+  m_Name: LeftDoorPointLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9416,7 +9416,7 @@ GameObject:
   - component: {fileID: 1680067054}
   - component: {fileID: 1680067053}
   m_Layer: 5
-  m_Name: Left Arrow
+  m_Name: LeftArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9497,7 +9497,7 @@ GameObject:
   - component: {fileID: 1687072765}
   - component: {fileID: 1687072768}
   m_Layer: 5
-  m_Name: Left Arrow AV Plane
+  m_Name: LeftArrow_AV_Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9606,7 +9606,7 @@ GameObject:
   - component: {fileID: 1690035671}
   - component: {fileID: 1690035672}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: SpotLight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9702,7 +9702,7 @@ GameObject:
   - component: {fileID: 1722645609}
   - component: {fileID: 1722645608}
   m_Layer: 0
-  m_Name: Right Arrow SFX Button
+  m_Name: RightArrowSFX_Button
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9814,7 +9814,7 @@ GameObject:
   - component: {fileID: 1728967247}
   - component: {fileID: 1728967250}
   m_Layer: 5
-  m_Name: Difficulty Hard Plane
+  m_Name: DifficultyHardPlane
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9928,7 +9928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1762750895}
   m_Layer: 0
-  m_Name: Score Part
+  m_Name: ScorePart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9968,7 +9968,7 @@ GameObject:
   - component: {fileID: 1766628273}
   - component: {fileID: 1766628272}
   m_Layer: 0
-  m_Name: Split Cube
+  m_Name: SplitCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10194,7 +10194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 31e3656f721337746a47bad375f518ce, type: 3}
       propertyPath: m_Name
-      value: Board +X
+      value: Board+X
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31e3656f721337746a47bad375f518ce, type: 3}
@@ -10278,7 +10278,7 @@ GameObject:
   - component: {fileID: 1925615702}
   - component: {fileID: 1925615703}
   m_Layer: 5
-  m_Name: Music Slider
+  m_Name: MusicSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10422,7 +10422,7 @@ GameObject:
   - component: {fileID: 1973729060}
   - component: {fileID: 1973729059}
   m_Layer: 0
-  m_Name: Left Point Light
+  m_Name: LeftPointLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10579,7 +10579,7 @@ GameObject:
   - component: {fileID: 1992491628}
   - component: {fileID: 1992491627}
   m_Layer: 5
-  m_Name: Next Item Plane
+  m_Name: NextItemPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10677,7 +10677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2024045633}
   m_Layer: 5
-  m_Name: Apply or Reset Part
+  m_Name: ApplyOrResetPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10747,7 +10747,7 @@ GameObject:
   - component: {fileID: 2031389045}
   - component: {fileID: 2031389044}
   m_Layer: 5
-  m_Name: Right Arrow AW
+  m_Name: RightArrow_AW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10858,7 +10858,7 @@ GameObject:
   - component: {fileID: 2036890723}
   - component: {fileID: 2036890722}
   m_Layer: 5
-  m_Name: Left Arrow
+  m_Name: LeftArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10938,7 +10938,7 @@ GameObject:
   - component: {fileID: 2051126661}
   - component: {fileID: 2051126660}
   m_Layer: 0
-  m_Name: Default Canvas
+  m_Name: DefaultCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11038,7 +11038,7 @@ GameObject:
   - component: {fileID: 2075938519}
   - component: {fileID: 2075938518}
   m_Layer: 0
-  m_Name: Info Headline Text
+  m_Name: InfoHeadlineText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11118,7 +11118,7 @@ GameObject:
   - component: {fileID: 2083729597}
   - component: {fileID: 2083729596}
   m_Layer: 5
-  m_Name: Plane
+  m_Name: GameNamePlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11218,7 +11218,7 @@ GameObject:
   - component: {fileID: 2096187751}
   - component: {fileID: 2096187750}
   m_Layer: 5
-  m_Name: Difficulty Medium Text
+  m_Name: DifficultyMediumText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11297,7 +11297,7 @@ GameObject:
   - component: {fileID: 2107448498}
   - component: {fileID: 2107448497}
   m_Layer: 0
-  m_Name: Random Plane Text
+  m_Name: RandomPlaneText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11378,7 +11378,7 @@ GameObject:
   - component: {fileID: 2122076309}
   - component: {fileID: 2122076308}
   m_Layer: 0
-  m_Name: Doorframe Level2 Plane
+  m_Name: DoorframeLevel2_Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11486,7 +11486,7 @@ GameObject:
   - component: {fileID: 2130927286}
   - component: {fileID: 2130927285}
   m_Layer: 5
-  m_Name: Right Arrow
+  m_Name: RightArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11566,7 +11566,7 @@ GameObject:
   - component: {fileID: 2140473880}
   - component: {fileID: 2140473879}
   m_Layer: 0
-  m_Name: Wall -Z Part 2
+  m_Name: Wall-Z_Part2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11716,7 +11716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4186734806115345623, guid: 5cda471d7fb5e5541bf6f08c0a7aec31, type: 3}
       propertyPath: m_Name
-      value: Door Level2
+      value: DoorLevel2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cda471d7fb5e5541bf6f08c0a7aec31, type: 3}
@@ -11773,7 +11773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5597486025421081233, guid: 9b5648e0d80d7a04cba5d700c505dbf4, type: 3}
       propertyPath: m_Name
-      value: Door Level1
+      value: DoorLevel1
       objectReference: {fileID: 0}
     - target: {fileID: 6445493161997404506, guid: 9b5648e0d80d7a04cba5d700c505dbf4, type: 3}
       propertyPath: m_Size.x
@@ -11830,7 +11830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7189636474048158341, guid: 8fa464eef5e21b44f97be31d676b0cf6, type: 3}
       propertyPath: m_Name
-      value: Door Exit
+      value: DoorExit
       objectReference: {fileID: 0}
     - target: {fileID: 7533793112223989823, guid: 8fa464eef5e21b44f97be31d676b0cf6, type: 3}
       propertyPath: m_RootOrder
