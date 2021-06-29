@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1236936993915159679}
   - component: {fileID: 1236936993915159555}
+  - component: {fileID: -5027584727682340492}
   m_Layer: 0
   m_Name: Weapon1
   m_TagString: Weapon
@@ -49,6 +50,25 @@ MonoBehaviour:
   _projectileSpeed: 50
   _maxAmmo: 100
   _weaponIndex: 1
+--- !u!95 &-5027584727682340492
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236936993915159678}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2491881180362343490
 GameObject:
   m_ObjectHideFlags: 0
