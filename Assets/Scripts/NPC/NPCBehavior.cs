@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Behavior;
-
-namespace Behavior
+namespace NPC
 {
     public class NPCBehavior : MonoBehaviour
     {
@@ -17,21 +15,30 @@ namespace Behavior
 
         private GameObject _indicator;
 
-        private Behaviors _behavior;
+        //default behavior is uninfected
+        //the behavior gets set later during spawn (e.g. from NPCSpawner)
+        private Behaviors _behavior = Behaviors.UNINFECTED;
 
-        private float _angle;
         private Vector3 _targetDirection;
+
+        //the default probability of infecting someone else in percent
+        private const int SpreadingPercent = 10;
+
+        void Awake()
+        {
+            _indicator = FindNPCIndicator();
+            _indicator.GetComponent<Renderer>().material = _uninfectedMaterial;
+        }
 
         // Start is called before the first frame update
         void Start()
         {
-            _behavior = Behaviors.UNINFECTED;
+            // _indicator = findNPCIndicator();
+            // _indicator.GetComponent<Renderer>().material = _uninfectedMaterial;
 
-            _indicator = findNPCIndicator();
-            _indicator.GetComponent<Renderer>().material = _uninfectedMaterial;
-
-            _angle = randomAngle();
-            _targetDirection = new Vector3(Mathf.Sin(_angle), 0, Mathf.Cos(_angle));
+            //spawning with a random LookRotation
+            float angle = RandomAngle(360f);
+            _targetDirection = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle));
             transform.rotation = Quaternion.LookRotation(_targetDirection);
         }
 
@@ -70,24 +77,49 @@ namespace Behavior
             if(go.tag == "Border")
             {
                 transform.rotation *= Quaternion.AngleAxis( 180, transform.up ); 
-                changeBehavior(Behaviors.INFECTED);
             }
 
+            if(go.tag == "KillBorder")
+            {
+                Destroy(this.gameObject);
+            }
+
+            //TODO change accordingly to projectile type
             if(go.tag == "Projectile")
             {
-                changeBehavior(Behaviors.CURED);
+                ChangeBehavior(Behaviors.CURED);
+            }
+
+            if(go.tag == "Enemy")
+            {
+                NPCBehavior script;
+
+                if(_behavior == Behaviors.INFECTED){
+
+                    int probability = UnityEngine.Random.Range(1, 100);
+                    
+                    if(probability < SpreadingPercent)
+                    {
+                        script = go.GetComponent<NPCBehavior>();
+
+                        script.ChangeBehavior(Behaviors.INFECTED);
+                    }
+                }
+
+                //when colliding with another NPC the direction gets slightly changed
+                transform.rotation *= Quaternion.AngleAxis( RandomAngle(45f), transform.up );
+
             }
 
         }
-
-        private float randomAngle()
+        private float RandomAngle(float max)
         {
-            float randomValue = UnityEngine.Random.Range(0f, 360f);
+            float randomValue = UnityEngine.Random.Range(0f, max);
 
             return randomValue;
         }
 
-        private void changeBehavior(Behaviors b)
+        public void ChangeBehavior(Behaviors b)
         {
             _behavior = b;
 
@@ -106,7 +138,7 @@ namespace Behavior
             }
         }
 
-        private GameObject findNPCIndicator()
+        private GameObject FindNPCIndicator()
         {
             Component[] components = gameObject.GetComponentsInChildren<Transform>();
 

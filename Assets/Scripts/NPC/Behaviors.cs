@@ -1,6 +1,6 @@
-namespace Behavior
+namespace NPC
 {
-    enum Behaviors
+    public enum Behaviors
     {
         UNINFECTED, INFECTED, CURED
     }

@@ -9,6 +9,7 @@ TagManager:
   - Target
   - Enemy
   - Border
+  - KillBorder
   layers:
   - Default
   - TransparentFX
