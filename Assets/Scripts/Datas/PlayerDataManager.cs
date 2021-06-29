@@ -55,7 +55,7 @@ public class PlayerDataManager : MonoBehaviour
     /// <summary>
     /// Load resource from `/Resources` folder at runtime
     /// </summary>
-    public void LoadResource(string filename, Transform parent)
+    public void LoadResource(string filename, Transform parent, Vector3 position)
     {
         Debug.Log("Trying to load LevelPrefab from file (" + filename + ")...");
         var loadedObject = Resources.Load(filename);
@@ -64,9 +64,10 @@ public class PlayerDataManager : MonoBehaviour
             throw new FileNotFoundException("...no file found - please check the configuration");
         }
 
-        GameObject go = Instantiate(loadedObject, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        GameObject go = Instantiate(loadedObject, Vector3.zero, Quaternion.identity) as GameObject;
         go.transform.SetParent(parent.transform);
         go.transform.position = parent.position;
+        go.transform.position += position;
     }
 
     /// <summary>
