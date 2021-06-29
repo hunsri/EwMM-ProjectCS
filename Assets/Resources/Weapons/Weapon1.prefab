@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
-  _projectile: {fileID: 6458389267632297779, guid: b8af8b62f1e8046099b8a79b2b1c9f01, type: 3}
+  _projectile: {fileID: 6159037567829425689, guid: 20b15ef023d04485a903b9f932ffbe77, type: 3}
   _projectileSpeed: 50
   _maxAmmo: 100
   _weaponIndex: 1
