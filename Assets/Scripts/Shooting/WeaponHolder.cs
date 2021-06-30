@@ -85,6 +85,10 @@ public class WeaponHolder : MonoBehaviour
                     _canvas = canvas;
                 }
             }
+            else if (weapon.tag == "Hand")
+            {
+                return;
+            }
             else
             {
                 i++;
@@ -151,7 +155,9 @@ public class WeaponHolder : MonoBehaviour
         {
             if (weaponData != null)
             {
-                _playerData.LoadResource("Weapons/Weapon" + weaponData.GetWeaponIndex(), transform);
+                float[] defaultPosition = weaponData.GetDefaultPosition();
+                Vector3 position = new Vector3(defaultPosition[0], defaultPosition[1], defaultPosition[2]);
+                _playerData.LoadResource("Weapons/Weapon" + weaponData.GetWeaponIndex(), transform, position);
             }
         }
     }

@@ -12,6 +12,7 @@ TagManager:
   - KillBorder
   - Save
   - Load
+  - Hand
   layers:
   - Default
   - TransparentFX
