@@ -16,6 +16,7 @@ public class ShootingController : MonoBehaviour
     private WeaponHolder _weaponHolder;
 
     private Vector3 _projectileDestination;
+    private Animator _animator;
 
     void Start()
     {
@@ -24,19 +25,25 @@ public class ShootingController : MonoBehaviour
             _camera = Camera.main;
         }
         GetWeaponHolder();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && _ammo > 0)
+        // get mouse left click, check if ammo is more than 0 and check if "Equip" animation is finished, check if animation is done
+        if (Input.GetButtonDown("Fire1") && _ammo > 0 && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Equip") && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
         {
+
             ShootProjectile();
         }
+
     }
 
     void ShootProjectile()
     {
+        // _animator.SetBool("IsFiring", true);
+        _animator.Play("Shoot");
         Ray shootingRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         if (Physics.Raycast(shootingRay, out RaycastHit hit))
         {
@@ -51,7 +58,7 @@ public class ShootingController : MonoBehaviour
     }
     void InstantiateProjectile()
     {
-        Vector3 projectileStartPoint = transform.position;
+        Vector3 projectileStartPoint = _weaponHolder.transform.position;
         var projectileObj = Instantiate(_projectile, projectileStartPoint, Quaternion.identity);
         projectileObj.GetComponent<Rigidbody>().velocity = (_projectileDestination - projectileStartPoint).normalized * _projectileSpeed;
         SetAmmo(_ammo - 1);

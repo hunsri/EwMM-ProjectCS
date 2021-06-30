@@ -6,6 +6,7 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour
 {
     [SerializeField] private int _damage = 25;
+
     private readonly string[] _tags = { "Player", "Weapon", "Projectile" };
     private bool _collided;
 
