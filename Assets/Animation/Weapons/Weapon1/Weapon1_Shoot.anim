@@ -179,7 +179,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: MaskProjectile
+    path: FFPProjectile
   m_ScaleCurves:
   - curve:
       serializedVersion: 2
@@ -205,7 +205,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: MaskProjectile
+    path: FFPProjectile
   m_FloatCurves: []
   m_PPtrCurves: []
   m_SampleRate: 60
@@ -223,7 +223,7 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1150326277
+      path: 634449419
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -237,7 +237,7 @@ AnimationClip:
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1150326277
+      path: 634449419
       attribute: 3
       script: {fileID: 0}
       typeID: 4
@@ -692,7 +692,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: MaskProjectile
+    path: FFPProjectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -738,7 +738,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: MaskProjectile
+    path: FFPProjectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -784,7 +784,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: MaskProjectile
+    path: FFPProjectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -812,7 +812,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: MaskProjectile
+    path: FFPProjectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -840,7 +840,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: MaskProjectile
+    path: FFPProjectile
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -868,7 +868,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: MaskProjectile
+    path: FFPProjectile
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
