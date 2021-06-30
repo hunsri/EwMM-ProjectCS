@@ -58,7 +58,7 @@ public class ShootingController : MonoBehaviour
     }
     void InstantiateProjectile()
     {
-        Vector3 projectileStartPoint = transform.parent.position;
+        Vector3 projectileStartPoint = _weaponHolder.transform.position;
         var projectileObj = Instantiate(_projectile, projectileStartPoint, Quaternion.identity);
         projectileObj.GetComponent<Rigidbody>().velocity = (_projectileDestination - projectileStartPoint).normalized * _projectileSpeed;
         SetAmmo(_ammo - 1);
