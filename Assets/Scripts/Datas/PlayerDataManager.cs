@@ -96,7 +96,7 @@ public class PlayerDataManager : MonoBehaviour
             SceneParameters.PlayerData = _formatter.Deserialize(stream) as PlayerData;
             // reload scene
             SceneParameters.UseLoadedGame = true;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // todo: integrate scene name to `LoadScene`
         }
         else
         {
@@ -108,5 +108,20 @@ public class PlayerDataManager : MonoBehaviour
     public bool IsDataLoaded()
     {
         return _data != null;
+    }
+
+    /// <summary>
+    /// Save Settings
+    /// </summary>
+    public void SaveSettings(float vfxVolume, float musicVolume, float difficulty)
+    {
+        _data.UpdateSettings(vfxVolume, musicVolume, difficulty);
+        SaveGame();
+    }
+
+    public float[] LoadSettings()
+    {
+        LoadGame();
+        return _data.GetSettings();
     }
 }

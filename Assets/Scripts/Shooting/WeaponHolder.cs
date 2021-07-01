@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class WeaponHolder : MonoBehaviour
 {
@@ -187,6 +188,12 @@ public class WeaponHolder : MonoBehaviour
     /// </summary>
     public void UpdateUI(int ammoCount, int maxAmmo)
     {
+        if (_activeWeaponData.GetWeaponIndex() == Weapons.MenuWeaponIndex)
+        {
+            _weaponAmmo.text = "";
+            return;
+        }
+
         _weaponAmmo.text = ammoCount + " / " + maxAmmo;
         _activeWeaponData.SetAmmoCount(ammoCount);
     }
@@ -200,16 +207,22 @@ public class WeaponHolder : MonoBehaviour
         if (!_playerData)
         {
             GetPlayerData();
-        }
-
-        WeaponData[] weaponDatas = _playerData.GetAllWeapons();
-        foreach (WeaponData weaponData in weaponDatas)
-        {
-            if (weaponData != null)
+            // instantiate weapon "just for" main menu
+            if (SceneManager.GetActiveScene().name == "MainMenu")
             {
-                float[] defaultPosition = weaponData.GetDefaultPosition();
-                Vector3 position = new Vector3(defaultPosition[0], defaultPosition[1], defaultPosition[2]);
-                _playerData.LoadResource("Weapons/Weapon" + weaponData.GetWeaponIndex(), transform, position);
+                _playerData.LoadResource("Weapons/MenuWeapon", transform, Vector3.zero); // instantiate syringe just for now
+                return;
+            }
+
+            WeaponData[] weaponDatas = _playerData.GetAllWeapons();
+            foreach (WeaponData weaponData in weaponDatas)
+            {
+                if (weaponData != null && weaponData.GetWeaponIndex() != Weapons.MenuWeaponIndex)
+                {
+                    float[] defaultPosition = weaponData.GetDefaultPosition();
+                    Vector3 position = new Vector3(defaultPosition[0], defaultPosition[1], defaultPosition[2]);
+                    _playerData.LoadResource("Weapons/Weapon" + weaponData.GetWeaponIndex(), transform, position);
+                }
             }
         }
     }

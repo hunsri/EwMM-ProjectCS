@@ -31,8 +31,9 @@ public class ShootingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool isAmmoEmpty = _weaponIndex == Weapons.MenuWeaponIndex ? false : _ammo < 0;
         // get mouse left click, check if ammo is more than 0 and check if "Equip" animation is finished, check if animation is done
-        if (Input.GetButtonDown("Fire1") && _ammo > 0 && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Equip") && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
+        if (Input.GetButtonDown("Fire1") && !isAmmoEmpty && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Equip") && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
         {
 
             ShootProjectile();
@@ -64,7 +65,10 @@ public class ShootingController : MonoBehaviour
         projectileObj.transform.rotation = transform.rotation; // set projectile's rotation to face user
 
         projectileObj.GetComponent<Rigidbody>().velocity = (_projectileDestination - projectileStartPoint).normalized * _projectileSpeed;
-        SetAmmo(_ammo - 1);
+        if (_weaponIndex != Weapons.MenuWeaponIndex)
+        {
+            SetAmmo(_ammo - 1);
+        }
     }
 
     public void SetAmmo(int ammoCount)
