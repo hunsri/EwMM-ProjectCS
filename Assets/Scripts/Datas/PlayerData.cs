@@ -6,9 +6,9 @@ public class PlayerData
     WeaponData[] _weaponDatas = new WeaponData[4]; // current max num of weapons: 3
     public WeaponData[] WeaponDatas { get => _weaponDatas; set => _weaponDatas = value; }
 
-    private static float _vfxVolume;
-    private static float _musicVolume;
-    private static float _difficulty;
+    private float _vfxVolume;
+    private float _musicVolume;
+    private float _difficulty;
 
     public PlayerData()
     {
@@ -16,9 +16,11 @@ public class PlayerData
         _weaponDatas[1] = Weapons.Syringe();
         _weaponDatas[2] = Weapons.OpMask();
         _weaponDatas[3] = Weapons.FFPMask();
-        _vfxVolume = 1;
-        _musicVolume = 1;
-        _difficulty = 1;
+
+        // default values for all settings
+        _vfxVolume = -60; // {@see: DefaultScript.cs}
+        _musicVolume = -60;
+        _difficulty = 1; // medium difficulty
     }
 
     public void AddWeapon(WeaponData weapon)
@@ -48,6 +50,7 @@ public class PlayerData
     /// </summary>
     public float[] GetSettings()
     {
+
         return new float[] { _vfxVolume, _musicVolume, _difficulty };
     }
 }

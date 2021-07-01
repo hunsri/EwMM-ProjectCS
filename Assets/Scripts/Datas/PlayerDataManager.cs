@@ -87,16 +87,26 @@ public class PlayerDataManager : MonoBehaviour
     /// <summary>
     /// Load player data by deserializing the "player.data" file
     /// </summary>
-    public void LoadGame()
+    public void LoadGame(bool reloadScene)
     {
         string path = Application.persistentDataPath + "/player.data";
         if (File.Exists(path))
         {
             FileStream stream = new FileStream(path, FileMode.Open);
-            SceneParameters.PlayerData = _formatter.Deserialize(stream) as PlayerData;
-            // reload scene
-            SceneParameters.UseLoadedGame = true;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // todo: integrate scene name to `LoadScene`
+            PlayerData playerData = _formatter.Deserialize(stream) as PlayerData;
+            if (reloadScene)
+            {
+                SceneParameters.PlayerData = playerData;
+                // reload scene
+                SceneParameters.UseLoadedGame = true;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // todo: integrate scene name to `LoadScene`
+            }
+            else
+            {
+                _data = playerData;
+            }
+
+            stream.Close();
         }
         else
         {
@@ -119,9 +129,14 @@ public class PlayerDataManager : MonoBehaviour
         SaveGame();
     }
 
+    /// <summary>
+    /// Load settings
+    /// returns [_vfxVolume, _musicVolume, _difficulty]
+    /// </summary>
     public float[] LoadSettings()
     {
-        LoadGame();
+
+        LoadGame(false); // won't do any harm if loaded file is not found.
         return _data.GetSettings();
     }
 }

@@ -37,7 +37,7 @@ public class ProjectileController : MonoBehaviour
 
             if (tag == "Load")
             {
-                FindObjectOfType<PlayerDataManager>().LoadGame();
+                FindObjectOfType<PlayerDataManager>().LoadGame(true);
             }
         }
     }

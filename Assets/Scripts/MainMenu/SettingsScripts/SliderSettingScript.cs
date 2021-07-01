@@ -23,15 +23,20 @@ namespace MainMenu
         // Start is called before the first frame update
         void Start()
         {
+            PlayerDataManager dataManager = FindObjectOfType<PlayerDataManager>();
+            float[] settingData = dataManager.LoadSettings();
+            float vfxVol = settingData[0];
+            float musicVol = settingData[1];
+
             if (_slider.name == "MusicSlider")
             {
-                _audioMixer.GetFloat("musicVolume", out _musicVolumeNumber);
-                _slider.value = _musicVolumeNumber;
+                // _audioMixer.GetFloat("musicVolume", out _musicVolumeNumber);
+                _slider.value = musicVol;
             }
             else if (_slider.name == "SFX_Slider")
             {
-                _audioMixer.GetFloat("sfxVolume", out _sfxVolumeNumber);
-                _slider.value = _sfxVolumeNumber;
+                // _audioMixer.GetFloat("sfxVolume", out _sfxVolumeNumber);
+                _slider.value = vfxVol;
             }
         }
 
