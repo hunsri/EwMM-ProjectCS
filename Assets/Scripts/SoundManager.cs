@@ -11,9 +11,10 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource _audioSource;
 
-    public GameObject infectedPrefab;
+   // public GameObject infectedPrefab;
 
     [SerializeField] private AudioClip _coughing, _sneezing;
+    [SerializeField] private AudioClip _background;
 
     private void Awake()
     {
@@ -56,6 +57,17 @@ public class SoundManager : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(_sneezing, position);
       
+    }
+
+   public  void BgSound()
+    {
+       
+        _audioSource.loop = true;
+        _audioSource.clip = _background;
+        _audioSource.volume = 0.2f;
+        _audioSource.Play();
+        //AudioSource.PlayClipAtPoint(_background, position);
+        
     }
 
 }
