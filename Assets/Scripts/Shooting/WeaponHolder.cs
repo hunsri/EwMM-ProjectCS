@@ -142,6 +142,7 @@ public class WeaponHolder : MonoBehaviour
         }
 
         _activeWeaponData = active;
+        GetCanvasChildren();
         UpdateWeaponName();
         shootingController.SetAmmo(_activeWeaponData.GetAmmoCount());
     }
@@ -151,11 +152,6 @@ public class WeaponHolder : MonoBehaviour
     /// </summary>
     public void UpdateWeaponName()
     {
-        if (!_weaponName)
-        {
-            GetCanvasChildren();
-        }
-
         _weaponName.text = _activeWeaponData.GetWeaponName();
     }
 
@@ -164,17 +160,24 @@ public class WeaponHolder : MonoBehaviour
     /// </summary>
     public void GetCanvasChildren()
     {
-        Text[] textFields = _canvas.GetComponentsInChildren<Text>();
-        foreach (Text textField in textFields)
+        if (!_canvas)
         {
-            if (textField.name == "WeaponAmmo")
+            _canvas = GetComponentInChildren<Canvas>();
+        }
+        if (!_weaponAmmo || !_weaponName)
+        {
+            Text[] textFields = _canvas.GetComponentsInChildren<Text>();
+            foreach (Text textField in textFields)
             {
-                _weaponAmmo = textField;
+                if (textField.name == "WeaponAmmo")
+                {
+                    _weaponAmmo = textField;
 
-            }
-            else if (textField.name == "WeaponName")
-            {
-                _weaponName = textField;
+                }
+                else if (textField.name == "WeaponName")
+                {
+                    _weaponName = textField;
+                }
             }
         }
     }
@@ -184,16 +187,6 @@ public class WeaponHolder : MonoBehaviour
     /// </summary>
     public void UpdateUI(int ammoCount, int maxAmmo)
     {
-        if (!_canvas)
-        {
-            _canvas = GetComponentInChildren<Canvas>();
-        }
-
-        if (!_weaponAmmo)
-        {
-            GetCanvasChildren();
-        }
-
         _weaponAmmo.text = ammoCount + " / " + maxAmmo;
         _activeWeaponData.SetAmmoCount(ammoCount);
     }

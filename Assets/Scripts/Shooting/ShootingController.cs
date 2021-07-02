@@ -66,6 +66,24 @@ public class ShootingController : MonoBehaviour
 
     public void SetAmmo(int ammoCount)
     {
+        if (!_animator)
+        {
+            _animator = GetComponent<Animator>();
+        }
+
+        if (ammoCount <= 0)
+        {
+            _animator.SetBool("IsEmpty", true);
+        }
+        else
+        {
+            if (_animator.GetBool("IsEmpty"))
+            {
+                _animator.SetBool("IsEmpty", false);
+            }
+        }
+
+
         _ammo = ammoCount;
 
         // It is possible that weapon holder is not yet defined as parent when the `Start()` method is called.
