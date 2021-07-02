@@ -14,61 +14,82 @@ public class WeaponHolder : MonoBehaviour
     private KeyCode[] _weaponKeys = { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3 };
     private PlayerDataManager _playerData;
     private WeaponData _activeWeaponData;
+    private bool _isWeaponAccessible = false;
 
     void Start()
     {
-        _playerData = FindObjectOfType<PlayerDataManager>();
+        StartCoroutine(InitiatePlayerWeapon());
+    }
+
+    /// <summary>
+    /// Wait for all components to be accessible
+    /// </summary>
+    IEnumerator InitiatePlayerWeapon()
+    {
+        Debug.Log("Weapon is not yet accessible");
+        yield return new WaitUntil(() => _isWeaponAccessible);
+        Debug.Log("Weapon is accessible!");
         InstantiateWeapons();
         SelectWeapon();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        int currentActive = _activeWeapon;
-        int weaponCount = transform.childCount - 1; // `AmmoCanvas` should be a child of `WeaponHolder`
-
-        int index = 1;
-        foreach (KeyCode key in _weaponKeys)
+        if (_isWeaponAccessible)
         {
-            bool isKeyPressed = Input.GetKeyDown(key);
-            if (isKeyPressed && weaponCount >= index)
+            int currentActive = _activeWeapon;
+            int weaponCount = transform.childCount - 1; // `AmmoCanvas` should be a child of `WeaponHolder`
+
+            int index = 1;
+            foreach (KeyCode key in _weaponKeys)
             {
-                _activeWeapon = index;
-                break;
+                bool isKeyPressed = Input.GetKeyDown(key);
+                if (isKeyPressed && weaponCount >= index)
+                {
+                    _activeWeapon = index;
+                    break;
+                }
+
+                index++;
             }
 
-            index++;
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            if (scroll > 0)
+            {
+                if (_activeWeapon == weaponCount)
+                {
+                    _activeWeapon = 1;
+                }
+                else
+                {
+                    _activeWeapon++;
+                }
+            }
+            else if (scroll < 0)
+            {
+                if (_activeWeapon == 1)
+                {
+                    _activeWeapon = weaponCount;
+                }
+                else
+                {
+                    _activeWeapon--;
+                };
+            }
+
+            if (currentActive != _activeWeapon)
+            {
+                SelectWeapon();
+            }
         }
-
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (scroll > 0)
+        else
         {
-            if (_activeWeapon == weaponCount)
+            GetPlayerData();
+            if (_playerData)
             {
-                _activeWeapon = 1;
+                _isWeaponAccessible = _playerData.IsDataLoaded();
             }
-            else
-            {
-                _activeWeapon++;
-            }
-        }
-        else if (scroll < 0)
-        {
-            if (_activeWeapon == 1)
-            {
-                _activeWeapon = weaponCount;
-            }
-            else
-            {
-                _activeWeapon--;
-            };
-        }
-
-        if (currentActive != _activeWeapon)
-        {
-            SelectWeapon();
         }
     }
 
@@ -99,6 +120,11 @@ public class WeaponHolder : MonoBehaviour
                 }
             }
         }
+    }
+
+    void GetPlayerData()
+    {
+        _playerData = FindObjectOfType<PlayerDataManager>();
     }
 
     /// <summary>
@@ -150,6 +176,11 @@ public class WeaponHolder : MonoBehaviour
     /// </summary>
     void InstantiateWeapons()
     {
+        if (!_playerData)
+        {
+            GetPlayerData();
+        }
+
         WeaponData[] weaponDatas = _playerData.GetAllWeapons();
         foreach (WeaponData weaponData in weaponDatas)
         {

@@ -15,10 +15,12 @@ public class PlayerDataManager : MonoBehaviour
     {
         if (!SceneParameters.UseLoadedGame)
         {
+            Debug.Log("Using new player data");
             _data = new PlayerData();
         }
         else
         {
+            Debug.Log("Using loaded player data");
             _data = SceneParameters.PlayerData;
 
             // cleanup
@@ -101,5 +103,10 @@ public class PlayerDataManager : MonoBehaviour
             Debug.Log("No save files!");
             return;
         }
+    }
+
+    public bool IsDataLoaded()
+    {
+        return _data != null;
     }
 }
