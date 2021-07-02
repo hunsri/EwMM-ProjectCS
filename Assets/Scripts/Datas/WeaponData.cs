@@ -38,4 +38,9 @@ public class WeaponData
     {
         return _defaultPosition;
     }
+
+    public string GetWeaponName()
+    {
+        return _weaponName;
+    }
 }

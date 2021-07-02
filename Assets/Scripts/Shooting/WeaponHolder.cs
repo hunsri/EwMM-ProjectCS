@@ -11,6 +11,7 @@ public class WeaponHolder : MonoBehaviour
 
     private Canvas _canvas;
     private Text _weaponAmmo;
+    private Text _weaponName;
     private KeyCode[] _weaponKeys = { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3 };
     private PlayerDataManager _playerData;
     private WeaponData _activeWeaponData;
@@ -141,7 +142,41 @@ public class WeaponHolder : MonoBehaviour
         }
 
         _activeWeaponData = active;
+        UpdateWeaponName();
         shootingController.SetAmmo(_activeWeaponData.GetAmmoCount());
+    }
+
+    /// <summary>
+    /// Update UI text field based on weapon's name
+    /// </summary>
+    public void UpdateWeaponName()
+    {
+        if (!_weaponName)
+        {
+            GetCanvasChildren();
+        }
+
+        _weaponName.text = _activeWeaponData.GetWeaponName();
+    }
+
+    /// <summary>
+    /// Get text fields from canvas.
+    /// </summary>
+    public void GetCanvasChildren()
+    {
+        Text[] textFields = _canvas.GetComponentsInChildren<Text>();
+        foreach (Text textField in textFields)
+        {
+            if (textField.name == "WeaponAmmo")
+            {
+                _weaponAmmo = textField;
+
+            }
+            else if (textField.name == "WeaponName")
+            {
+                _weaponName = textField;
+            }
+        }
     }
 
     /// <summary>
@@ -156,14 +191,7 @@ public class WeaponHolder : MonoBehaviour
 
         if (!_weaponAmmo)
         {
-            Text[] textFields = _canvas.GetComponentsInChildren<Text>();
-            foreach (Text textField in textFields)
-            {
-                if (textField.name == "WeaponAmmo")
-                {
-                    _weaponAmmo = textField;
-                }
-            }
+            GetCanvasChildren();
         }
 
         _weaponAmmo.text = ammoCount + " / " + maxAmmo;
