@@ -42,32 +42,26 @@ public class SoundManager : MonoBehaviour
                 break;
             case 2:
             case 4:
-                case 6: Sneeze(position);
+            case 6: Sneeze(position);
                 break;
         }
     }
     public void Cough(Vector3 position)
     {
-
-        AudioSource.PlayClipAtPoint(_coughing, position);
-        
+        AudioSource.PlayClipAtPoint(_coughing, position);    
     }
 
     void Sneeze(Vector3 position)
     {
-        AudioSource.PlayClipAtPoint(_sneezing, position);
-      
+        AudioSource.PlayClipAtPoint(_sneezing, position);  
     }
 
    public  void BgSound()
     {
-       
         _audioSource.loop = true;
         _audioSource.clip = _background;
         _audioSource.volume = 0.2f;
-        _audioSource.Play();
-        //AudioSource.PlayClipAtPoint(_background, position);
-        
+        _audioSource.Play();   
     }
 
 }
