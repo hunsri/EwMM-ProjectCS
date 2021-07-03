@@ -208,22 +208,23 @@ public class WeaponHolder : MonoBehaviour
         if (!_playerData)
         {
             GetPlayerData();
-            // instantiate weapon "just for" main menu
-            if (SceneManager.GetActiveScene().name == "MainMenu")
-            {
-                _playerData.LoadResource("Weapons/MenuWeapon", transform, Vector3.zero); // instantiate syringe just for now
-                return;
-            }
+        }
 
-            WeaponData[] weaponDatas = _playerData.GetAllWeapons();
-            foreach (WeaponData weaponData in weaponDatas)
+        // instantiate weapon "just for" main menu
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            _playerData.LoadResource("Weapons/MenuWeapon", transform, Vector3.zero); // instantiate syringe just for now
+            return;
+        }
+
+        WeaponData[] weaponDatas = _playerData.GetAllWeapons();
+        foreach (WeaponData weaponData in weaponDatas)
+        {
+            if (weaponData != null && weaponData.GetWeaponIndex() != Weapons.MenuWeaponIndex)
             {
-                if (weaponData != null && weaponData.GetWeaponIndex() != Weapons.MenuWeaponIndex)
-                {
-                    float[] defaultPosition = weaponData.GetDefaultPosition();
-                    Vector3 position = new Vector3(defaultPosition[0], defaultPosition[1], defaultPosition[2]);
-                    _playerData.LoadResource("Weapons/Weapon" + weaponData.GetWeaponIndex(), transform, position);
-                }
+                float[] defaultPosition = weaponData.GetDefaultPosition();
+                Vector3 position = new Vector3(defaultPosition[0], defaultPosition[1], defaultPosition[2]);
+                _playerData.LoadResource("Weapons/Weapon" + weaponData.GetWeaponIndex(), transform, position);
             }
         }
     }

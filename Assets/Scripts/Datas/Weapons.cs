@@ -4,7 +4,7 @@ namespace Data
 {
     public class Weapons
     {
-        static int MenuWeaponIndex = 99;
+        public static int MenuWeaponIndex = 99;
 
         public static WeaponData Syringe() { return new WeaponData(0, 30, new float[] { 0.04f, -0.04f, 0.01f }, "Vaccine"); }
         public static WeaponData OpMask() { return new WeaponData(1, 50, new float[] { -0.111f, 0.012f, 0.01f }, "OP Mask"); }

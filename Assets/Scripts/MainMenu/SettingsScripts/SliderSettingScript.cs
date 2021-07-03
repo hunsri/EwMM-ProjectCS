@@ -32,11 +32,14 @@ namespace MainMenu
             if (_slider.name == "MusicSlider")
             {
                 // _audioMixer.GetFloat("musicVolume", out _musicVolumeNumber);
+                _audioMixer.SetFloat("musicVolume", musicVol);
+                _musicVolumeNumber = musicVol;
                 _slider.value = musicVol;
             }
             else if (_slider.name == "SFX_Slider")
             {
-                // _audioMixer.GetFloat("sfxVolume", out _sfxVolumeNumber);
+                _audioMixer.SetFloat("sfxVolume", vfxVol);
+                _sfxVolumeNumber = vfxVol;
                 _slider.value = vfxVol;
             }
         }
