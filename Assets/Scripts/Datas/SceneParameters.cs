@@ -1,7 +1,9 @@
-
-
-public class SceneParameters
+namespace Data
 {
-    public static bool UseLoadedGame = false;
-    public static PlayerData PlayerData;
+
+    public class SceneParameters
+    {
+        public static bool UseLoadedGame = false;
+        public static PlayerData PlayerData;
+    }
 }

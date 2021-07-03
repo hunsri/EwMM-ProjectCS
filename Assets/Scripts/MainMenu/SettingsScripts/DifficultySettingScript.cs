@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Data;
 
 namespace MainMenu
 {
@@ -17,7 +18,7 @@ namespace MainMenu
         private MeshRenderer _mediumRenderer;
         private MeshRenderer _hardRenderer;
 
-        private int _difficulty = 0;
+        private float _difficulty = 0;
         private int _minDif = 0;
         private int _maxDif = 2;
 
@@ -34,6 +35,10 @@ namespace MainMenu
             _mediumRenderer.material.SetColor(_shaderPropertyName, _colorWhite);
             _hardRenderer = _hardPlane.GetComponent<MeshRenderer>();
             _hardRenderer.material.SetColor(_shaderPropertyName, _colorWhite);
+
+            PlayerDataManager dataManager = FindObjectOfType<PlayerDataManager>();
+            _difficulty = dataManager.LoadSettings()[2];
+            PlaneColorChange();
         }
 
         // Update is called once per frame

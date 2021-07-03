@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
+using Data;
 
 public class WeaponHolder : MonoBehaviour
 {

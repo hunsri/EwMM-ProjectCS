@@ -5,138 +5,138 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerDataManager : MonoBehaviour
+namespace Data
 {
-    private PlayerData _data;
-    private BinaryFormatter _formatter = new BinaryFormatter();
-
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerDataManager : MonoBehaviour
     {
-        if (!SceneParameters.UseLoadedGame)
-        {
-            Debug.Log("Using new player data");
-            _data = new PlayerData();
-        }
-        else
-        {
-            Debug.Log("Using loaded player data");
-            _data = SceneParameters.PlayerData;
+        private PlayerData _data;
+        private BinaryFormatter _formatter = new BinaryFormatter();
 
-            // cleanup
-            SceneParameters.PlayerData = null;
-            SceneParameters.UseLoadedGame = false;
-        }
-    }
-
-    /// <summary>
-    /// Get a specific weapon by its index. Returns null if weapon with provided index
-    /// is not found
-    /// </summary>
-    public WeaponData GetWeapon(int weaponIndex)
-    {
-        foreach (WeaponData weaponData in _data.WeaponDatas)
+        // Start is called before the first frame update
+        void Start()
         {
-            if (weaponData.GetWeaponIndex() == weaponIndex)
+            if (!SceneParameters.UseLoadedGame)
             {
-                return weaponData;
-            }
-        }
-
-        return null;
-    }
-
-    /// <summary>
-    /// Get list of available weapons
-    /// </summary>
-    public WeaponData[] GetAllWeapons()
-    {
-        return _data.WeaponDatas;
-    }
-
-    /// <summary>
-    /// Load resource from `/Resources` folder at runtime
-    /// </summary>
-    public void LoadResource(string filename, Transform parent, Vector3 position)
-    {
-        Debug.Log("Trying to load LevelPrefab from file (" + filename + ")...");
-        var loadedObject = Resources.Load(filename);
-        if (loadedObject == null)
-        {
-            throw new FileNotFoundException("...no file found - please check the configuration");
-        }
-
-        GameObject go = Instantiate(loadedObject, Vector3.zero, Quaternion.identity) as GameObject;
-        go.transform.SetParent(parent.transform);
-        go.transform.position = parent.position;
-        go.transform.position += position;
-    }
-
-    /// <summary>
-    /// Save player data by serializing the `PlayerData` class and saving it to `player.data` file
-    /// </summary>
-    public void SaveGame()
-    {
-        string path = Application.persistentDataPath + "/player.data";
-        FileStream stream = new FileStream(path, FileMode.Create);
-
-        _formatter.Serialize(stream, _data);
-        stream.Close();
-    }
-
-    /// <summary>
-    /// Load player data by deserializing the "player.data" file
-    /// </summary>
-    public void LoadGame(bool reloadScene)
-    {
-        string path = Application.persistentDataPath + "/player.data";
-        if (File.Exists(path))
-        {
-            FileStream stream = new FileStream(path, FileMode.Open);
-            PlayerData playerData = _formatter.Deserialize(stream) as PlayerData;
-            if (reloadScene)
-            {
-                SceneParameters.PlayerData = playerData;
-                // reload scene
-                SceneParameters.UseLoadedGame = true;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // todo: integrate scene name to `LoadScene`
+                _data = new PlayerData();
             }
             else
             {
-                _data = playerData;
+                _data = SceneParameters.PlayerData;
+
+                // cleanup
+                SceneParameters.PlayerData = null;
+                SceneParameters.UseLoadedGame = false;
+            }
+        }
+
+        /// <summary>
+        /// Get a specific weapon by its index. Returns null if weapon with provided index
+        /// is not found
+        /// </summary>
+        public WeaponData GetWeapon(int weaponIndex)
+        {
+            foreach (WeaponData weaponData in _data.WeaponDatas)
+            {
+                if (weaponData.GetWeaponIndex() == weaponIndex)
+                {
+                    return weaponData;
+                }
             }
 
+            return null;
+        }
+
+        /// <summary>
+        /// Get list of available weapons
+        /// </summary>
+        public WeaponData[] GetAllWeapons()
+        {
+            return _data.WeaponDatas;
+        }
+
+        /// <summary>
+        /// Load resource from `/Resources` folder at runtime
+        /// </summary>
+        public void LoadResource(string filename, Transform parent, Vector3 position)
+        {
+            Debug.Log("Trying to load LevelPrefab from file (" + filename + ")...");
+            var loadedObject = Resources.Load(filename);
+            if (loadedObject == null)
+            {
+                throw new FileNotFoundException("...no file found - please check the configuration");
+            }
+
+            GameObject go = Instantiate(loadedObject, Vector3.zero, Quaternion.identity) as GameObject;
+            go.transform.SetParent(parent.transform);
+            go.transform.position = parent.position;
+            go.transform.position += position;
+        }
+
+        /// <summary>
+        /// Save player data by serializing the `PlayerData` class and saving it to `player.data` file
+        /// </summary>
+        public void SaveGame()
+        {
+            string path = Application.persistentDataPath + "/player.data";
+            FileStream stream = new FileStream(path, FileMode.Create);
+
+            _formatter.Serialize(stream, _data);
             stream.Close();
         }
-        else
+
+        /// <summary>
+        /// Load player data by deserializing the "player.data" file
+        /// </summary>
+        public void LoadGame(bool reloadScene)
         {
-            Debug.Log("No save files!");
-            return;
+            string path = Application.persistentDataPath + "/player.data";
+            if (File.Exists(path))
+            {
+                FileStream stream = new FileStream(path, FileMode.Open);
+                PlayerData playerData = _formatter.Deserialize(stream) as PlayerData;
+                if (reloadScene)
+                {
+                    SceneParameters.PlayerData = playerData;
+                    // reload scene
+                    SceneParameters.UseLoadedGame = true;
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // todo: integrate scene name to `LoadScene`
+                }
+                else
+                {
+                    _data = playerData;
+                }
+
+                stream.Close();
+            }
+            else
+            {
+                Debug.Log("No save files!");
+                return;
+            }
         }
-    }
 
-    public bool IsDataLoaded()
-    {
-        return _data != null;
-    }
+        /// <summary>
+        /// Save Settings
+        /// </summary>
+        public void SaveSettings(float vfxVolume, float musicVolume, float difficulty)
+        {
+            _data.UpdateSettings(vfxVolume, musicVolume, difficulty);
+            SaveGame();
+        }
+        public bool IsDataLoaded()
+        {
+            return _data != null;
+        }
 
-    /// <summary>
-    /// Save Settings
-    /// </summary>
-    public void SaveSettings(float vfxVolume, float musicVolume, float difficulty)
-    {
-        _data.UpdateSettings(vfxVolume, musicVolume, difficulty);
-        SaveGame();
-    }
+        /// <summary>
+        /// Load settings
+        /// returns [_vfxVolume, _musicVolume, _difficulty]
+        /// </summary>
+        public float[] LoadSettings()
+        {
 
-    /// <summary>
-    /// Load settings
-    /// returns [_vfxVolume, _musicVolume, _difficulty]
-    /// </summary>
-    public float[] LoadSettings()
-    {
-
-        LoadGame(false); // won't do any harm if loaded file is not found.
-        return _data.GetSettings();
+            LoadGame(false); // won't do any harm if loaded file is not found.
+            return _data.GetSettings();
+        }
     }
 }
