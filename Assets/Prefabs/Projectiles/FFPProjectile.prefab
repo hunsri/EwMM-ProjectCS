@@ -93,15 +93,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5f42b7cd0ac47487596e497b0337b2e4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.009999999
+      value: 0.015964998
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5f42b7cd0ac47487596e497b0337b2e4, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.009999999
+      value: 0.01592828
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5f42b7cd0ac47487596e497b0337b2e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.133
+      value: 0.223
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5f42b7cd0ac47487596e497b0337b2e4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -142,6 +142,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5f42b7cd0ac47487596e497b0337b2e4, type: 3}
       propertyPath: m_Name
       value: tinker 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5f42b7cd0ac47487596e497b0337b2e4, type: 3}
+      propertyPath: m_TagString
+      value: FFP2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f42b7cd0ac47487596e497b0337b2e4, type: 3}
