@@ -28,9 +28,13 @@ namespace NPC
         //the default probability of infecting someone else in percent
         private const int SpreadingPercent = 10;
 
+        //time interval between infected sounds
+        private float _timeInterval;
+
         //holds information about the NPC waves; in this case interesting for checking if the waves are paused
         private NPCWaveManager _waveManager;
         private Animator _animator;
+
 
         void Awake()
         {
@@ -46,6 +50,8 @@ namespace NPC
             _targetDirection = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle));
             transform.rotation = Quaternion.LookRotation(_targetDirection);
 
+            SetTimeInterval();
+            
             _waveManager = FindObjectOfType<NPCWaveManager>();
             _animator = GetComponent<Animator> ();
         }
@@ -64,6 +70,7 @@ namespace NPC
                     break;
                 case Behaviors.INFECTED:
                     speed = 2;
+                    triggerInfectedSoundsInInterval();
                     break;
                 case Behaviors.CURED:
                     speed = 4;
@@ -175,6 +182,31 @@ namespace NPC
             }
 
             return null;
+        }
+
+        public void PlaySound()
+        {
+            int AudioClipRandom = Random.Range(1, 6);
+            Debug.Log("Sound" + AudioClipRandom);
+            SoundManager.soundManager.PlayRandomInfectedSounds(AudioClipRandom, transform.position);
+        }
+
+        public void SetTimeInterval()
+        {
+            _timeInterval = Random.Range(5.0f, 60.0f);
+            Debug.Log("Set:" + _timeInterval);
+        }
+
+        public void triggerInfectedSoundsInInterval()
+        {
+            _timeInterval -= Time.deltaTime;
+            // Debug.Log("timeInterval:" + timeInterval);
+            if (_timeInterval <= 0)
+            {
+
+                PlaySound();
+                SetTimeInterval();
+            }
         }
     }
 }
