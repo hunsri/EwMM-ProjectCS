@@ -185,10 +185,10 @@ namespace NPC
             return null;
         }
 
-<<<<<<< HEAD
         public Behaviors GetBehaviors(){
             return _behavior;
-=======
+        }
+
         public void PlaySound()
         {
             int AudioClipRandom = Random.Range(1, 6);
@@ -212,7 +212,6 @@ namespace NPC
                 PlaySound();
                 SetTimeInterval();
             }
->>>>>>> b23e0878e52475652b30cc4c77a4ea60dca63a6d
         }
     }
 }
