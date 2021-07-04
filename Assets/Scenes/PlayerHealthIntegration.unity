@@ -3925,7 +3925,7 @@ MeshCollider:
   m_GameObject: {fileID: 535348726}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -6295,7 +6295,7 @@ Transform:
   m_GameObject: {fileID: 867331205}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.38883153, y: -0.33625698, z: 19.764154}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.75}
+  m_LocalScale: {x: 0.79, y: 0.8, z: 0.75}
   m_Children:
   - {fileID: 313076199}
   - {fileID: 437790327}
@@ -6315,8 +6315,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.2899427, y: 4.4366617, z: 5.066704}
+  m_Center: {x: -0.027020067, y: 0.5175688, z: -0.18191147}
 --- !u!1001 &878221420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9069,6 +9069,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1242023274}
+  - component: {fileID: 1242023275}
   m_Layer: 0
   m_Name: Bank (2)
   m_TagString: Untagged
@@ -9094,6 +9095,19 @@ Transform:
   m_Father: {fileID: 461934183}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1242023275
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242023273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2805438, y: 4.4650087, z: 4.9222946}
+  m_Center: {x: -0.008838549, y: 0.49500063, z: 0.6411438}
 --- !u!1001 &1265529551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9535,7 +9549,7 @@ MeshCollider:
   m_GameObject: {fileID: 1306204290}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -11647,6 +11661,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1554913067}
+  - component: {fileID: 1554913068}
   m_Layer: 0
   m_Name: Bank (3)
   m_TagString: Untagged
@@ -11672,6 +11687,19 @@ Transform:
   m_Father: {fileID: 461934183}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1554913068
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554913066}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3391688, y: 4.4217176, z: 4.9991026}
+  m_Center: {x: 0.0074489415, y: 0.5091139, z: 0.65825033}
 --- !u!1001 &1582206811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12265,7 +12293,7 @@ MeshCollider:
   m_GameObject: {fileID: 1627982298}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -12789,6 +12817,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1713324385}
+  - component: {fileID: 1713324386}
   m_Layer: 0
   m_Name: 'Bank (1) '
   m_TagString: Untagged
@@ -12814,6 +12843,19 @@ Transform:
   m_Father: {fileID: 461934183}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1713324386
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713324384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2523763, y: 4.3874307, z: 4.953777}
+  m_Center: {x: 0.02660364, y: 0.5231894, z: -0.16079807}
 --- !u!1001 &1717341743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12914,7 +12956,7 @@ BoxCollider:
   m_GameObject: {fileID: 1723967670}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
