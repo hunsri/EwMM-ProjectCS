@@ -1,46 +1,48 @@
-[System.Serializable]
-public class WeaponData
+namespace Data
 {
-    private int _weaponIndex;
-    private int _ammoCount;
-    private float[] _defaultPosition;
-    private string _weaponName;
-
-    /// <summary>
-    /// weaponIndex: Index of the weapon
-    /// maxAmmo: Max ammo of the weapon
-    /// defaultPosition: Position of the weapon on render (useful to "snap" weapon to its holder)
-    /// </summary>
-    public WeaponData(int weaponIndex, int maxAmmo, float[] defaultPosition, string weaponName)
+    [System.Serializable]
+    public class WeaponData
     {
-        _weaponIndex = weaponIndex;
-        _ammoCount = maxAmmo;
-        _defaultPosition = defaultPosition;
-        _weaponName = weaponName;
-    }
+        private int _weaponIndex;
+        private int _ammoCount;
+        private float[] _defaultPosition;
+        private string _weaponName;
 
-    public int GetAmmoCount()
-    {
-        return _ammoCount;
-    }
+        /// <summary>
+        /// weaponIndex: Index of the weapon
+        /// maxAmmo: Max ammo of the weapon
+        /// defaultPosition: Position of the weapon on render (useful to "snap" weapon to its holder)
+        /// </summary>
+        public WeaponData(int weaponIndex, int maxAmmo, float[] defaultPosition, string weaponName)
+        {
+            _weaponIndex = weaponIndex;
+            _ammoCount = maxAmmo;
+            _defaultPosition = defaultPosition;
+            _weaponName = weaponName;
+        }
 
-    public void SetAmmoCount(int newAmmoCount)
-    {
-        _ammoCount = newAmmoCount;
-    }
+        public int GetAmmoCount()
+        {
+            return _ammoCount;
+        }
 
-    public int GetWeaponIndex()
-    {
-        return _weaponIndex;
-    }
+        public void SetAmmoCount(int newAmmoCount)
+        {
+            _ammoCount = newAmmoCount;
+        }
 
-    public float[] GetDefaultPosition()
-    {
-        return _defaultPosition;
-    }
+        public int GetWeaponIndex()
+        {
+            return _weaponIndex;
+        }
 
-    public string GetWeaponName()
-    {
-        return _weaponName;
+        public float[] GetDefaultPosition()
+        {
+            return _defaultPosition;
+        }
+        public string GetWeaponName()
+        {
+            return _weaponName;
+        }
     }
 }

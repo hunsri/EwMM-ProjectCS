@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Data;
 
 namespace MainMenu
 {
@@ -23,6 +24,7 @@ namespace MainMenu
         private MeshRenderer _hardRenderer;
 
         private string _shaderPropertyName = "_Color";
+        private PlayerDataManager _dataManager;
 
         // Start is called before the first frame update
         void Start()
@@ -30,6 +32,7 @@ namespace MainMenu
             _easyRenderer = _easyPlane.GetComponent<MeshRenderer>();
             _mediumRenderer = _mediumPlane.GetComponent<MeshRenderer>();
             _hardRenderer = _hardPlane.GetComponent<MeshRenderer>();
+            _dataManager = FindObjectOfType<PlayerDataManager>();
         }
 
         // Update is called once per frame
@@ -62,7 +65,7 @@ namespace MainMenu
                 Debug.Log("Something went bad on OnTriggerEnter() in ApplyScript!");
             }
 
-            PlayerData.SaveSettings(vfxVolume, musicVolume, difficulty);
+            _dataManager.SaveSettings(vfxVolume, musicVolume, difficulty); // using `PlayerDataManager` 
         }
     }
 }

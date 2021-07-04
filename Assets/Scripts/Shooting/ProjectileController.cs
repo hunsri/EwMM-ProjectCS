@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Data;
 
 public class ProjectileController : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class ProjectileController : MonoBehaviour
 
             if (tag == "Load")
             {
-                FindObjectOfType<PlayerDataManager>().LoadGame();
+                FindObjectOfType<PlayerDataManager>().LoadGame(true);
             }
         }
     }
