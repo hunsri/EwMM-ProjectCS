@@ -35,6 +35,7 @@ namespace NPC
         private NPCWaveManager _waveManager;
         private Animator _animator;
 
+        public ParticleSystem infectedDrops;
 
         void Awake()
         {
@@ -205,6 +206,7 @@ namespace NPC
             {
 
                 PlaySound();
+                infectedDrops.Play();
                 SetTimeInterval();
             }
         }
