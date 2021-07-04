@@ -9,7 +9,8 @@ public class PlayerData
     public PlayerData()
     {
         _weaponDatas[0] = Weapons.Syringe();
-        _weaponDatas[1] = Weapons.Weapon1();
+        _weaponDatas[1] = Weapons.OpMask();
+        _weaponDatas[2] = Weapons.FFPMask();
     }
 
     public void AddWeapon(WeaponData weapon)

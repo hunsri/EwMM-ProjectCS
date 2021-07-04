@@ -59,13 +59,34 @@ public class ShootingController : MonoBehaviour
     void InstantiateProjectile()
     {
         Vector3 projectileStartPoint = _weaponHolder.transform.position;
-        var projectileObj = Instantiate(_projectile, projectileStartPoint, Quaternion.identity);
+        var projectileObj = Instantiate(_projectile, projectileStartPoint, Quaternion.Euler(transform.forward));
+
+        projectileObj.transform.rotation = transform.rotation; // set projectile's rotation to face user
+
         projectileObj.GetComponent<Rigidbody>().velocity = (_projectileDestination - projectileStartPoint).normalized * _projectileSpeed;
         SetAmmo(_ammo - 1);
     }
 
     public void SetAmmo(int ammoCount)
     {
+        if (!_animator)
+        {
+            _animator = GetComponent<Animator>();
+        }
+
+        if (ammoCount <= 0)
+        {
+            _animator.SetBool("IsEmpty", true);
+        }
+        else
+        {
+            if (_animator.GetBool("IsEmpty"))
+            {
+                _animator.SetBool("IsEmpty", false);
+            }
+        }
+
+
         _ammo = ammoCount;
 
         // It is possible that weapon holder is not yet defined as parent when the `Start()` method is called.
