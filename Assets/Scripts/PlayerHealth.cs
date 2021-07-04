@@ -39,7 +39,9 @@ public class PlayerHealth : MonoBehaviour
     /**
     * When an infected NPC collides with the Player body. The health of the player drops
     **/
-    void OnCollisionEnter(Collision collision){    
+    void OnCollisionEnter(Collision collision){  
+        Debug.Log("Hello");
+  
         //the npc 
         GameObject go = collision.gameObject;
         // status of the npc (infected, uninfected, cured)
