@@ -151,5 +151,9 @@ namespace NPC
 
             return null;
         }
+
+        public Behaviors GetBehaviors(){
+            return _behavior;
+        }
     }
 }
