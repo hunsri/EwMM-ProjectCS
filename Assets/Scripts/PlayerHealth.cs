@@ -5,7 +5,8 @@ using UnityEngine;
 using NPC;
 
 /**
-*    Need to add EnemyHealth script to the player for this to work
+* Add to player 
+* Need to add EnemyHealth script to the player for this to work
 **/
 public class PlayerHealth : MonoBehaviour
 {
@@ -27,10 +28,8 @@ public class PlayerHealth : MonoBehaviour
     private const int _infection = 10;
 
     void Start(){
-
         //connect healthbar and it's functions to the player
         _health = player.GetComponent<EnemyHealth>();
-
         // TODO: Delete later, once masktypes are implemented
         // just for testing
         _spreadingPercent = 90;
@@ -40,12 +39,12 @@ public class PlayerHealth : MonoBehaviour
     * When an infected NPC collides with the Player body. The health of the player drops
     **/
     void OnCollisionEnter(Collision collision){  
-        Debug.Log("Hello");
-  
+
         //the npc 
         GameObject go = collision.gameObject;
         // status of the npc (infected, uninfected, cured)
         Behaviors behaviors = go.GetComponent<NPCBehavior>().GetBehaviors();
+        Debug.Log("Collided with: " + behaviors);
 
         // if npc wears mask, get the assigned spreading percent
         // MaskType mask = go.GetComponent<MaskType>().GetMaskType();
