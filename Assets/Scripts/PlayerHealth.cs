@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
     /*
     [SerializeField]
     private bool _isFFP = false; //if player is wearing a ffp2 mask, the risk lowers?
-    */
+    */ 
 
     /* player health displayed on the screen */
     private EnemyHealth _health; 
