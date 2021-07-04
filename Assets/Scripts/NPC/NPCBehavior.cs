@@ -40,6 +40,7 @@ namespace NPC
         {
             _indicator = FindNPCIndicator();
             _indicator.GetComponent<Renderer>().material = _uninfectedMaterial;
+            _indicator.GetComponent<Renderer>().sortingOrder = 99;
         }
 
         // Start is called before the first frame update
@@ -182,6 +183,10 @@ namespace NPC
             }
 
             return null;
+        }
+
+        public Behaviors GetBehaviors(){
+            return _behavior;
         }
 
         public void PlaySound()
