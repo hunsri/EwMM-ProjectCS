@@ -35,12 +35,12 @@ namespace NPC
         private NPCWaveManager _waveManager;
         private Animator _animator;
 
+        public ParticleSystem infectedDrops;
 
         void Awake()
         {
             _indicator = FindNPCIndicator();
             _indicator.GetComponent<Renderer>().material = _uninfectedMaterial;
-            _indicator.GetComponent<Renderer>().sortingOrder = 99;
         }
 
         // Start is called before the first frame update
@@ -185,10 +185,6 @@ namespace NPC
             return null;
         }
 
-        public Behaviors GetBehaviors(){
-            return _behavior;
-        }
-
         public void PlaySound()
         {
             int AudioClipRandom = Random.Range(1, 6);
@@ -210,6 +206,7 @@ namespace NPC
             {
 
                 PlaySound();
+                infectedDrops.Play();
                 SetTimeInterval();
             }
         }
