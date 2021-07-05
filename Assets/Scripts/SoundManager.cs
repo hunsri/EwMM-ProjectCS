@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.SceneManagement;
 
 
 public class SoundManager : MonoBehaviour
@@ -15,7 +14,7 @@ public class SoundManager : MonoBehaviour
    // public GameObject infectedPrefab;
 
     [SerializeField] private AudioClip _coughing, _sneezing;
-    [SerializeField] private AudioClip _trainStationBG, _parkBG;
+    [SerializeField] private AudioClip _background;
 
     private void Awake()
     {
@@ -26,14 +25,11 @@ public class SoundManager : MonoBehaviour
         else
         {
             soundManager = this;
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(gameObject);
         }
 
-        string sceneName = SceneManager.GetActiveScene().name;
-        
         _audioSource = GetComponent<AudioSource>();
-        BgSound(sceneName);
-
+       
     }
 
     public void PlayRandomInfectedSounds(int sound, Vector3 position)
@@ -60,13 +56,10 @@ public class SoundManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(_sneezing, position);  
     }
 
-    public void BgSound(string sceneName)
+   public  void BgSound()
     {
         _audioSource.loop = true;
-        if (sceneName == "TrainStation")
-            _audioSource.clip = _trainStationBG;
-        if (sceneName == "ParkWithPlayerHealthbar")
-            _audioSource.clip = _parkBG;
+        _audioSource.clip = _background;
         _audioSource.volume = 0.2f;
         _audioSource.Play();   
     }

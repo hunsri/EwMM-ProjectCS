@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
@@ -21,6 +20,7 @@ public class ManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        SoundManager.soundManager.BgSound();
     }
 
     // Update is called once per frame
