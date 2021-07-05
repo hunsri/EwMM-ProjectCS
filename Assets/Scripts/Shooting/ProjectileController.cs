@@ -7,6 +7,7 @@ using Data;
 public class ProjectileController : MonoBehaviour
 {
     [SerializeField] private int _damage = 25;
+    private Weapons.WeaponTags weaponTag;
 
     private readonly string[] _tags = { "Player", "Weapon", "Projectile" };
     // private 
@@ -44,5 +45,13 @@ public class ProjectileController : MonoBehaviour
         }
     }
 
-    public void SetTag() { }
+    public void SetTag(Weapons.WeaponTags tag)
+    {
+        weaponTag = tag;
+    }
+
+    public Weapons.WeaponTags GetTag()
+    {
+        return weaponTag;
+    }
 }

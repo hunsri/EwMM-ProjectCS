@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Data;
 
 namespace NPC
 {
@@ -33,9 +34,8 @@ namespace NPC
         [SerializeField]
         private GameObject _maskObject;
 
-        // todo [] display ffp2 on attach
-        // [SerializeField] 
-        // private GameObject _ffp2MaskObject;
+        [SerializeField]
+        private GameObject _ffp2MaskObject;
         private GameObject _indicator;
 
         //default behavior is uninfected
@@ -137,10 +137,42 @@ namespace NPC
                     Destroy(this.gameObject);
                 }
 
-                //TODO change accordingly to projectile type
                 if (go.tag == "Projectile")
                 {
-                    ChangeBehavior(Behaviors.CURED);
+                    Weapons.WeaponTags weaponTag = go.GetComponent<ProjectileController>().GetTag();
+                    if (!_isNoVac)
+                    {
+                        if (weaponTag == Weapons.WeaponTags.Syringe)
+                        {
+                            ChangeBehavior(Behaviors.CURED);
+                        }
+                    }
+
+                    if (!_isNoMask)
+                    {
+                        if (weaponTag == Weapons.WeaponTags.OpMask)
+                        {
+                            int maskedValue = (int)weaponTag;
+                            // check if already masked or ffp2 is attached
+                            if (_isMasked == maskedValue || _isMasked == (int)Weapons.WeaponTags.FFPMask)
+                            {
+                                return;
+                            }
+                            _isMasked = maskedValue;
+                        }
+
+                        if (weaponTag == Weapons.WeaponTags.FFPMask)
+                        {
+                            int maskedValue = (int)weaponTag;
+                            if (_isMasked == maskedValue)
+                            {
+                                return;
+                            }
+                            _isMasked = maskedValue;
+                        }
+
+                        UpdateAppearance();
+                    }
                 }
 
                 //calculating if an NPC infects another NPC if it touches it
@@ -200,11 +232,12 @@ namespace NPC
         /// </summary>
         void UpdateAppearance()
         {
-            GameObject[] appearanceObjects = new GameObject[] { _noMaskBoard, _noVacBoard, _maskObject };
+            GameObject[] appearanceObjects = new GameObject[] { _noMaskBoard, _noVacBoard, _maskObject, _ffp2MaskObject };
             // check if all appearance objects exist
             if (Array.TrueForAll(appearanceObjects, (obj) => obj != null))
             {
-                _maskObject.SetActive(_isMasked != 0);
+                _maskObject.SetActive(_isMasked == (int)Weapons.WeaponTags.OpMask);
+                _ffp2MaskObject.SetActive(_isMasked == (int)Weapons.WeaponTags.FFPMask);
                 _noMaskBoard.SetActive(_isNoMask);
                 _noVacBoard.SetActive(_isNoVac);
             }
