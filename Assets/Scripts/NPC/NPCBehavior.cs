@@ -54,8 +54,8 @@ namespace NPC
         private NPCWaveManager _waveManager;
         private Animator _animator;
 
+        private MaskType _isMasked = MaskType.NONE; // between 0 and 2, 0 = nomask, 1 = op mask, 2 = ffp mask
         public ParticleSystem infectedDrops;
-        private int _isMasked; // between 0 and 2, 0 = nomask, 1 = op mask, 2 = ffp mask
 
         void Awake()
         {
@@ -152,23 +152,20 @@ namespace NPC
                     {
                         if (weaponTag == Weapons.WeaponTags.OpMask)
                         {
-                            int maskedValue = (int)weaponTag;
-                            // check if already masked or ffp2 is attached
-                            if (_isMasked == maskedValue || _isMasked == (int)Weapons.WeaponTags.FFPMask)
+                            if (_isMasked != MaskType.NONE)
                             {
                                 return;
                             }
-                            _isMasked = maskedValue;
+                            _isMasked = MaskType.NORMAL;
                         }
 
                         if (weaponTag == Weapons.WeaponTags.FFPMask)
                         {
-                            int maskedValue = (int)weaponTag;
-                            if (_isMasked == maskedValue)
+                            if (_isMasked == MaskType.FFP)
                             {
                                 return;
                             }
-                            _isMasked = maskedValue;
+                            _isMasked = MaskType.FFP;
                         }
 
                         UpdateAppearance();
@@ -236,8 +233,8 @@ namespace NPC
             // check if all appearance objects exist
             if (Array.TrueForAll(appearanceObjects, (obj) => obj != null))
             {
-                _maskObject.SetActive(_isMasked == (int)Weapons.WeaponTags.OpMask);
-                _ffp2MaskObject.SetActive(_isMasked == (int)Weapons.WeaponTags.FFPMask);
+                _maskObject.SetActive(_isMasked == MaskType.NORMAL);
+                _ffp2MaskObject.SetActive(_isMasked == MaskType.FFP);
                 _noMaskBoard.SetActive(_isNoMask);
                 _noVacBoard.SetActive(_isNoVac);
             }
@@ -295,9 +292,9 @@ namespace NPC
         /// <summary>
         /// For debug purposes.
         /// </summary>
-        public void SetBehaviors(bool isNoMask, bool isNoVac, int masked)
+        public void SetBehaviors(bool isNoMask, bool isNoVac, MaskType maskType)
         {
-            _isMasked = masked;
+            _isMasked = maskType;
             _isNoMask = isNoMask;
             _isNoVac = isNoVac;
             UpdateAppearance();

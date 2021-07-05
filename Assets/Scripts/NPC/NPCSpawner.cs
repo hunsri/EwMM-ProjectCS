@@ -32,7 +32,7 @@ namespace NPC
         private bool _isNoMask = false;
 
         [SerializeField]
-        private int maskedValue = 1;
+        private MaskType maskType = MaskType.NONE;
 
         private int _amountSpawned;
 
@@ -72,7 +72,7 @@ namespace NPC
 
                         go = Instantiate(_npc, this.transform.position, Quaternion.Euler(0, 0, 0)).gameObject;
                         // debug purposes. Spawn NPC with behaviors.
-                        go.GetComponent<NPCBehavior>().SetBehaviors(_isNoMask, _isNoVac, maskedValue);
+                        go.GetComponent<NPCBehavior>().SetBehaviors(_isNoMask, _isNoVac, maskType);
                         _lastSpawn = System.DateTime.Now;
                         _amountSpawned++;
 
