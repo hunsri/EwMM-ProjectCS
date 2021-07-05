@@ -15,7 +15,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioClip _coughing, _sneezing;
     [SerializeField] private AudioClip _background;
-    [SerializeField] private AudioClip _reachedTarget, _throw;
+    [SerializeField] private AudioClip  _throw, _useVaccine, _switchAmmo;
    
 
     private void Awake()
@@ -44,17 +44,12 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayGotTarget(Vector3 position)
-    {
-        AudioSource.PlayClipAtPoint(_reachedTarget, position);
-    }
-
     public void PlayProjectileUsed(int index, Vector3 position)
     {
         _audioSource.loop = false;
         if (index == 0)
         {
-            return;
+            _audioSource.clip = _useVaccine;
         }
         else if(index == 1 || index == 2)
         {
@@ -63,6 +58,12 @@ public class SoundManager : MonoBehaviour
         _audioSource.volume = 0.1f;
         _audioSource.Play();
     }
+
+    public void PlaySwitchAmmo(Vector3 position)
+    {
+        AudioSource.PlayClipAtPoint(_switchAmmo, position);
+    }
+
     public void Cough(Vector3 position)
     {
         AudioSource.PlayClipAtPoint(_coughing, position);    

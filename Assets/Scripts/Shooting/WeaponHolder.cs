@@ -120,6 +120,7 @@ public class WeaponHolder : MonoBehaviour
                 if (i == _activeWeapon)
                 {
                     LoadWeaponData(weapon.GetComponent<ShootingController>());
+                   //
                 }
             }
         }
@@ -155,6 +156,7 @@ public class WeaponHolder : MonoBehaviour
     public void UpdateWeaponName()
     {
         _weaponName.text = _activeWeaponData.GetWeaponName();
+        SoundManager.soundManager.PlaySwitchAmmo(transform.position);
     }
 
     /// <summary>
