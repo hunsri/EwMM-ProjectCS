@@ -11,7 +11,7 @@ public class ShootingController : MonoBehaviour
     [SerializeField] private float _projectileSpeed = 50;
 
     [SerializeField] private int _maxAmmo;
-    [SerializeField] private int _weaponIndex;
+    [SerializeField] private Weapons.WeaponTags _weaponIndex;
 
     private int _ammo;
     private WeaponHolder _weaponHolder;
@@ -32,7 +32,7 @@ public class ShootingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool isAmmoEmpty = _weaponIndex == Weapons.MenuWeaponIndex ? false : _ammo < 0;
+        bool isAmmoEmpty = _weaponIndex == Weapons.WeaponTags.MenuWeapon ? false : _ammo < 0;
         // get mouse left click, check if ammo is more than 0 and check if "Equip" animation is finished, check if animation is done
         if (Input.GetButtonDown("Fire1") && !isAmmoEmpty && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Equip") && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
         {
@@ -65,9 +65,10 @@ public class ShootingController : MonoBehaviour
         var projectileObj = Instantiate(_projectile, projectileStartPoint, Quaternion.Euler(transform.forward));
 
         projectileObj.transform.rotation = transform.rotation; // set projectile's rotation to face user
+        // projectileObj.GetComponent<ProjectileController>()
 
         projectileObj.GetComponent<Rigidbody>().velocity = (_projectileDestination - projectileStartPoint).normalized * _projectileSpeed;
-        if (_weaponIndex != Weapons.MenuWeaponIndex)
+        if (_weaponIndex != Weapons.WeaponTags.MenuWeapon)
         {
             SetAmmo(_ammo - 1);
         }
@@ -103,7 +104,7 @@ public class ShootingController : MonoBehaviour
         _weaponHolder.UpdateUI(ammoCount, _maxAmmo);
     }
 
-    public int GetWeaponIndex()
+    public Weapons.WeaponTags GetWeaponIndex()
     {
         return _weaponIndex;
     }

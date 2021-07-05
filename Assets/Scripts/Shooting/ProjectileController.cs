@@ -9,6 +9,7 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] private int _damage = 25;
 
     private readonly string[] _tags = { "Player", "Weapon", "Projectile" };
+    // private 
     private bool _collided;
 
     void OnCollisionEnter(Collision collision)
@@ -42,4 +43,6 @@ public class ProjectileController : MonoBehaviour
             }
         }
     }
+
+    public void SetTag() { }
 }
