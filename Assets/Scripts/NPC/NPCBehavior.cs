@@ -35,6 +35,7 @@ namespace NPC
         private NPCWaveManager _waveManager;
         private Animator _animator;
 
+        public ParticleSystem infectedDrops;
 
         void Awake()
         {
@@ -205,11 +206,12 @@ namespace NPC
         public void triggerInfectedSoundsInInterval()
         {
             _timeInterval -= Time.deltaTime;
-            // Debug.Log("timeInterval:" + timeInterval);
+           
             if (_timeInterval <= 0)
             {
 
                 PlaySound();
+                infectedDrops.Play();
                 SetTimeInterval();
             }
         }
