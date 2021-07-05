@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5224298972170493089}
   - component: {fileID: -7304755308375734452}
   - component: {fileID: -2983715112559928019}
+  - component: {fileID: 1045485484696667262}
   m_Layer: 0
   m_Name: SceneControllerObject
   m_TagString: Untagged
@@ -54,5 +55,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5954e5e97026e09819ed55bd7703fe45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxWaves: 0
+  _waveDurationSeconds: 0
+--- !u!114 &1045485484696667262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9118907727792068603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a73f0d3a39da316f68f934db5540f354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

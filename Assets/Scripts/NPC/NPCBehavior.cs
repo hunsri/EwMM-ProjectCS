@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Data;
+
 namespace NPC
 {
     ///<summary>
@@ -35,6 +37,9 @@ namespace NPC
         private NPCWaveManager _waveManager;
         private Animator _animator;
 
+        //holds information about events in the scene; in this case how often NPC got infected
+        private SceneStats _sceneStats;
+
 
         void Awake()
         {
@@ -55,6 +60,19 @@ namespace NPC
             
             _waveManager = FindObjectOfType<NPCWaveManager>();
             _animator = GetComponent<Animator> ();
+
+            _sceneStats = FindObjectOfType<SceneStats>();
+            
+            if(_waveManager == null)
+            {
+                Debug.LogWarning("Couldn't find WaveManager script! Please make sure to add a SceneControllerObject to the scene "+
+                "with this script attached to it!");
+            }
+            if(_sceneStats == null)
+            {
+                Debug.LogWarning("Couldn't find SceneStats script! Please make sure to add a SceneControllerObject to the scene "+
+                "with this script attached to it!");
+            }
         }
 
         // Update is called once per frame
@@ -115,6 +133,9 @@ namespace NPC
                 if(go.tag == "Projectile")
                 {
                     ChangeBehavior(Behaviors.CURED);
+
+                    //adding one more cured NPC to the stats of the scene
+                    _sceneStats.incrementCuredNPC();
                 }
 
                 //calculating if an NPC infects another NPC if it touches it
@@ -132,6 +153,9 @@ namespace NPC
                             script = go.GetComponent<NPCBehavior>();
 
                             script.ChangeBehavior(Behaviors.INFECTED);
+                            
+                            //adding one more infected to the stats of the scene
+                            _sceneStats.incrementInfectionEvents();
                         }
                     }
 
@@ -199,7 +223,7 @@ namespace NPC
         public void SetTimeInterval()
         {
             _timeInterval = Random.Range(5.0f, 60.0f);
-            Debug.Log("Set:" + _timeInterval);
+            //Debug.Log("Set:" + _timeInterval);
         }
 
         public void triggerInfectedSoundsInInterval()
