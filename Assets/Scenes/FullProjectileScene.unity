@@ -1293,7 +1293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coughing: {fileID: 8300000, guid: 80b865d567528bb43a77345e163022e1, type: 3}
   _sneezing: {fileID: 8300000, guid: 86ac9f81dd58b7f43a57e694fa5e9333, type: 3}
-  _background: {fileID: 8300000, guid: 8268d2f6a48a2354db4bd65e7ae96aa9, type: 3}
+  _background: {fileID: 0}
   _throw: {fileID: 8300000, guid: 57b968137697f3f4db60c99ce656fece, type: 3}
   _useVaccine: {fileID: 8300000, guid: 19acde5da614053469a55cf1a3b20c8d, type: 3}
   _switchAmmo: {fileID: 8300000, guid: 61bb715ced38b174d93878c1543780b4, type: 3}
