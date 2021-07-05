@@ -18,6 +18,7 @@ public class WeaponHolder : MonoBehaviour
     private PlayerDataManager _playerData;
     private WeaponData _activeWeaponData;
     private bool _isWeaponAccessible = false;
+    private bool _firstWeapon = true;
 
     void Start()
     {
@@ -120,7 +121,15 @@ public class WeaponHolder : MonoBehaviour
                 if (i == _activeWeapon)
                 {
                     LoadWeaponData(weapon.GetComponent<ShootingController>());
-                   //
+                    if (_firstWeapon == true)
+                    {
+                        _firstWeapon = false;
+                        return;
+                    }
+                    else
+                    {
+                        SoundManager.soundManager.PlaySwitchAmmo(transform.position);
+                    }
                 }
             }
         }
@@ -156,7 +165,6 @@ public class WeaponHolder : MonoBehaviour
     public void UpdateWeaponName()
     {
         _weaponName.text = _activeWeaponData.GetWeaponName();
-        SoundManager.soundManager.PlaySwitchAmmo(transform.position);
     }
 
     /// <summary>
