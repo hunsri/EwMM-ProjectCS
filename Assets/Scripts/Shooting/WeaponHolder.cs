@@ -124,7 +124,6 @@ public class WeaponHolder : MonoBehaviour
                     if (_firstWeapon == true)
                     {
                         _firstWeapon = false;
-                        return;
                     }
                     else
                     {
