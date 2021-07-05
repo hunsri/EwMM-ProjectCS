@@ -15,18 +15,15 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioClip _coughing, _sneezing;
     [SerializeField] private AudioClip _background;
+    [SerializeField] private AudioClip _reachedTarget, _throw;
+   
 
     private void Awake()
     {
-        if (soundManager != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
+     
             soundManager = this;
             DontDestroyOnLoad(gameObject);
-        }
+        
 
         _audioSource = GetComponent<AudioSource>();
        
@@ -45,6 +42,26 @@ public class SoundManager : MonoBehaviour
             case 6: Sneeze(position);
                 break;
         }
+    }
+
+    public void PlayGotTarget(Vector3 position)
+    {
+        AudioSource.PlayClipAtPoint(_reachedTarget, position);
+    }
+
+    public void PlayProjectileUsed(int index, Vector3 position)
+    {
+        _audioSource.loop = false;
+        if (index == 0)
+        {
+            return;
+        }
+        else if(index == 1 || index == 2)
+        {
+            _audioSource.clip = _throw;
+        }
+        _audioSource.volume = 0.1f;
+        _audioSource.Play();
     }
     public void Cough(Vector3 position)
     {

@@ -38,6 +38,9 @@ public class ShootingController : MonoBehaviour
         {
 
             ShootProjectile();
+            Debug.Log(_projectile.name);
+            Debug.Log(_weaponIndex);
+            SoundManager.soundManager.PlayProjectileUsed(_weaponIndex, _projectile.position);
         }
 
     }
