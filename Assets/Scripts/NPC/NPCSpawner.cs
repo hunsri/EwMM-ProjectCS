@@ -24,6 +24,16 @@ namespace NPC
         private Transform _npc;
         [SerializeField]
         private int _amount;
+
+        [SerializeField]
+        private bool _isNoVac = false;
+
+        [SerializeField]
+        private bool _isNoMask = false;
+
+        [SerializeField]
+        private int maskedValue = 1;
+
         private int _amountSpawned;
 
         private DateTime _lastSpawn;
@@ -34,15 +44,15 @@ namespace NPC
         {
             _waveManager = FindObjectOfType<NPCWaveManager>();
 
-            if(_waveManager == null)
+            if (_waveManager == null)
             {
-                Debug.LogWarning("Couldn't find the NPCWaveManager! "+
+                Debug.LogWarning("Couldn't find the NPCWaveManager! " +
                 "Please make sure there is a SceneController Object with an attached NPCWaveManager script present!");
             }
 
-            if(_activeOnWave < 1)
+            if (_activeOnWave < 1)
             {
-                Debug.LogWarning("The Active On Wave value of "+ this.name + " needs to be set to a value above 0 in order to work!"); 
+                Debug.LogWarning("The Active On Wave value of " + this.name + " needs to be set to a value above 0 in order to work!");
             }
 
             //initializing _lastSpawn
@@ -52,19 +62,21 @@ namespace NPC
         // Update is called once per frame
         void Update()
         {
-            if(_waveManager.CurrentWave == _activeOnWave && !_waveManager.IsPaused)
+            if (_waveManager.CurrentWave == _activeOnWave && !_waveManager.IsPaused)
             {
-                if(_amountSpawned < _amount)
+                if (_amountSpawned < _amount)
                 {
-                    if(_lastSpawn.AddMilliseconds(_deltaMilliseconds) < System.DateTime.Now)
-                    {   
+                    if (_lastSpawn.AddMilliseconds(_deltaMilliseconds) < System.DateTime.Now)
+                    {
                         GameObject go;
 
-                        go = Instantiate(_npc, this.transform.position, Quaternion.Euler(0,0,0)).gameObject;
+                        go = Instantiate(_npc, this.transform.position, Quaternion.Euler(0, 0, 0)).gameObject;
+                        // debug purposes. Spawn NPC with behaviors.
+                        go.GetComponent<NPCBehavior>().SetBehaviors(_isNoMask, _isNoVac, maskedValue);
                         _lastSpawn = System.DateTime.Now;
                         _amountSpawned++;
 
-                        
+
                         //setting the behavior of the spawned NPC
                         NPCBehavior script = go.GetComponent<NPCBehavior>();
                         script.ChangeBehavior(_behavior);
