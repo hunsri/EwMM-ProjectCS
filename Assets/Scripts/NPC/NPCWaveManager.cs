@@ -15,7 +15,7 @@ namespace NPC
         [SerializeField]
         private int _maxWaves;
 
-        public int CurrentWave {get; private set;}
+        public int CurrentWave {get; set;}
         public bool AllWavesOver {get; private set;}
 
 
@@ -92,7 +92,7 @@ namespace NPC
                         _waveStart = System.DateTime.Now;
                         _waveEnd = _waveStart.AddSeconds(_waveDurationSeconds);
 
-                        //Debug.Log("Wave "+CurrentWave+" started!");
+                        Debug.Log("Wave "+CurrentWave+" started!");
                     }
                     else
                     {

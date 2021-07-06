@@ -20,7 +20,7 @@ public class SoundManager : MonoBehaviour
     {
         if (soundManager != null)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else
         {

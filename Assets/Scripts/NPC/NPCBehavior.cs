@@ -132,10 +132,13 @@ namespace NPC
                 //TODO change accordingly to projectile type
                 if(go.tag == "Projectile")
                 {
-                    ChangeBehavior(Behaviors.CURED);
+                    if(_behavior != Behaviors.CURED && _behavior != Behaviors.INFECTED)
+                    {
+                        //adding one more cured NPC to the stats of the scene
+                        _sceneStats.IncrementCuredNPCS();
 
-                    //adding one more cured NPC to the stats of the scene
-                    _sceneStats.incrementCuredNPC();
+                        ChangeBehavior(Behaviors.CURED);
+                    }
                 }
 
                 //calculating if an NPC infects another NPC if it touches it
@@ -155,7 +158,7 @@ namespace NPC
                             script.ChangeBehavior(Behaviors.INFECTED);
                             
                             //adding one more infected to the stats of the scene
-                            _sceneStats.incrementInfectionEvents();
+                            _sceneStats.IncrementInfectionEvents();
                         }
                     }
 
