@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4058190878124433052}
   - component: {fileID: 1146334870841512299}
   - component: {fileID: 7384607558286341535}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MarkerSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3142129746580237320}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NPCIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
