@@ -1,6 +1,8 @@
+using System;
+
 namespace Data
 {
-    [System.Serializable]
+    [Serializable]
     public class WeaponData
     {
         private int _weaponIndex;
@@ -13,9 +15,9 @@ namespace Data
         /// maxAmmo: Max ammo of the weapon
         /// defaultPosition: Position of the weapon on render (useful to "snap" weapon to its holder)
         /// </summary>
-        public WeaponData(int weaponIndex, int maxAmmo, float[] defaultPosition, string weaponName)
+        public WeaponData(Weapons.WeaponTags weaponIndex, int maxAmmo, float[] defaultPosition, string weaponName)
         {
-            _weaponIndex = weaponIndex;
+            _weaponIndex = (int)weaponIndex;
             _ammoCount = maxAmmo;
             _defaultPosition = defaultPosition;
             _weaponName = weaponName;
@@ -31,9 +33,9 @@ namespace Data
             _ammoCount = newAmmoCount;
         }
 
-        public int GetWeaponIndex()
+        public Weapons.WeaponTags GetWeaponIndex()
         {
-            return _weaponIndex;
+            return (Weapons.WeaponTags)_weaponIndex;
         }
 
         public float[] GetDefaultPosition()
