@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5224298972170493089}
   - component: {fileID: -7304755308375734452}
   - component: {fileID: -2983715112559928019}
+  - component: {fileID: 1045485484696667262}
   m_Layer: 0
   m_Name: SceneControllerObject
   m_TagString: Untagged

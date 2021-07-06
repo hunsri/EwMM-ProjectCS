@@ -54,6 +54,9 @@ namespace NPC
         private NPCWaveManager _waveManager;
         private Animator _animator;
 
+        //holds information about events in the scene; in this case how often NPC got infected
+        private SceneStats _sceneStats;
+
         private MaskType _isMasked = MaskType.NONE; // between 0 and 2, 0 = nomask, 1 = op mask, 2 = ffp mask
         public ParticleSystem infectedDrops;
         private NPCAttributes _npcAttributes;
@@ -79,7 +82,21 @@ namespace NPC
             SetTimeInterval();
 
             _waveManager = FindObjectOfType<NPCWaveManager>();
-            _animator = GetComponent<Animator>();
+
+            _animator = GetComponent<Animator> ();
+
+            _sceneStats = FindObjectOfType<SceneStats>();
+            
+            if(_waveManager == null)
+            {
+                Debug.LogWarning("Couldn't find WaveManager script! Please make sure to add a SceneControllerObject to the scene "+
+                "with this script attached to it!");
+            }
+            if(_sceneStats == null)
+            {
+                Debug.LogWarning("Couldn't find SceneStats script! Please make sure to add a SceneControllerObject to the scene "+
+                "with this script attached to it!");
+            }
         }
 
         // Update is called once per frame
@@ -140,10 +157,16 @@ namespace NPC
                 {
                     Weapons.WeaponTags weaponTag = go.GetComponent<ProjectileController>().GetTag();
                     if (!_isNoVac)
-                    {
-                        if (weaponTag == Weapons.WeaponTags.Syringe)
+                    {   
+                        if(_behavior != Behaviors.CURED && _behavior != Behaviors.INFECTED)
                         {
-                            ChangeBehavior(Behaviors.CURED);
+                            if (weaponTag == Weapons.WeaponTags.Syringe)
+                            {
+                                ChangeBehavior(Behaviors.CURED);
+                                
+                                //adding one more cured NPC to the stats of the scene
+                                _sceneStats.IncrementCuredNPCS();
+                            }
                         }
                     }
 
@@ -187,6 +210,9 @@ namespace NPC
                             script = go.GetComponent<NPCBehavior>();
 
                             script.ChangeBehavior(Behaviors.INFECTED);
+                            
+                            //adding one more infected to the stats of the scene
+                            _sceneStats.IncrementInfectionEvents();
                         }
                     }
 
@@ -272,7 +298,7 @@ namespace NPC
         public void SetTimeInterval()
         {
             _timeInterval = UnityEngine.Random.Range(5.0f, 60.0f);
-            // Debug.Log("Set:" + _timeInterval);
+            //Debug.Log("Set:" + _timeInterval);
         }
 
         public void triggerInfectedSoundsInInterval()
@@ -283,7 +309,8 @@ namespace NPC
             {
 
                 PlaySound();
-                infectedDrops.Play();
+                if(infectedDrops != null)
+                    infectedDrops.Play();
                 SetTimeInterval();
             }
         }

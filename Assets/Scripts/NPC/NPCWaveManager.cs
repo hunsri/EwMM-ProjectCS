@@ -15,7 +15,7 @@ namespace NPC
         [SerializeField]
         private int _maxWaves;
 
-        public int CurrentWave {get; private set;}
+        public int CurrentWave {get; set;}
         public bool AllWavesOver {get; private set;}
 
 
@@ -72,14 +72,16 @@ namespace NPC
                 //checking if the current wave is over yet
                 if(System.DateTime.Now > _waveEnd)
                 {
-                    newWavePanel.SetActive(true);
+                    if(newWavePanel != null)
+                        newWavePanel.SetActive(true);
                     SoundManager.soundManager.LevelSounds(2);
                     StartNewWave();
                 }
             }
 
             if( System.DateTime.Now >_waveStart.AddSeconds(3)){
-                newWavePanel.SetActive(false);
+                if(newWavePanel != null)
+                    newWavePanel.SetActive(false);
             }
 
         }
@@ -101,7 +103,7 @@ namespace NPC
                         _waveStart = System.DateTime.Now;
                         _waveEnd = _waveStart.AddSeconds(_waveDurationSeconds);
 
-                        //Debug.Log("Wave "+CurrentWave+" started!");
+                        Debug.Log("Wave "+CurrentWave+" started!");
                     }
                     else
                     {

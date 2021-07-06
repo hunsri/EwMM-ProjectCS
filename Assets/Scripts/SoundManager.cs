@@ -26,13 +26,17 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-
         soundManager = this;
         DontDestroyOnLoad(gameObject);
 
         AudioSource[] audioSources = GetComponents<AudioSource>();
-        _audioSource = audioSources[0];
-        _weaponAudioSource = audioSources[1];
+        //quick fix
+        //program crashes if array is not filled!
+        if(audioSources.Length > 1)
+        {
+            _audioSource = audioSources[0];
+            _weaponAudioSource = audioSources[1];
+        }
     }
 
     void Start()
@@ -88,34 +92,42 @@ public class SoundManager : MonoBehaviour
        // if (index == 0)
        // {
        //     AudioSource.PlayClipAtPoint(_useVaccine, position);
-        _weaponAudioSource.loop = false;
-        if (index == 0)
+
+        //quick fix 
+        if(_weaponAudioSource != null)
         {
-            _weaponAudioSource.clip = _useVaccine;
+            _weaponAudioSource.loop = false;
+            if (index == 0)
+            {
+                _weaponAudioSource.clip = _useVaccine;
+            }
+            else if (index == 1 || index == 2)
+            {
+                //AudioSource.PlayClipAtPoint(_throw, position);
+                // }
+                _weaponAudioSource.clip = _throw;
+            }
+            _weaponAudioSource.volume = _vfxVolume * .2f;
+            _weaponAudioSource.Play();
         }
-        else if (index == 1 || index == 2)
-        {
-            //AudioSource.PlayClipAtPoint(_throw, position);
-            // }
-            _weaponAudioSource.clip = _throw;
-        }
-        _weaponAudioSource.volume = _vfxVolume * .2f;
-        _weaponAudioSource.Play();
     }
 
     public void PlaySwitchAmmo(Vector3 position)
     {
-        AudioSource.PlayClipAtPoint(_switchAmmo, position, _vfxVolume);
+        if(_switchAmmo != null)
+            AudioSource.PlayClipAtPoint(_switchAmmo, position, _vfxVolume);
     }
 
     public void Cough(Vector3 position)
     {
-        AudioSource.PlayClipAtPoint(_coughing, position, _vfxVolume);
+        if(_coughing != null)
+            AudioSource.PlayClipAtPoint(_coughing, position, _vfxVolume);
     }
 
     void Sneeze(Vector3 position)
     {
-        AudioSource.PlayClipAtPoint(_sneezing, position, _vfxVolume);
+        if(_sneezing != null)
+            AudioSource.PlayClipAtPoint(_sneezing, position, _vfxVolume);
     }
 
     public IEnumerator BgSound()
@@ -129,17 +141,23 @@ public class SoundManager : MonoBehaviour
 
     public void LevelSounds(int type){
         switch(type){
-            case 0: 
-                _audioSource.clip = _levelComplete;
+            case 0:
+                if(_levelComplete != null)
+                    _audioSource.clip = _levelComplete;
                 break;
             case 1:
-                _audioSource.clip = _gameOver;
+                if(_gameOver != null)
+                    _audioSource.clip = _gameOver;
                 break;
             case 2:
-                _audioSource.clip = _waveIncoming;
+                if(_waveIncoming != null)
+                    _audioSource.clip = _waveIncoming;
                 break;
         }
-        _audioSource.volume = 0.2f;
-        _audioSource.Play();
+        if(_audioSource != null)
+        {
+            _audioSource.volume = 0.2f;
+            _audioSource.Play();
+        }
     }
 }
