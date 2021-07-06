@@ -33,7 +33,7 @@ namespace Data
         /// Get a specific weapon by its index. Returns null if weapon with provided index
         /// is not found
         /// </summary>
-        public WeaponData GetWeapon(int weaponIndex)
+        public WeaponData GetWeapon(Weapons.WeaponTags weaponIndex)
         {
             foreach (WeaponData weaponData in _data.WeaponDatas)
             {
