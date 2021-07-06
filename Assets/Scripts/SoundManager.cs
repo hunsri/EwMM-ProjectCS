@@ -11,7 +11,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager soundManager;
 
     private AudioSource _audioSource;
-
+    private AudioSource _weaponAudioSource;
     // public GameObject infectedPrefab;
 
     [SerializeField] private AudioClip _coughing, _sneezing;
@@ -29,8 +29,9 @@ public class SoundManager : MonoBehaviour
         soundManager = this;
         DontDestroyOnLoad(gameObject);
 
-
-        _audioSource = GetComponent<AudioSource>();
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        _audioSource = audioSources[0];
+        _weaponAudioSource = audioSources[1];
     }
 
     void Start()
@@ -83,22 +84,22 @@ public class SoundManager : MonoBehaviour
 
     public void PlayProjectileUsed(int index, Vector3 position)
     {
-        _audioSource.loop = false;
+        _weaponAudioSource.loop = false;
         if (index == 0)
         {
-            _audioSource.clip = _useVaccine;
+            _weaponAudioSource.clip = _useVaccine;
         }
         else if (index == 1 || index == 2)
         {
-            _audioSource.clip = _throw;
+            _weaponAudioSource.clip = _throw;
         }
-        _audioSource.volume = 0.1f;
-        _audioSource.Play();
+        _weaponAudioSource.volume = _vfxVolume * .2f;
+        _weaponAudioSource.Play();
     }
 
     public void PlaySwitchAmmo(Vector3 position)
     {
-        AudioSource.PlayClipAtPoint(_switchAmmo, position);
+        AudioSource.PlayClipAtPoint(_switchAmmo, position, _vfxVolume);
     }
 
     public void Cough(Vector3 position)
@@ -119,5 +120,4 @@ public class SoundManager : MonoBehaviour
         _audioSource.volume = _dataManager.GetMusicVolume();
         _audioSource.Play();
     }
-
 }
