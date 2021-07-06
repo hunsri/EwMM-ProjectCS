@@ -1648,6 +1648,12 @@ MonoBehaviour:
   _uninfectedMaterial: {fileID: 2100000, guid: 38be956ab28f733d28109062159c18a8, type: 2}
   _infectedMaterial: {fileID: 2100000, guid: d0c1dc60b291530a8bdfb053a86c7309, type: 2}
   _curedMaterial: {fileID: 2100000, guid: fd86e3657dbb397ebbe42e84a4ab81af, type: 2}
+  _isNoVac: 0
+  _isNoMask: 0
+  _noVacBoard: {fileID: 3648514376624688813}
+  _noMaskBoard: {fileID: 7882506304628720251}
+  _maskObject: {fileID: 45016183102130973}
+  _ffp2MaskObject: {fileID: 2406596639920730901}
   infectedDrops: {fileID: 7264424738625755911}
 --- !u!114 &8912464712562221507
 MonoBehaviour:
@@ -1803,6 +1809,11 @@ PrefabInstance:
 --- !u!4 &852373671073943975 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b320bb43f1ac1494dbbe674647f9ac79, type: 3}
+  m_PrefabInstance: {fileID: 891295096601802316}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &45016183102130973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b320bb43f1ac1494dbbe674647f9ac79, type: 3}
   m_PrefabInstance: {fileID: 891295096601802316}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2060325080403361177
