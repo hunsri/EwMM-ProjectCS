@@ -111,11 +111,12 @@ public class SoundManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(_sneezing, position, _vfxVolume);
     }
 
-    public void BgSound()
+    public IEnumerator BgSound()
     {
+        yield return new WaitUntil(() => _isSettingsAccessible);
         _audioSource.loop = true;
         _audioSource.clip = _background;
-        _audioSource.volume = 0.2f; // todo [] Bind saved settings to bg sound.
+        _audioSource.volume = _dataManager.GetMusicVolume();
         _audioSource.Play();
     }
 

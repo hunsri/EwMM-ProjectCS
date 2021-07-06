@@ -132,7 +132,7 @@ namespace Data
         /// <summary>
         /// Load settings
         /// returns [_vfxVolume, _musicVolume, _difficulty]
-        /// </summary>
+        /// </summary>\
         public float[] LoadSettings()
         {
 
@@ -158,6 +158,12 @@ namespace Data
         {
             float[] settings = LoadSettings();
             return GetNormalizedVolume(settings[0]);
+        }
+
+        public float GetMusicVolume()
+        {
+            float[] settings = LoadSettings();
+            return GetNormalizedVolume(settings[1]); 
         }
 
         public int GetDifficulty()
