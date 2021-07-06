@@ -85,6 +85,9 @@ public class SoundManager : MonoBehaviour
 
     public void PlayProjectileUsed(int index, Vector3 position)
     {
+       // if (index == 0)
+       // {
+       //     AudioSource.PlayClipAtPoint(_useVaccine, position);
         _weaponAudioSource.loop = false;
         if (index == 0)
         {
@@ -92,6 +95,8 @@ public class SoundManager : MonoBehaviour
         }
         else if (index == 1 || index == 2)
         {
+            //AudioSource.PlayClipAtPoint(_throw, position);
+            // }
             _weaponAudioSource.clip = _throw;
         }
         _weaponAudioSource.volume = _vfxVolume * .2f;
