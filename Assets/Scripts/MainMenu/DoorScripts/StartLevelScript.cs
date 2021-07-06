@@ -33,8 +33,15 @@ namespace MainMenu
             }
             else if (name == "DoorLevel2")
             {
-                //AnimatorAndCounter(2);
-                Debug.Log("Not implemented!");
+                if (transform.GetChild(0).name == "DoorLevel2Barricade" && !transform.GetChild(0).gameObject.activeSelf)
+                {
+                    //AnimatorAndCounter(2);
+                    Debug.Log("Not implemented.");
+                }
+                else
+                {
+                    Debug.Log("You need to get rank 1.");
+                }
             }
             else
             {
