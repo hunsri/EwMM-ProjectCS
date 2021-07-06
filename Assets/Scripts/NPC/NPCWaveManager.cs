@@ -73,6 +73,7 @@ namespace NPC
                 if(System.DateTime.Now > _waveEnd)
                 {
                     newWavePanel.SetActive(true);
+                    SoundManager.soundManager.LevelSounds(2);
                     StartNewWave();
                 }
             }

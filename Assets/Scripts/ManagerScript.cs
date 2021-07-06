@@ -66,6 +66,7 @@ public class ManagerScript : MonoBehaviour
 
     void ShowLevelCompleted()
     {
+        SoundManager.soundManager.LevelSounds(0);
         background.SetActive(true);
         levelCompleted.SetActive(true);
         ammoCanvas.SetActive(false);
@@ -74,12 +75,9 @@ public class ManagerScript : MonoBehaviour
 
     void ShowGameOverPanel()
     {
+        SoundManager.soundManager.LevelSounds(1);
         gameOver.SetActive(true);
         ammoCanvas.SetActive(false);
     }
 
-    //timer?
-    void blink(){
-
-    }
 }
