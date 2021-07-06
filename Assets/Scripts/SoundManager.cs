@@ -16,12 +16,13 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioClip _coughing, _sneezing;
     [SerializeField] private AudioClip _background;
-    [SerializeField] private AudioClip _throw, _useVaccine, _switchAmmo;
 
     // [SerializeField]
     private float _vfxVolume = -60; // default value, if there's something wrong while loading the data
     private bool _isSettingsAccessible = false;
     private PlayerDataManager _dataManager;
+    [SerializeField] private AudioClip  _throw, _useVaccine, _switchAmmo;
+    [SerializeField] private AudioClip _levelComplete, _gameOver, _waveIncoming;
 
     private void Awake()
     {
@@ -118,6 +119,22 @@ public class SoundManager : MonoBehaviour
         _audioSource.loop = true;
         _audioSource.clip = _background;
         _audioSource.volume = _dataManager.GetMusicVolume();
+        _audioSource.Play();
+    }
+
+    public void LevelSounds(int type){
+        switch(type){
+            case 0: 
+                _audioSource.clip = _levelComplete;
+                break;
+            case 1:
+                _audioSource.clip = _gameOver;
+                break;
+            case 2:
+                _audioSource.clip = _waveIncoming;
+                break;
+        }
+        _audioSource.volume = 0.2f;
         _audioSource.Play();
     }
 }

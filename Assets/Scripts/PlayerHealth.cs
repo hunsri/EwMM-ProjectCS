@@ -50,9 +50,10 @@ public class PlayerHealth : MonoBehaviour
         {
             Behaviors behaviors = nPCBehavior.GetBehaviors();
             Debug.Log("Collided with: " + behaviors);
-
+            
             // if npc wears mask, get the assigned spreading percent
             // MaskType mask = go.GetComponent<MaskType>().GetMaskType();
+            //InfectionRate(mask);
 
             //if an npc is infected 
             if (behaviors == Behaviors.INFECTED)
@@ -92,4 +93,10 @@ public class PlayerHealth : MonoBehaviour
         }
     } 
     */
+
+    public float getHealth(){
+        float currentHealth = _health.healthbar.fillAmount;
+        Debug.Log("Player Health:" + currentHealth);
+        return currentHealth;
+    }
 }
