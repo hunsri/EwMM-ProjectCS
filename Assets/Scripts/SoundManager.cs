@@ -46,17 +46,14 @@ public class SoundManager : MonoBehaviour
 
     public void PlayProjectileUsed(int index, Vector3 position)
     {
-        _audioSource.loop = false;
         if (index == 0)
         {
-            _audioSource.clip = _useVaccine;
+            AudioSource.PlayClipAtPoint(_useVaccine, position);
         }
         else if(index == 1 || index == 2)
         {
-            _audioSource.clip = _throw;
+            AudioSource.PlayClipAtPoint(_throw, position);
         }
-        _audioSource.volume = 0.1f;
-        _audioSource.Play();
     }
 
     public void PlaySwitchAmmo(Vector3 position)
