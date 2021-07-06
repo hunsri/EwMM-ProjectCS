@@ -38,6 +38,7 @@ public class ShootingController : MonoBehaviour
         {
 
             ShootProjectile();
+            SoundManager.soundManager.PlayProjectileUsed(_weaponIndex, _projectile.position);
         }
 
     }
