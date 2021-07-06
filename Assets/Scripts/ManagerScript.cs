@@ -16,6 +16,9 @@ public class ManagerScript : MonoBehaviour
     public GameObject background;
 
     public GameObject levelCompleted;
+    public GameObject _gameOver;
+
+    public GameObject _ammoCanvas;
 
     // Start is called before the first frame update
     void Awake()
@@ -64,5 +67,11 @@ public class ManagerScript : MonoBehaviour
         background.SetActive(true);
         levelCompleted.SetActive(true);
         //for later: Manage LevelCompleted Info
+    }
+
+    void ShowGameOverPanel()
+    {
+        _gameOver.SetActive(true);
+        _ammoCanvas.SetActive(false);
     }
 }
