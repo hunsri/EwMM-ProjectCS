@@ -16,10 +16,10 @@ public class PlayerHealth : MonoBehaviour
     /*
     [SerializeField]
     private bool _isFFP = false; //if player is wearing a ffp2 mask, the risk lowers?
-    */ 
+    */
 
     /* player health displayed on the screen */
-    private EnemyHealth _health; 
+    private EnemyHealth _health;
 
     /* infection risk percentage */
     private int _spreadingPercent;
@@ -27,7 +27,8 @@ public class PlayerHealth : MonoBehaviour
     /* infection "damange" of the player */
     private const int _infection = 10;
 
-    void Start(){
+    void Start()
+    {
         //connect healthbar and it's functions to the player
         _health = player.GetComponent<EnemyHealth>();
         // TODO: Delete later, once masktypes are implemented
@@ -38,32 +39,40 @@ public class PlayerHealth : MonoBehaviour
     /**
     * When an infected NPC collides with the Player body. The health of the player drops
     **/
-    void OnCollisionEnter(Collision collision){  
+    void OnCollisionEnter(Collision collision)
+    {
 
         //the npc 
         GameObject go = collision.gameObject;
         // status of the npc (infected, uninfected, cured)
-        Behaviors behaviors = go.GetComponent<NPCBehavior>().GetBehaviors();
-        Debug.Log("Collided with: " + behaviors);
-
-        // if npc wears mask, get the assigned spreading percent
-        // MaskType mask = go.GetComponent<MaskType>().GetMaskType();
-        //InfectionRate(mask);
-
-        //if an npc is infected 
-        if(behaviors == Behaviors.INFECTED){
-
-            // randomize probabilty of getting infected
-            int probability = UnityEngine.Random.Range(1, 100);
+        go.TryGetComponent<NPCBehavior>(out NPCBehavior nPCBehavior);
+        if (nPCBehavior)
+        {
+            Behaviors behaviors = nPCBehavior.GetBehaviors();
+            Debug.Log("Collided with: " + behaviors);
             
-            // TODO repalace if masktypes get implemented
-            //if(probability < mask)
-            if(probability < _spreadingPercent){
-                //drop in "health" (healthbar gets filled because infection risk increased)
-                _health.HealthImproved(_infection);
-            }
+            // if npc wears mask, get the assigned spreading percent
+            // MaskType mask = go.GetComponent<MaskType>().GetMaskType();
+            //InfectionRate(mask);
 
+            //if an npc is infected 
+            if (behaviors == Behaviors.INFECTED)
+            {
+
+                // randomize probabilty of getting infected
+                int probability = UnityEngine.Random.Range(1, 100);
+
+                // TODO repalace if masktypes get implemented
+                //if(probability < mask)
+                if (probability < _spreadingPercent)
+                {
+                    //drop in "health" (healthbar gets filled because infection risk increased)
+                    _health.HealthImproved(_infection);
+                }
+
+            }
         }
+
     }
 
     //TODO: Delete if use enum masktype has int constants, use if masktype has no int constants

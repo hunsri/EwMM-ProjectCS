@@ -25,7 +25,7 @@ namespace Data
 
                 // cleanup
                 SceneParameters.PlayerData = null;
-                SceneParameters.UseLoadedGame = false;
+                // SceneParameters.UseLoadedGame = false;
             }
         }
 
@@ -122,6 +122,7 @@ namespace Data
         {
             _data.UpdateSettings(vfxVolume, musicVolume, difficulty);
             SaveGame();
+            SceneParameters.UseLoadedGame = true;
         }
         public bool IsDataLoaded()
         {
@@ -131,12 +132,44 @@ namespace Data
         /// <summary>
         /// Load settings
         /// returns [_vfxVolume, _musicVolume, _difficulty]
-        /// </summary>
+        /// </summary>\
         public float[] LoadSettings()
         {
 
-            LoadGame(false); // won't do any harm if loaded file is not found.
+            if (!SceneParameters.UseLoadedGame)
+            {
+                LoadGame(false);
+            }
             return _data.GetSettings();
+        }
+
+        /// <summary>
+        /// Get normalized volume value in float (between 0 and 1)
+        /// </summary>
+        /// <param name="value">Value of the volume from slider that needs to be normalized</param>
+        /// <returns>Normalized value of volume (between 0 and 1) that could be used with audioclips</returns>
+        float GetNormalizedVolume(float value)
+        {
+            // slider on main menu -> max value: 0, min value: -80. Default value: -60;
+            return (value + 80) / 80; // first make the value not negative by setting its max value to 80 and its min to 0
+        }
+
+        public float GetVfxVolume()
+        {
+            float[] settings = LoadSettings();
+            return GetNormalizedVolume(settings[0]);
+        }
+
+        public float GetMusicVolume()
+        {
+            float[] settings = LoadSettings();
+            return GetNormalizedVolume(settings[1]); 
+        }
+
+        public int GetDifficulty()
+        {
+            float[] settings = LoadSettings();
+            return (int)settings[2];
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using Data;
 
 namespace MainMenu
 {
@@ -46,6 +47,8 @@ namespace MainMenu
             _hardRenderer.material.SetColor(_shaderPropertyName, Color.white);
 
             Debug.Log("Setting is default!");
+
+            FindObjectOfType<PlayerDataManager>().SaveSettings(_defaultVolume, _defaultVolume, 0);
         }
     }
 }

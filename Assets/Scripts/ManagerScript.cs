@@ -19,9 +19,9 @@ public class ManagerScript : MonoBehaviour
     public GameObject ammoCanvas;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        SoundManager.soundManager.BgSound();
+        StartCoroutine(SoundManager.soundManager.BgSound());
     }
 
     // Update is called once per frame
@@ -60,7 +60,7 @@ public class ManagerScript : MonoBehaviour
         //convert time into minutes and seconds
         float minutes = Mathf.FloorToInt(time / 60);
         float seconds = Mathf.FloorToInt(time % 60);
-        
+
         _timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
