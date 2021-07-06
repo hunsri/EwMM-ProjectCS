@@ -120,7 +120,6 @@ namespace Data
         /// </summary>
         public void SaveSettings(float vfxVolume, float musicVolume, float difficulty)
         {
-            Debug.Log("Saving vfx: " + vfxVolume);
             _data.UpdateSettings(vfxVolume, musicVolume, difficulty);
             SaveGame();
             SceneParameters.UseLoadedGame = true;
@@ -144,10 +143,21 @@ namespace Data
             return _data.GetSettings();
         }
 
+        /// <summary>
+        /// Get normalized volume value in float (between 0 and 1)
+        /// </summary>
+        /// <param name="value">Value of the volume from slider that needs to be normalized</param>
+        /// <returns>Normalized value of volume (between 0 and 1) that could be used with audioclips</returns>
+        float GetNormalizedVolume(float value)
+        {
+            // slider on main menu -> max value: 0, min value: -80. Default value: -60;
+            return (value + 80) / 80; // first make the value not negative by setting its max value to 80 and its min to 0
+        }
+
         public float GetVfxVolume()
         {
             float[] settings = LoadSettings();
-            return settings[0];
+            return GetNormalizedVolume(settings[0]);
         }
     }
 }

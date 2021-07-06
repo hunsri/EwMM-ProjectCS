@@ -46,7 +46,6 @@ public class SoundManager : MonoBehaviour
         Debug.Log("Loading user settings");
         yield return new WaitUntil(() => _isSettingsAccessible);
         Debug.Log("Loading is successful");
-        Debug.Log("VFX from data: " + _dataManager.GetVfxVolume());
         _vfxVolume = _dataManager.GetVfxVolume();
     }
 
@@ -104,20 +103,19 @@ public class SoundManager : MonoBehaviour
 
     public void Cough(Vector3 position)
     {
-        Debug.Log("VFX: " + _vfxVolume);
-        AudioSource.PlayClipAtPoint(_coughing, position);
+        AudioSource.PlayClipAtPoint(_coughing, position, _vfxVolume);
     }
 
     void Sneeze(Vector3 position)
     {
-        AudioSource.PlayClipAtPoint(_sneezing, position);
+        AudioSource.PlayClipAtPoint(_sneezing, position, _vfxVolume);
     }
 
     public void BgSound()
     {
         _audioSource.loop = true;
         _audioSource.clip = _background;
-        _audioSource.volume = 0.2f;
+        _audioSource.volume = 0.2f; // todo [] Bind saved settings to bg sound.
         _audioSource.Play();
     }
 
