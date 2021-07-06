@@ -65,7 +65,12 @@ public class ShootingController : MonoBehaviour
         var projectileObj = Instantiate(_projectile, projectileStartPoint, Quaternion.Euler(transform.forward));
 
         projectileObj.transform.rotation = transform.rotation; // set projectile's rotation to face user
-        projectileObj.GetComponent<ProjectileController>().SetTag(_weaponIndex);
+
+        projectileObj.TryGetComponent<ProjectileController>(out ProjectileController projectileController);
+        if (projectileController)
+        {
+            projectileController.SetTag(_weaponIndex);
+        }
 
         projectileObj.GetComponent<Rigidbody>().velocity = (_projectileDestination - projectileStartPoint).normalized * _projectileSpeed;
         if (_weaponIndex != Weapons.WeaponTags.MenuWeapon)

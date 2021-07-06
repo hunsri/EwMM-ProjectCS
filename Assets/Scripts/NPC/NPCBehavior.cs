@@ -273,7 +273,7 @@ namespace NPC
         public void SetTimeInterval()
         {
             _timeInterval = UnityEngine.Random.Range(5.0f, 60.0f);
-            Debug.Log("Set:" + _timeInterval);
+            // Debug.Log("Set:" + _timeInterval);
         }
 
         public void triggerInfectedSoundsInInterval()

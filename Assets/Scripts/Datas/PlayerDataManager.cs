@@ -25,7 +25,7 @@ namespace Data
 
                 // cleanup
                 SceneParameters.PlayerData = null;
-                SceneParameters.UseLoadedGame = false;
+                // SceneParameters.UseLoadedGame = false;
             }
         }
 
@@ -120,8 +120,10 @@ namespace Data
         /// </summary>
         public void SaveSettings(float vfxVolume, float musicVolume, float difficulty)
         {
+            Debug.Log("Saving vfx: " + vfxVolume);
             _data.UpdateSettings(vfxVolume, musicVolume, difficulty);
             SaveGame();
+            SceneParameters.UseLoadedGame = true;
         }
         public bool IsDataLoaded()
         {
@@ -135,8 +137,17 @@ namespace Data
         public float[] LoadSettings()
         {
 
-            LoadGame(false); // won't do any harm if loaded file is not found.
+            if (!SceneParameters.UseLoadedGame)
+            {
+                LoadGame(false);
+            }
             return _data.GetSettings();
+        }
+
+        public float GetVfxVolume()
+        {
+            float[] settings = LoadSettings();
+            return settings[0];
         }
     }
 }

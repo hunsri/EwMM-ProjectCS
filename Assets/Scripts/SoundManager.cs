@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using Data;
 
 
 public class SoundManager : MonoBehaviour
@@ -11,22 +12,57 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource _audioSource;
 
-   // public GameObject infectedPrefab;
+    // public GameObject infectedPrefab;
 
     [SerializeField] private AudioClip _coughing, _sneezing;
     [SerializeField] private AudioClip _background;
-    [SerializeField] private AudioClip  _throw, _useVaccine, _switchAmmo;
-   
+    [SerializeField] private AudioClip _throw, _useVaccine, _switchAmmo;
+
+    // [SerializeField]
+    private float _vfxVolume = -60; // default value, if there's something wrong while loading the data
+    private bool _isSettingsAccessible = false;
+    private PlayerDataManager _dataManager;
 
     private void Awake()
     {
-     
-            soundManager = this;
-            DontDestroyOnLoad(gameObject);
-        
+
+        soundManager = this;
+        DontDestroyOnLoad(gameObject);
+
 
         _audioSource = GetComponent<AudioSource>();
-       
+    }
+
+    void Start()
+    {
+        StartCoroutine(GetUserVolume());
+    }
+
+    /// <summary>
+    /// Load vfx volume from saved user setting
+    /// </summary>
+    IEnumerator GetUserVolume()
+    {
+        Debug.Log("Loading user settings");
+        yield return new WaitUntil(() => _isSettingsAccessible);
+        Debug.Log("Loading is successful");
+        Debug.Log("VFX from data: " + _dataManager.GetVfxVolume());
+        _vfxVolume = _dataManager.GetVfxVolume();
+    }
+
+    /// <summary>
+    /// Try to find loaded user data
+    /// </summary>
+    void Update()
+    {
+        if (!_isSettingsAccessible)
+        {
+            _dataManager = FindObjectOfType<PlayerDataManager>();
+            if (_dataManager != null)
+            {
+                _isSettingsAccessible = _dataManager.IsDataLoaded();
+            }
+        }
     }
 
     public void PlayRandomInfectedSounds(int sound, Vector3 position)
@@ -35,11 +71,13 @@ public class SoundManager : MonoBehaviour
         {
             case 1:
             case 3:
-            case 5: Cough(position);
+            case 5:
+                Cough(position);
                 break;
             case 2:
             case 4:
-            case 6: Sneeze(position);
+            case 6:
+                Sneeze(position);
                 break;
         }
     }
@@ -51,7 +89,7 @@ public class SoundManager : MonoBehaviour
         {
             _audioSource.clip = _useVaccine;
         }
-        else if(index == 1 || index == 2)
+        else if (index == 1 || index == 2)
         {
             _audioSource.clip = _throw;
         }
@@ -66,20 +104,21 @@ public class SoundManager : MonoBehaviour
 
     public void Cough(Vector3 position)
     {
-        AudioSource.PlayClipAtPoint(_coughing, position);    
+        Debug.Log("VFX: " + _vfxVolume);
+        AudioSource.PlayClipAtPoint(_coughing, position);
     }
 
     void Sneeze(Vector3 position)
     {
-        AudioSource.PlayClipAtPoint(_sneezing, position);  
+        AudioSource.PlayClipAtPoint(_sneezing, position);
     }
 
-   public  void BgSound()
+    public void BgSound()
     {
         _audioSource.loop = true;
         _audioSource.clip = _background;
         _audioSource.volume = 0.2f;
-        _audioSource.Play();   
+        _audioSource.Play();
     }
 
 }
