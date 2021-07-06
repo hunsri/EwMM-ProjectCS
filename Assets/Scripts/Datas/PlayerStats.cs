@@ -10,6 +10,9 @@ using System;
 
 namespace Data
 {
+    ///<summary>
+    /// This class is used to interact with the saved progress of the player, represented by <c>PlayerStatsData</c>
+    ///</summary>
     public class PlayerStats
     {
         //the name of the safe file
@@ -65,6 +68,10 @@ namespace Data
             stream.Close();
         }
 
+        ///<summary>
+        /// Tries to reload the save file of the players progress
+        /// <returns> The <c>PlayerStatsData</c> object if a save was found, null if that failed </returns>
+        ///</summary>
         private PlayerStatsData ReloadPlayerStats()
         {
             if (File.Exists(_saveFilePath))

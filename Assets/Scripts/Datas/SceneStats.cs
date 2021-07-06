@@ -12,17 +12,19 @@ using System;
 
 namespace Data
 {   
+    ///<summary>
+    /// This class is used to interact with the savestate of a scene represented by <c>SceneStatsData</c>
+    ///</summary>
     [System.Serializable]
     public class SceneStats : MonoBehaviour
     {   
-        //the name of the safe file
+        //the name of the save file
         public readonly string SaveFileName = "CoronaShotsSceneStats.data";
-        //the entire path including the safe file name
+        //the entire path including the save file name
         private string _saveFilePath;
         private BinaryFormatter _formatter = new BinaryFormatter();
 
         private SceneStatsData _sceneStatsData;
-
         private NPCWaveManager _waveManager;
 
         public void Awake()
@@ -84,26 +86,26 @@ namespace Data
         {
             _sceneStatsData.CuredNPCS++;
             _sceneStatsData.Score += 120;
-            Debug.Log("cured: "+ _sceneStatsData.CuredNPCS);
+            //Debug.Log("cured: "+ _sceneStatsData.CuredNPCS);
         }
 
         public void IncrementVaccinesShot()
         {
             _sceneStatsData.VaccinesShot++;
             _sceneStatsData.Score -= 20;
-            Debug.Log("vaccines shot: "+ _sceneStatsData.VaccinesShot);
+            //Debug.Log("vaccines shot: "+ _sceneStatsData.VaccinesShot);
         }
 
         public void IncrementMasksShot()
         {
             _sceneStatsData.MasksShot++;
-            Debug.Log("masks shot: "+ _sceneStatsData.MasksShot);
+            //Debug.Log("masks shot: "+ _sceneStatsData.MasksShot);
         }
 
         public void IncrementInfectionEvents()
         {
             _sceneStatsData.InfectionEvents++;
-            Debug.Log("infectionEvents: "+ _sceneStatsData.InfectionEvents);
+            //Debug.Log("infectionEvents: "+ _sceneStatsData.InfectionEvents);
         }
 
         public void SaveSceneStats()
@@ -114,6 +116,10 @@ namespace Data
             stream.Close();
         }
 
+        ///<summary>
+        /// Tries to reload the savestate of the current scene.
+        /// <returns> The <c>SceneStatsData</c> object if a savestate was found, null if that failed </returns>
+        ///</summary>
         private SceneStatsData ReloadSceneStats()
         {
             if (File.Exists(_saveFilePath))
@@ -138,8 +144,14 @@ namespace Data
             return null;
         }
 
+        ///<summary>
+        /// This method takes the current stats of the scene and applies them to the overall stats of the player.
+        /// After it is done it deletes the save file.
+        /// Should be called once all waves in a scene are over.
+        ///</summary>
         public void TransferScoreToPlayerStats()
         {   
+            //TODO outsource xp calculation
             PlayerStats playerStats = new PlayerStats();
 
             int score = _sceneStatsData.Score;
