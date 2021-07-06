@@ -16,6 +16,10 @@ TagManager:
   - OP
   - FFP2
   - Indicator
+  - Mask
+  - FFPMask
+  - NoVacBoard
+  - NoMaskBoard
   layers:
   - Default
   - TransparentFX

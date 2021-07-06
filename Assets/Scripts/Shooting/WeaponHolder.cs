@@ -18,6 +18,7 @@ public class WeaponHolder : MonoBehaviour
     private PlayerDataManager _playerData;
     private WeaponData _activeWeaponData;
     private bool _isWeaponAccessible = false;
+    private bool _firstWeapon = true;
 
     void Start()
     {
@@ -120,6 +121,14 @@ public class WeaponHolder : MonoBehaviour
                 if (i == _activeWeapon)
                 {
                     LoadWeaponData(weapon.GetComponent<ShootingController>());
+                    if (_firstWeapon == true)
+                    {
+                        _firstWeapon = false;
+                    }
+                    else
+                    {
+                        SoundManager.soundManager.PlaySwitchAmmo(transform.position);
+                    }
                 }
             }
         }
@@ -135,7 +144,7 @@ public class WeaponHolder : MonoBehaviour
     /// </summary>
     void LoadWeaponData(ShootingController shootingController)
     {
-        int weaponIndex = shootingController.GetWeaponIndex();
+        Weapons.WeaponTags weaponIndex = shootingController.GetWeaponIndex();
         WeaponData active = _playerData.GetWeapon(weaponIndex);
         if (active == null)
         {
@@ -189,7 +198,7 @@ public class WeaponHolder : MonoBehaviour
     /// </summary>
     public void UpdateUI(int ammoCount, int maxAmmo)
     {
-        if (_activeWeaponData.GetWeaponIndex() == Weapons.MenuWeaponIndex)
+        if (_activeWeaponData.GetWeaponIndex() == Weapons.WeaponTags.MenuWeapon)
         {
             _weaponAmmo.text = "";
             return;
@@ -220,11 +229,11 @@ public class WeaponHolder : MonoBehaviour
         WeaponData[] weaponDatas = _playerData.GetAllWeapons();
         foreach (WeaponData weaponData in weaponDatas)
         {
-            if (weaponData != null && weaponData.GetWeaponIndex() != Weapons.MenuWeaponIndex)
+            if (weaponData != null && weaponData.GetWeaponIndex() != Weapons.WeaponTags.MenuWeapon)
             {
                 float[] defaultPosition = weaponData.GetDefaultPosition();
                 Vector3 position = new Vector3(defaultPosition[0], defaultPosition[1], defaultPosition[2]);
-                _playerData.LoadResource("Weapons/Weapon" + weaponData.GetWeaponIndex(), transform, position);
+                _playerData.LoadResource("Weapons/Weapon" + (int)weaponData.GetWeaponIndex(), transform, position);
             }
         }
     }
