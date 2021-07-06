@@ -10,5 +10,8 @@ namespace Data
         public int Score;
         public int XP;
         public int CuredNPCS;
+
+        public bool HasMaskReward;
+        public bool HasMoreAmmunitionReward;
     }
 }
