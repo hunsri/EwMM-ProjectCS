@@ -27,6 +27,8 @@ namespace NPC
         private DateTime _timeSpendInPause;
         private DateTime _pauseStart;
 
+        public GameObject newWavePanel;
+
         //holds if the wave is paused
         //ONLY ACCESS THIS FIELD THROUGH ITS PROPERTY - things will break if you ignore this
         private bool _isPaused;
@@ -70,9 +72,16 @@ namespace NPC
                 //checking if the current wave is over yet
                 if(System.DateTime.Now > _waveEnd)
                 {
+                    newWavePanel.SetActive(true);
+                    SoundManager.soundManager.LevelSounds(2);
                     StartNewWave();
                 }
             }
+
+            if( System.DateTime.Now >_waveStart.AddSeconds(3)){
+                newWavePanel.SetActive(false);
+            }
+
         }
 
         /// <summary>
