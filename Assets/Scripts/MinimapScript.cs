@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Text;
+
 
 public class MinimapScript : MonoBehaviour
 {
-    public GameObject minimap;
+    public GameObject minimap;    
+    public Text closeText;
+    public Text keyText;
 
     // Update is called once per frame
     void Update()
@@ -22,10 +27,14 @@ public class MinimapScript : MonoBehaviour
     void ShowMinimap()
     {
         minimap.SetActive(true);
+        closeText.text = "CLOSE MAP";
+        
     }
 
     void HideMinimap()
     {
-        minimap.SetActive(false);
+        minimap.SetActive(false);        
+        closeText.text = "OPEN MAP";
+
     }
 }
