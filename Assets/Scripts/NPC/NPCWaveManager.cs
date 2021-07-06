@@ -72,14 +72,16 @@ namespace NPC
                 //checking if the current wave is over yet
                 if(System.DateTime.Now > _waveEnd)
                 {
-                    newWavePanel.SetActive(true);
+                    if(newWavePanel != null)
+                        newWavePanel.SetActive(true);
                     SoundManager.soundManager.LevelSounds(2);
                     StartNewWave();
                 }
             }
 
             if( System.DateTime.Now >_waveStart.AddSeconds(3)){
-                newWavePanel.SetActive(false);
+                if(newWavePanel != null)
+                    newWavePanel.SetActive(false);
             }
 
         }

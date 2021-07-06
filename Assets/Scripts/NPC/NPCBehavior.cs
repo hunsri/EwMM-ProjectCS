@@ -4,8 +4,6 @@ using UnityEngine;
 using System;
 using Data;
 
-using Data;
-
 namespace NPC
 {
     ///<summary>
@@ -299,7 +297,7 @@ namespace NPC
 
         public void SetTimeInterval()
         {
-            _timeInterval = Random.Range(5.0f, 60.0f);
+            _timeInterval = UnityEngine.Random.Range(5.0f, 60.0f);
             //Debug.Log("Set:" + _timeInterval);
         }
 
@@ -311,7 +309,8 @@ namespace NPC
             {
 
                 PlaySound();
-                infectedDrops.Play();
+                if(infectedDrops != null)
+                    infectedDrops.Play();
                 SetTimeInterval();
             }
         }
