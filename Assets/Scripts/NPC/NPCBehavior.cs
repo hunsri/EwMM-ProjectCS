@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using Data;
 
 namespace NPC
 {
@@ -17,6 +19,23 @@ namespace NPC
         [SerializeField]
         private Material _curedMaterial;
 
+        [SerializeField]
+        private bool _isNoVac = false;
+
+        [SerializeField]
+        private bool _isNoMask = false;
+
+        [SerializeField]
+        private GameObject _noVacBoard;
+
+        [SerializeField]
+        private GameObject _noMaskBoard;
+
+        [SerializeField]
+        private GameObject _maskObject;
+
+        [SerializeField]
+        private GameObject _ffp2MaskObject;
         private GameObject _indicator;
 
         //default behavior is uninfected
@@ -35,12 +54,16 @@ namespace NPC
         private NPCWaveManager _waveManager;
         private Animator _animator;
 
+        private MaskType _isMasked = MaskType.NONE; // between 0 and 2, 0 = nomask, 1 = op mask, 2 = ffp mask
+        public ParticleSystem infectedDrops;
+        private NPCAttributes _npcAttributes;
 
         void Awake()
         {
             _indicator = FindNPCIndicator();
-            _indicator.GetComponent<Renderer>().material = _uninfectedMaterial;
-            _indicator.GetComponent<Renderer>().sortingOrder = 99;
+            Renderer renderer = _indicator.GetComponent<Renderer>();
+            renderer.material = _uninfectedMaterial;
+            renderer.sortingOrder = 99;
         }
 
         // Start is called before the first frame update
@@ -51,10 +74,12 @@ namespace NPC
             _targetDirection = new Vector3(Mathf.Sin(angle), 0, Mathf.Cos(angle));
             transform.rotation = Quaternion.LookRotation(_targetDirection);
 
+            UpdateAppearance();
+
             SetTimeInterval();
-            
+
             _waveManager = FindObjectOfType<NPCWaveManager>();
-            _animator = GetComponent<Animator> ();
+            _animator = GetComponent<Animator>();
         }
 
         // Update is called once per frame
@@ -64,27 +89,27 @@ namespace NPC
             //really dislike the implementation here, maybe splitting it into individual scripts later
             float speed;
 
-            switch(_behavior)
-            {   
+            switch (_behavior)
+            {
                 case Behaviors.UNINFECTED:
-                    speed = 4;
+                    speed = _npcAttributes.Speed;
                     break;
                 case Behaviors.INFECTED:
-                    speed = 2;
+                    speed = _npcAttributes.InfectedSpeed;
                     triggerInfectedSoundsInInterval();
                     break;
                 case Behaviors.CURED:
-                    speed = 4;
+                    speed = _npcAttributes.CuredSpeed;
                     break;
                 default:
                     speed = 0;
                     break;
             }
 
-            if(!_waveManager.IsPaused)
+            if (!_waveManager.IsPaused)
             {
                 _animator.enabled = true;
-                transform.position += transform.rotation * new Vector3(0, 0, 1) * speed  * Time.deltaTime;
+                transform.position += transform.rotation * new Vector3(0, 0, 1) * speed * Time.deltaTime;
             }
             else
             {
@@ -95,39 +120,69 @@ namespace NPC
         private void OnCollisionEnter(Collision other)
         {
             //only process collisions if the game isn't paused
-            if(!_waveManager.IsPaused)
+            if (!_waveManager.IsPaused)
             {
                 GameObject go = other.gameObject;
 
                 //if the collided object has the Border tag change direction 
-                if(go.tag == "Border")
+                if (go.tag == "Border")
                 {
-                    transform.rotation *= Quaternion.AngleAxis( 180, transform.up ); 
+                    transform.rotation *= Quaternion.AngleAxis(180, transform.up);
                 }
 
                 //delete the NPC if it touches the limits of the world
-                if(go.tag == "KillBorder")
+                if (go.tag == "KillBorder")
                 {
                     Destroy(this.gameObject);
                 }
 
-                //TODO change accordingly to projectile type
-                if(go.tag == "Projectile")
+                if (go.tag == "Projectile")
                 {
-                    ChangeBehavior(Behaviors.CURED);
+                    Weapons.WeaponTags weaponTag = go.GetComponent<ProjectileController>().GetTag();
+                    if (!_isNoVac)
+                    {
+                        if (weaponTag == Weapons.WeaponTags.Syringe)
+                        {
+                            ChangeBehavior(Behaviors.CURED);
+                        }
+                    }
+
+                    if (!_isNoMask)
+                    {
+                        if (weaponTag == Weapons.WeaponTags.OpMask)
+                        {
+                            if (_isMasked != MaskType.NONE)
+                            {
+                                return;
+                            }
+                            _isMasked = MaskType.NORMAL;
+                        }
+
+                        if (weaponTag == Weapons.WeaponTags.FFPMask)
+                        {
+                            if (_isMasked == MaskType.FFP)
+                            {
+                                return;
+                            }
+                            _isMasked = MaskType.FFP;
+                        }
+
+                        UpdateAppearance();
+                    }
                 }
 
                 //calculating if an NPC infects another NPC if it touches it
                 //also slightly changing the direction in case an NPC touches another NPC
-                if(go.tag == "Enemy")
+                if (go.tag == "Enemy")
                 {
                     NPCBehavior script;
 
-                    if(_behavior == Behaviors.INFECTED){
+                    if (_behavior == Behaviors.INFECTED)
+                    {
 
                         int probability = UnityEngine.Random.Range(1, 100);
-                        
-                        if(probability < SpreadingPercent)
+
+                        if (probability < _npcAttributes.InfectionRate)
                         {
                             script = go.GetComponent<NPCBehavior>();
 
@@ -136,7 +191,7 @@ namespace NPC
                     }
 
                     //when colliding with another NPC the direction gets slightly changed
-                    transform.rotation *= Quaternion.AngleAxis( RandomAngle(45f), transform.up );
+                    transform.rotation *= Quaternion.AngleAxis(RandomAngle(45f), transform.up);
 
                 }
             }
@@ -154,17 +209,33 @@ namespace NPC
             _behavior = b;
 
             //changing the material of the indicator 
-            switch(_behavior)
+            switch (_behavior)
             {
                 case Behaviors.UNINFECTED:
-                _indicator.GetComponent<Renderer>().material = _uninfectedMaterial;
-                break;
+                    _indicator.GetComponent<Renderer>().material = _uninfectedMaterial;
+                    break;
                 case Behaviors.INFECTED:
-                _indicator.GetComponent<Renderer>().material = _infectedMaterial;
-                break;
+                    _indicator.GetComponent<Renderer>().material = _infectedMaterial;
+                    break;
                 case Behaviors.CURED:
-                _indicator.GetComponent<Renderer>().material = _curedMaterial;
-                break;
+                    _indicator.GetComponent<Renderer>().material = _curedMaterial;
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Update appearance of the npc
+        /// </summary>
+        void UpdateAppearance()
+        {
+            GameObject[] appearanceObjects = new GameObject[] { _noMaskBoard, _noVacBoard, _maskObject, _ffp2MaskObject };
+            // check if all appearance objects exist
+            if (Array.TrueForAll(appearanceObjects, (obj) => obj != null))
+            {
+                _maskObject.SetActive(_isMasked == MaskType.NORMAL);
+                _ffp2MaskObject.SetActive(_isMasked == MaskType.FFP);
+                _noMaskBoard.SetActive(_isNoMask);
+                _noVacBoard.SetActive(_isNoVac);
             }
         }
 
@@ -175,9 +246,10 @@ namespace NPC
         {
             Component[] components = gameObject.GetComponentsInChildren<Transform>();
 
-            for(int i = 0; i < components.Length; i++)
+            for (int i = 0; i < components.Length; i++)
             {
-                if (components[i].name == "MarkerSphere"){
+                if (components[i].name == "MarkerSphere")
+                {
                     return components[i].gameObject;
                 }
             }
@@ -185,33 +257,54 @@ namespace NPC
             return null;
         }
 
-        public Behaviors GetBehaviors(){
+        public Behaviors GetBehaviors()
+        {
             return _behavior;
         }
 
         public void PlaySound()
         {
-            int AudioClipRandom = Random.Range(1, 6);
+            int AudioClipRandom = UnityEngine.Random.Range(1, 6);
             Debug.Log("Sound" + AudioClipRandom);
             SoundManager.soundManager.PlayRandomInfectedSounds(AudioClipRandom, transform.position);
         }
 
         public void SetTimeInterval()
         {
-            _timeInterval = Random.Range(5.0f, 60.0f);
-            Debug.Log("Set:" + _timeInterval);
+            _timeInterval = UnityEngine.Random.Range(5.0f, 60.0f);
+            // Debug.Log("Set:" + _timeInterval);
         }
 
         public void triggerInfectedSoundsInInterval()
         {
             _timeInterval -= Time.deltaTime;
-            // Debug.Log("timeInterval:" + timeInterval);
+
             if (_timeInterval <= 0)
             {
 
                 PlaySound();
+                infectedDrops.Play();
                 SetTimeInterval();
             }
+        }
+
+        /// <summary>
+        /// For debug purposes.
+        /// </summary>
+        public void SetBehaviors(bool isNoMask, bool isNoVac, MaskType maskType)
+        {
+            _isMasked = maskType;
+            _isNoMask = isNoMask;
+            _isNoVac = isNoVac;
+            UpdateAppearance();
+        }
+
+        /// <summary>
+        /// Set NPC attributes like speed and infection rate based on difficulty.
+        /// </summary>
+        public void SetAttributes(NPCAttributes attributes)
+        {
+            _npcAttributes = attributes;
         }
     }
 }

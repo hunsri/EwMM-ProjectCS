@@ -22,7 +22,7 @@ namespace Data
             // default values for all settings
             _vfxVolume = -60; // {@see: DefaultScript.cs}
             _musicVolume = -60;
-            _difficulty = 1; // medium difficulty
+            _difficulty = 0; // easy difficulty
         }
 
         public void AddWeapon(WeaponData weapon)
