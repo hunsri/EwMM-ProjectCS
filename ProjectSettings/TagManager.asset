@@ -13,6 +13,10 @@ TagManager:
   - Save
   - Load
   - Hand
+  - Mask
+  - FFPMask
+  - NoVacBoard
+  - NoMaskBoard
   layers:
   - Default
   - TransparentFX
