@@ -60,6 +60,9 @@ namespace Data
             }
         }
 
+        ///<summary>
+        /// Saves the player data to the file.
+        ///</summary>
         public void SavePlayerStats()
         {
             FileStream stream = new FileStream(_saveFilePath, FileMode.Create);
@@ -109,6 +112,28 @@ namespace Data
         public int GetPlayerXP()
         {
             return _playerStatsData.XP;
+        }
+
+
+        //getter and setter for the reward
+        public void SetHasMaskReward(bool status)
+        {
+            _playerStatsData.HasMaskReward = status;
+        }
+
+        public bool GetHasMaskReward()
+        {
+            return _playerStatsData.HasMaskReward;
+        }
+
+        public void SetHasMoreAmmunitionReward(bool status)
+        {
+            _playerStatsData.HasMoreAmmunitionReward = status;
+        }
+
+        public bool GetHasMoreAmmuntionReward()
+        {
+            return _playerStatsData.HasMoreAmmunitionReward;
         }
     }
 }
