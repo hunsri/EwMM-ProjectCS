@@ -159,5 +159,11 @@ namespace Data
             float[] settings = LoadSettings();
             return GetNormalizedVolume(settings[0]);
         }
+
+        public int GetDifficulty()
+        {
+            float[] settings = LoadSettings();
+            return (int)settings[2];
+        }
     }
 }

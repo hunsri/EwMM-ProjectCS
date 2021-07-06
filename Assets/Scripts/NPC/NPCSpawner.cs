@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Data;
 using System;
 
 namespace NPC
@@ -38,6 +38,10 @@ namespace NPC
 
         private DateTime _lastSpawn;
         private int _deltaMilliseconds = 500;
+        private bool _isSettingsAccessible = false;
+        private PlayerDataManager _dataManager;
+        private int _difficulty = 0; // in case there's an error while loading saved data
+
 
         // Start is called before the first frame update
         void Start()
@@ -57,30 +61,69 @@ namespace NPC
 
             //initializing _lastSpawn
             _lastSpawn = System.DateTime.Now;
+            StartCoroutine(GetDifficulty());
+        }
+
+        /// <summary>
+        /// Get difficulty level from saved user settings.
+        /// </summary>
+        IEnumerator GetDifficulty()
+        {
+            Debug.Log("Loading user settings");
+            yield return new WaitUntil(() => _isSettingsAccessible);
+            Debug.Log("Loading is successful");
+            _difficulty = _dataManager.GetDifficulty();
+            Debug.Log("Difficulty: " + _difficulty);
+        }
+
+        NPCAttributes GetAttributes()
+        {
+            switch (_difficulty)
+            {
+                case 1:
+                    return NPCDifficultyLevel.MediumNPCAttribute;
+                case 2:
+                    return NPCDifficultyLevel.HardNPCAttribute;
+                case 0:
+                default:
+                    return NPCDifficultyLevel.EasyNPCAttribute;
+            }
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (_waveManager.CurrentWave == _activeOnWave && !_waveManager.IsPaused)
+            if (_isSettingsAccessible)
             {
-                if (_amountSpawned < _amount)
+                if (_waveManager.CurrentWave == _activeOnWave && !_waveManager.IsPaused)
                 {
-                    if (_lastSpawn.AddMilliseconds(_deltaMilliseconds) < System.DateTime.Now)
+                    if (_amountSpawned < _amount)
                     {
-                        GameObject go;
+                        if (_lastSpawn.AddMilliseconds(_deltaMilliseconds) < System.DateTime.Now)
+                        {
+                            GameObject go;
 
-                        go = Instantiate(_npc, this.transform.position, Quaternion.Euler(0, 0, 0)).gameObject;
-                        // debug purposes. Spawn NPC with behaviors.
-                        go.GetComponent<NPCBehavior>().SetBehaviors(_isNoMask, _isNoVac, maskType);
-                        _lastSpawn = System.DateTime.Now;
-                        _amountSpawned++;
+                            go = Instantiate(_npc, this.transform.position, Quaternion.Euler(0, 0, 0)).gameObject;
+                            // debug purposes. Spawn NPC with behaviors.
+                            go.GetComponent<NPCBehavior>().SetBehaviors(_isNoMask, _isNoVac, maskType);
+                            _lastSpawn = System.DateTime.Now;
+                            _amountSpawned++;
 
 
-                        //setting the behavior of the spawned NPC
-                        NPCBehavior script = go.GetComponent<NPCBehavior>();
-                        script.ChangeBehavior(_behavior);
+                            //setting the behavior of the spawned NPC
+                            NPCBehavior script = go.GetComponent<NPCBehavior>();
+                            script.ChangeBehavior(_behavior);
+                            script.SetAttributes(GetAttributes());
+                        }
                     }
+                }
+            }
+            else
+            {
+                _dataManager = FindObjectOfType<PlayerDataManager>();
+                if (_dataManager != null)
+                {
+                    _isSettingsAccessible = _dataManager.IsDataLoaded();
                 }
             }
         }

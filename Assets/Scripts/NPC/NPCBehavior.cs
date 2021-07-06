@@ -56,6 +56,7 @@ namespace NPC
 
         private MaskType _isMasked = MaskType.NONE; // between 0 and 2, 0 = nomask, 1 = op mask, 2 = ffp mask
         public ParticleSystem infectedDrops;
+        private NPCAttributes _npcAttributes;
 
         void Awake()
         {
@@ -63,8 +64,6 @@ namespace NPC
             Renderer renderer = _indicator.GetComponent<Renderer>();
             renderer.material = _uninfectedMaterial;
             renderer.sortingOrder = 99;
-
-
         }
 
         // Start is called before the first frame update
@@ -93,14 +92,14 @@ namespace NPC
             switch (_behavior)
             {
                 case Behaviors.UNINFECTED:
-                    speed = 4;
+                    speed = _npcAttributes.Speed;
                     break;
                 case Behaviors.INFECTED:
-                    speed = 2;
+                    speed = _npcAttributes.InfectedSpeed;
                     triggerInfectedSoundsInInterval();
                     break;
                 case Behaviors.CURED:
-                    speed = 4;
+                    speed = _npcAttributes.CuredSpeed;
                     break;
                 default:
                     speed = 0;
@@ -183,7 +182,7 @@ namespace NPC
 
                         int probability = UnityEngine.Random.Range(1, 100);
 
-                        if (probability < SpreadingPercent)
+                        if (probability < _npcAttributes.InfectionRate)
                         {
                             script = go.GetComponent<NPCBehavior>();
 
@@ -298,6 +297,14 @@ namespace NPC
             _isNoMask = isNoMask;
             _isNoVac = isNoVac;
             UpdateAppearance();
+        }
+
+        /// <summary>
+        /// Set NPC attributes like speed and infection rate based on difficulty.
+        /// </summary>
+        public void SetAttributes(NPCAttributes attributes)
+        {
+            _npcAttributes = attributes;
         }
     }
 }
