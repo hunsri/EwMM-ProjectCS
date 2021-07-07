@@ -20,7 +20,8 @@ namespace NPC
 
 
         [SerializeField]
-        private int _waveDurationSeconds; 
+        private int _waveDurationSeconds;
+        private int _allRemainingSeconds;
 
         private DateTime _waveStart;
         private DateTime _waveEnd;
@@ -48,7 +49,7 @@ namespace NPC
                     {
                         //start the pause and save when it started
                         _pauseStart = DateTime.Now;
-                        _isPaused = true; 
+                        _isPaused = true;
                     }
                     else
                     {
@@ -57,6 +58,11 @@ namespace NPC
                         _isPaused = false;   
                     }
             }
+        }
+
+        void Awake()
+        {
+            _allRemainingSeconds = _maxWaves * _waveDurationSeconds;
         }
 
         // Start is called before the first frame update
@@ -69,6 +75,9 @@ namespace NPC
         {
             if(!IsPaused)
             {   
+                //updating the seconds that remain until the game is over
+                _allRemainingSeconds = UpdateRemainingSeconds();
+
                 //checking if the current wave is over yet
                 if(System.DateTime.Now > _waveEnd)
                 {
@@ -117,6 +126,37 @@ namespace NPC
                     //and no, 0! does not mean 1 xD
                 }
             }
+        }
+
+        private int UpdateRemainingSeconds()
+        {
+            int remainingSecondsImminentWaves = (_maxWaves - CurrentWave)*_waveDurationSeconds; //time based on remaining waves (not including running one)
+            TimeSpan remainingSecondsCurrentWave = _waveEnd-DateTime.Now; //the time of the current running wave
+
+            int remainingSeconds = remainingSecondsImminentWaves + (int) remainingSecondsCurrentWave.TotalSeconds;
+            
+            //preventing negative remaining time
+            if(remainingSeconds < 0)
+            {
+                remainingSeconds = 0;
+            }
+
+            return remainingSeconds;
+        }
+
+        public int GetWaveDurationSeconds()
+        {
+            return _waveDurationSeconds;
+        }
+
+        public int GetAllRemainingSeconds()
+        {
+            return _allRemainingSeconds;
+        }
+
+        public int GetMaxWaves()
+        {
+            return _maxWaves;
         }
     }
 }
