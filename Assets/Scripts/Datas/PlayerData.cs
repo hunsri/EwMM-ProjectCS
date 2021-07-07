@@ -17,7 +17,7 @@ namespace Data
             _weaponDatas[0] = Weapons.MenuWeapon();
             _weaponDatas[1] = Weapons.Syringe();
             _weaponDatas[2] = Weapons.OpMask();
-            _weaponDatas[3] = Weapons.FFPMask();
+            // _weaponDatas[3] = Weapons.FFPMask();
 
             // default values for all settings
             _vfxVolume = -60; // {@see: DefaultScript.cs}
@@ -28,7 +28,7 @@ namespace Data
         public void AddWeapon(WeaponData weapon)
         {
             int currentLength = _weaponDatas.Length;
-            if (currentLength == 3)
+            if (currentLength == 4)
             {
                 // weapon is full
                 return;
