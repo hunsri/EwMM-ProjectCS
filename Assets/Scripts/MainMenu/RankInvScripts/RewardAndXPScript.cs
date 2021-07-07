@@ -80,6 +80,10 @@ namespace MainMenu
             }            
         }
 
+        /// <summary>
+        /// Calculates and shows the current rank of the player
+        /// </summary>
+        /// <param name="xp"></param>
         private void CalculatesXP(float xp)
         {
             if (xp < _maxRank1XP)
@@ -171,6 +175,7 @@ namespace MainMenu
 
                 _reward2Barricade.SetActive(false);
                 // Add more resistance
+                _playerStats.SetHasMaskReward(true);
             }
             else if (_currentRank == 3)
             {
@@ -179,9 +184,11 @@ namespace MainMenu
 
                 _reward2Barricade.SetActive(false);
                 // Add more resistance
+                _playerStats.SetHasMaskReward(true);
 
                 _reward3Barricade.SetActive(false);
                 // Add more ammunition
+                _playerStats.SetHasMoreAmmunitionReward(true);
             }
             else if (_currentRank == 0)
             {
