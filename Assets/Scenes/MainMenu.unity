@@ -2435,6 +2435,7 @@ GameObject:
   - component: {fileID: 403674336}
   - component: {fileID: 403674335}
   - component: {fileID: 403674334}
+  - component: {fileID: 403674337}
   m_Layer: 0
   m_Name: ScorePlane
   m_TagString: Untagged
@@ -2525,6 +2526,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403674332}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &403674337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403674332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878ba0af2486b60da8d395cda26ec282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _planeText: {fileID: 663576142}
 --- !u!1 &429773225
 GameObject:
   m_ObjectHideFlags: 0
@@ -6604,7 +6618,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8154248067687289422, guid: 7300924d45c694e06b5c1d6ff8253cd0, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8154248067687289422, guid: 7300924d45c694e06b5c1d6ff8253cd0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9105,7 +9119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7053821186526088638, guid: 1c77227e03e4746fc8618743b28b53e0, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7053821186526088638, guid: 1c77227e03e4746fc8618743b28b53e0, type: 3}
       propertyPath: m_AnchorMax.x

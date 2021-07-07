@@ -151,7 +151,8 @@ public class SoundManager : MonoBehaviour
                 break;
             case 2:
                 if(_waveIncoming != null)
-                    _audioSource.clip = _waveIncoming;
+                    AudioSource.PlayClipAtPoint(_waveIncoming, new Vector3 (0,0,0));
+                    //_audioSource.clip = _waveIncoming;
                 break;
         }
         if(_audioSource != null)
