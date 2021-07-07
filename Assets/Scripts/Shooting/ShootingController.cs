@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Data;
+using NPC;
 
 public class ShootingController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class ShootingController : MonoBehaviour
     private Vector3 _projectileDestination;
     private Animator _animator;
 
+    private NPCWaveManager _np;
+
     void Start()
     {
         if (!_camera)
@@ -27,6 +30,7 @@ public class ShootingController : MonoBehaviour
         }
         GetWeaponHolder();
         _animator = GetComponent<Animator>();
+        _np = FindObjectOfType<NPCWaveManager>();
     }
 
     // Update is called once per frame
@@ -73,9 +77,14 @@ public class ShootingController : MonoBehaviour
         }
 
         projectileObj.GetComponent<Rigidbody>().velocity = (_projectileDestination - projectileStartPoint).normalized * _projectileSpeed;
-        if (_weaponIndex != Weapons.WeaponTags.MenuWeapon)
+        if(_np != null)
         {
-            SetAmmo(_ammo - 1);
+            if(!_np.IsPaused){
+                if (_weaponIndex != Weapons.WeaponTags.MenuWeapon)
+                {
+                    SetAmmo(_ammo - 1);
+                }
+            }
         }
     }
 

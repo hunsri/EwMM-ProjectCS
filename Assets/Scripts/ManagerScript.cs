@@ -22,6 +22,8 @@ public class ManagerScript : MonoBehaviour
 
     private NPCWaveManager _waveManager;
 
+    private bool _complete = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,13 +42,13 @@ public class ManagerScript : MonoBehaviour
 
         float health = _player.GetComponent<PlayerHealth>().getHealth();
 
-        if (_timeIsUp & health < 1)
+        if (_timeIsUp && (health < 1) && !_complete)
         {
             Time.timeScale = 0;
             ShowLevelCompleted();
         }
 
-        if (health == 1)
+        if (health == 1 && !_complete)
         {
             Time.timeScale = 0;
             ShowGameOverPanel();
@@ -75,6 +77,7 @@ public class ManagerScript : MonoBehaviour
         background.SetActive(true);
         levelCompleted.SetActive(true);
         ammoCanvas.SetActive(false);
+        _complete = true;
         //for later: Manage LevelCompleted Info
     }
 
@@ -83,6 +86,10 @@ public class ManagerScript : MonoBehaviour
         SoundManager.soundManager.LevelSounds(1);
         gameOver.SetActive(true);
         ammoCanvas.SetActive(false);
+        _complete = true;
     }
 
+    public bool isComplete{
+        get { return _complete; }
+    }
 }

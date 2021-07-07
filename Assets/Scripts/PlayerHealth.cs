@@ -106,7 +106,7 @@ public class PlayerHealth : MonoBehaviour
 
     public float getHealth(){
         float currentHealth = _health.healthbar.fillAmount;
-        Debug.Log("Player Health:" + currentHealth);
+        //Debug.Log("Player Health:" + currentHealth);
         return currentHealth;
     }
 }

@@ -32,5 +32,6 @@ public class PlayerLook : MonoBehaviour
     float getNormalized(float value)
     {
         return value * _mouseSensitivity * Time.deltaTime;
+        //return value * _mouseSensitivity * Time.unscaledDeltaTime;
     }
 }
