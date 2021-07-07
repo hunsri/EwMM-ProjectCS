@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 5224298972170493089}
   - component: {fileID: -7304755308375734452}
   - component: {fileID: -2983715112559928019}
-  - component: {fileID: 1045485484696667262}
+  - component: {fileID: 80738524719668472}
+  - component: {fileID: 3564488166235617890}
+  - component: {fileID: 1412486493267229422}
+  - component: {fileID: 6469342643332020799}
   m_Layer: 0
   m_Name: SceneControllerObject
   m_TagString: Untagged
@@ -61,6 +64,70 @@ MonoBehaviour:
   _maxWaves: 0
   _waveDurationSeconds: 0
   newWavePanel: {fileID: 0}
+--- !u!114 &80738524719668472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9118907727792068603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469127c6cd3c06041b12e96747528dc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timer: {fileID: 0}
+  timeToWin: 80
+  _player: {fileID: 0}
+  background: {fileID: 0}
+  levelCompleted: {fileID: 0}
+  gameOver: {fileID: 0}
+  ammoCanvas: {fileID: 0}
+--- !u!114 &3564488166235617890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9118907727792068603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ef22fe96fb3a994f9acb8e1904b43f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimap: {fileID: 0}
+  closeText: {fileID: 0}
+  keyText: {fileID: 0}
+--- !u!114 &1412486493267229422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9118907727792068603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a73f0d3a39da316f68f934db5540f354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6469342643332020799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9118907727792068603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d298b2fab5f4a949fde34e8ea1868b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _syringeAmmo: 10
+  _maskAmmo: 20
+  _ffpAmmo: 5
+  _additionalSyringeAmmo: 5
+  _additionalMaskAmmo: 10
+  _additionalFFPAmmo: 5
 --- !u!1001 &3907314944027787735
 PrefabInstance:
   m_ObjectHideFlags: 0
