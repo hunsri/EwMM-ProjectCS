@@ -96,6 +96,7 @@ namespace Powerup
         void UnlockFFPMask()
         {
             _dataManager.AddFFPMask();
+            FindObjectOfType<WeaponHolder>().ReloadWeaponData();
         }
 
         public bool IsLoaded()

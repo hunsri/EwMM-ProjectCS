@@ -124,6 +124,7 @@ namespace Data
         public bool GetHasMaskReward()
         {
             return _playerStatsData.HasMaskReward;
+            // return true;
         }
 
         public void SetHasMoreAmmunitionReward(bool status)
