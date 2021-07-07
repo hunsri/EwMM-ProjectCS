@@ -1093,6 +1093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tent: {fileID: 2324915167958977444}
+  _ui: {fileID: 0}
 --- !u!1 &2324915166750790590
 GameObject:
   m_ObjectHideFlags: 0

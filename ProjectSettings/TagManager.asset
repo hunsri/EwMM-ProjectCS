@@ -17,6 +17,8 @@ TagManager:
   - FFPMask
   - NoVacBoard
   - NoMaskBoard
+  - OP
+  - FFP2
   layers:
   - Default
   - TransparentFX
@@ -26,7 +28,7 @@ TagManager:
   - UI
   - Minimap
   - Character
-  - 
+  - Extra
   - 
   - 
   - 
