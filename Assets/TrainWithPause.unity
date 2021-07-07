@@ -3899,18 +3899,6 @@ MonoBehaviour:
   levelCompleted: {fileID: 444603859115553948}
   gameOver: {fileID: 309159936}
   ammoCanvas: {fileID: 740531244}
---- !u!114 &490740304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 490740298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a73f0d3a39da316f68f934db5540f354, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &493842399
 GameObject:
   m_ObjectHideFlags: 0
@@ -17086,7 +17074,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 80738524719668472, guid: bac086f65ae8eb123b7937c0f932925e, type: 3}
+    - {fileID: 3564488166235617890, guid: bac086f65ae8eb123b7937c0f932925e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bac086f65ae8eb123b7937c0f932925e, type: 3}
 --- !u!1 &2097846551 stripped
 GameObject:
