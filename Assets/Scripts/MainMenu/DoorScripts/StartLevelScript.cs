@@ -35,8 +35,7 @@ namespace MainMenu
             {
                 if (transform.GetChild(0).name == "DoorLevel2Barricade" && !transform.GetChild(0).gameObject.activeSelf)
                 {
-                    //AnimatorAndCounter(2);
-                    Debug.Log("Not implemented.");
+                    AnimatorAndCounter(2);
                 }
                 else
                 {

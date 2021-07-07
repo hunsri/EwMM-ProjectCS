@@ -54,10 +54,12 @@ namespace MainMenu
         private float _currentXP;
         private float _currentMaxXP;
 
-        private int _maxRank = 3;
-        private int _maxRank1XP = 10;
-        private int _maxRank2XP = 25;
-        private int _maxRank3XP = 75;
+        private readonly int _maxRank = 3;
+
+        // Rank system +2 (2/4/...)
+        private readonly int _maxRank1XP = 8;
+        private readonly int _maxRank2XP = 10;
+        private readonly int _maxRank3XP = 14;
 
         [SerializeField]
         private float _newXP = 0;
@@ -98,7 +100,7 @@ namespace MainMenu
                 _nextItem2.SetActive(false);
                 _nextItem3.SetActive(false);
             }
-            else if (xp < _maxRank2XP)
+            else if (xp < (_maxRank1XP + _maxRank2XP))
             {
                 _currentXP = xp - _maxRank1XP;
                 _currentRank = 1;
@@ -111,9 +113,9 @@ namespace MainMenu
                 _nextItem2.SetActive(true);
                 _nextItem3.SetActive(false);
             }
-            else if (xp < _maxRank3XP)
+            else if (xp < (_maxRank1XP + _maxRank2XP + _maxRank3XP))
             {
-                _currentXP = xp - _maxRank2XP;
+                _currentXP = xp - (_maxRank1XP + _maxRank2XP);
                 _currentRank = 2;
                 _currentMaxXP = _maxRank3XP;
 
@@ -136,6 +138,8 @@ namespace MainMenu
 
                 ActivateReward();
 
+                _nextItem1.SetActive(false);
+                _nextItem2.SetActive(false);
                 _nextItem3.SetActive(false);
                 Debug.Log("You reached max rank.");
             }
@@ -176,6 +180,7 @@ namespace MainMenu
                 _reward2Barricade.SetActive(false);
                 // Add more resistance
                 _playerStats.SetHasMaskReward(true);
+                _playerStats.SavePlayerStats();
             }
             else if (_currentRank == 3)
             {
@@ -189,6 +194,7 @@ namespace MainMenu
                 _reward3Barricade.SetActive(false);
                 // Add more ammunition
                 _playerStats.SetHasMoreAmmunitionReward(true);
+                _playerStats.SavePlayerStats();
             }
             else if (_currentRank == 0)
             {
