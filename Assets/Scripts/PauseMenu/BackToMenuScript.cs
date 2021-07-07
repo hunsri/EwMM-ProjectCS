@@ -34,7 +34,10 @@ namespace PauseMenu
         // Will trigger when the game object is triggered
         private void OnTriggerEnter(Collider other)
         {
-            BackToMenu();
+            if (other.CompareTag("Projectile"))
+            {
+                BackToMenu();
+            }
         }
     }
 }
