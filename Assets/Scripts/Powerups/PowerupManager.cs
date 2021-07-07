@@ -17,15 +17,6 @@ namespace Powerup
         [SerializeField]
         private int _ffpAmmo = PowerupDatas.FFPAmmo;
 
-        [SerializeField]
-        private int _additionalSyringeAmmo = PowerupDatas.AdditionalSyringeAmmo;
-
-        [SerializeField]
-        private int _additionalMaskAmmo = PowerupDatas.AdditionalMaskAmmo;
-
-        [SerializeField]
-        private int _additionalFFPAmmo = PowerupDatas.AdditionalFFPAmmo;
-
         private PlayerDataManager _dataManager;
         private bool _hasFFP;
         private bool _isDataLoaded = false;
@@ -65,12 +56,12 @@ namespace Powerup
         public void CheckForPowerups()
         {
             bool withAdditional = new PlayerStats().GetHasMoreAmmuntionReward();
-            AddAmmo(Weapons.WeaponTags.Syringe, _syringeAmmo + (withAdditional ? _additionalSyringeAmmo : 0));
-            AddAmmo(Weapons.WeaponTags.OpMask, _maskAmmo + (withAdditional ? _additionalMaskAmmo : 0));
+            AddAmmo(Weapons.WeaponTags.Syringe, _syringeAmmo + (withAdditional ? GetAdditional(_syringeAmmo) : 0));
+            AddAmmo(Weapons.WeaponTags.OpMask, _maskAmmo + (withAdditional ? GetAdditional(_maskAmmo) : 0));
 
             if (_hasFFP)
             {
-                AddAmmo(Weapons.WeaponTags.OpMask, _ffpAmmo + (withAdditional ? _additionalFFPAmmo : 0));
+                AddAmmo(Weapons.WeaponTags.OpMask, _ffpAmmo + (withAdditional ? GetAdditional(_ffpAmmo) : 0));
             }
 
             FindObjectOfType<WeaponHolder>().ReloadWeaponData();
@@ -88,6 +79,16 @@ namespace Powerup
             {
                 weapon.SetAmmoCount(weapon.GetAmmoCount() + value);
             }
+        }
+
+        /// <summary>
+        /// Get additional ammo as a reward.
+        /// </summary>
+        /// <param name="value">Value of the original amount of ammo to be given.</param>
+        /// <returns>The additional ammo as reward (powerup).</returns>
+        int GetAdditional(int value)
+        {
+            return value / 2;
         }
 
         /// <summary>
