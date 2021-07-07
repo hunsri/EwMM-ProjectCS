@@ -19,6 +19,7 @@ public class WeaponHolder : MonoBehaviour
     private WeaponData _activeWeaponData;
     private bool _isWeaponAccessible = false;
     private bool _firstWeapon = true;
+    private ShootingController _activeController;
 
     void Start()
     {
@@ -120,7 +121,8 @@ public class WeaponHolder : MonoBehaviour
                 weapon.gameObject.SetActive(i == _activeWeapon);
                 if (i == _activeWeapon)
                 {
-                    LoadWeaponData(weapon.GetComponent<ShootingController>());
+                    _activeController = weapon.GetComponent<ShootingController>();
+                    LoadWeaponData(_activeController);
                     if (_firstWeapon == true)
                     {
                         _firstWeapon = false;
@@ -153,9 +155,27 @@ public class WeaponHolder : MonoBehaviour
         }
 
         _activeWeaponData = active;
+        int currentAmmoCount = _activeWeaponData.GetAmmoCount();
+        int maxAmmoCount = shootingController.GetMaxAmmo();
+
+        // prevents that the weapon has more ammo that allowed
+        if (currentAmmoCount > maxAmmoCount)
+        {
+            _activeWeaponData.SetAmmoCount(maxAmmoCount);
+        }
+
+
         GetCanvasChildren();
         UpdateWeaponName();
         shootingController.SetAmmo(_activeWeaponData.GetAmmoCount());
+    }
+
+    public void ReloadWeaponData()
+    {
+        if (_activeController)
+        {
+            LoadWeaponData(_activeController);
+        }
     }
 
     /// <summary>

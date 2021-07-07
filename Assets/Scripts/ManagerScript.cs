@@ -34,19 +34,20 @@ public class ManagerScript : MonoBehaviour
     void Update()
     {
         timeToWin = _waveManager.GetAllRemainingSeconds();
-        //if time is up, return
 
+        //if time is up, return
         //for later: !!!IMPORTANT there is need to check wheather the player's health is not 0 AND Level Failed Situation
 
         float health = _player.GetComponent<PlayerHealth>().getHealth();
-    
-        if (_timeIsUp & health < 1 )
+
+        if (_timeIsUp & health < 1)
         {
             Time.timeScale = 0;
             ShowLevelCompleted();
-        } 
+        }
 
-        if(health == 1){
+        if (health == 1)
+        {
             Time.timeScale = 0;
             ShowGameOverPanel();
         }

@@ -20,7 +20,7 @@ namespace Data
         private string _saveFilePath;
         private BinaryFormatter _formatter = new BinaryFormatter();
 
-        private PlayerStatsData _playerStatsData; 
+        private PlayerStatsData _playerStatsData;
 
         public PlayerStats()
         {
@@ -30,7 +30,7 @@ namespace Data
 
             //IF no savestate exists or could be loaded
             //THEN create a new one
-            if(_playerStatsData == null)
+            if (_playerStatsData == null)
             {
                 _playerStatsData = new PlayerStatsData();
             }
@@ -38,7 +38,7 @@ namespace Data
 
         public void AddToScore(int amount)
         {
-            if(amount > 0)
+            if (amount > 0)
             {
                 _playerStatsData.Score += amount;
             }
@@ -46,7 +46,7 @@ namespace Data
 
         public void AddToCuredNPCS(int amount)
         {
-            if(amount > 0)
+            if (amount > 0)
             {
                 _playerStatsData.CuredNPCS += amount;
             }
@@ -54,7 +54,7 @@ namespace Data
 
         public void AddToXP(int amount)
         {
-             if(amount > 0)
+            if (amount > 0)
             {
                 _playerStatsData.XP += amount;
             }
@@ -78,7 +78,7 @@ namespace Data
         private PlayerStatsData ReloadPlayerStats()
         {
             if (File.Exists(_saveFilePath))
-            {   
+            {
                 try
                 {
                     FileStream stream = new FileStream(_saveFilePath, FileMode.Open);
@@ -89,9 +89,9 @@ namespace Data
                     stream.Close();
                     return _playerStatsData;
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
-                    Debug.LogErrorFormat("Something went wrong while loading the saved Scene data! This can indicate a damaged file at "+
+                    Debug.LogErrorFormat("Something went wrong while loading the saved Scene data! This can indicate a damaged file at " +
                     _saveFilePath + e);
                 }
             }
@@ -124,6 +124,7 @@ namespace Data
         public bool GetHasMaskReward()
         {
             return _playerStatsData.HasMaskReward;
+            // return true;
         }
 
         public void SetHasMoreAmmunitionReward(bool status)
