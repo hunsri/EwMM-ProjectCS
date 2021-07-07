@@ -16,7 +16,7 @@ namespace PauseMenu
 
         private Animator _animator;
 
-        private bool _isDown = false;
+        private bool _isDown = false; // equivalent to isPaused
 
         // Start is called before the first frame update
         void Start()
@@ -50,12 +50,20 @@ namespace PauseMenu
             }
         }
 
+        public bool getIsDown(){
+            return _isDown;
+        }
+
         public void DisableUI(){
             _ui.SetActive(false);
         }
 
         public void EnableUI(){
             _ui.SetActive(true);
+        }
+
+        public void pauseTime(){
+            Time.timeScale = 0; 
         }
     }
 }
