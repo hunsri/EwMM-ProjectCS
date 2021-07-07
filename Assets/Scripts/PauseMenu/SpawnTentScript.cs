@@ -34,20 +34,28 @@ namespace PauseMenu
                     _animator.ResetTrigger("shouldDespawn");
                     _animator.SetTrigger("shouldSpawn");
                     _isDown = true;
-                    Time.timeScale = 0;
+                    //DisableUI();
                 }
                 else if (_isDown)
                 {
                     _animator.ResetTrigger("shouldSpawn");
                     _animator.SetTrigger("shouldDespawn");
                     _isDown = false;
-                    Time.timeScale = 1;
+                    //Time.timeScale = 1;
                 }
                 else
                 {
                     Debug.Log("Something went bad on Update() in SpawnTentScript!");
                 }
             }
+        }
+
+        public void DisableUI(){
+            _ui.SetActive(false);
+        }
+
+        public void EnableUI(){
+            _ui.SetActive(true);
         }
     }
 }
