@@ -64,6 +64,7 @@ public class ManagerScript : MonoBehaviour
         {
             if(Input.GetButtonDown("Fire1")){
                  SceneManager.LoadScene(0);
+                 Time.timeScale =1;
             }
         }
     }
