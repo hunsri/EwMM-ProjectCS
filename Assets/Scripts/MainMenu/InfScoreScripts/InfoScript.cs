@@ -65,7 +65,10 @@ namespace MainMenu
         // Will change the boolean _planeIsTriggered if the object which is bind to the script is triggered
         private void OnTriggerEnter(Collider other)
         {
-            _planeIsTriggered = true;
+            if (!other.CompareTag("Enemy"))
+            {
+                _planeIsTriggered = true;
+            }
         }
     }
 }

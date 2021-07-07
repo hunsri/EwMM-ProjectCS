@@ -34,7 +34,10 @@ namespace PauseMenu
         // Will trigger when the game object is triggered
         private void OnTriggerEnter(Collider other)
         {
-            Restart();
+            if (other.CompareTag("Projectile"))
+            {
+                Restart();
+            }
         }
     }
 }
