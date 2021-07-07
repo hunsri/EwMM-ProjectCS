@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
-
+using UnityEngine.SceneManagement;
 using NPC;
 
 public class ManagerScript : MonoBehaviour
 {
-
     [SerializeField] private Text _timer;  //represents ui field to show remaining time
 
     public float timeToWin = 10f;  //time for completing the level
@@ -60,6 +59,14 @@ public class ManagerScript : MonoBehaviour
         }
 
         ShowTime(timeToWin);
+
+        if(_complete)
+        {
+            if(Input.GetButtonDown("Fire1")){
+                 SceneManager.LoadScene(0);
+                 Time.timeScale =1;
+            }
+        }
     }
 
     void ShowTime(float time)
@@ -78,7 +85,6 @@ public class ManagerScript : MonoBehaviour
         levelCompleted.SetActive(true);
         ammoCanvas.SetActive(false);
         _complete = true;
-        //for later: Manage LevelCompleted Info
     }
 
     void ShowGameOverPanel()
