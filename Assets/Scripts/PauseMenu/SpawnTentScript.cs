@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 namespace PauseMenu
 {
@@ -8,6 +10,9 @@ namespace PauseMenu
     {
         [SerializeField]
         private GameObject _tent;
+
+        [SerializeField]
+        private GameObject _ui;
 
         private Animator _animator;
 
@@ -29,12 +34,14 @@ namespace PauseMenu
                     _animator.ResetTrigger("shouldDespawn");
                     _animator.SetTrigger("shouldSpawn");
                     _isDown = true;
+                    Time.timeScale = 0;
                 }
                 else if (_isDown)
                 {
                     _animator.ResetTrigger("shouldSpawn");
                     _animator.SetTrigger("shouldDespawn");
                     _isDown = false;
+                    Time.timeScale = 1;
                 }
                 else
                 {
