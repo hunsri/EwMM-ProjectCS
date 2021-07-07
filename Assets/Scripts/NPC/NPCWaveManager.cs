@@ -83,7 +83,7 @@ namespace NPC
                 if (!IsPaused)
                 {
                     //updating the seconds that remain until the game is over
-                    _allRemainingSeconds = UpdateRemainingSeconds();
+                    _allRemainingSeconds = _waveEnd == DateTime.MinValue ? _allRemainingSeconds : UpdateRemainingSeconds();
                     //checking if the current wave is over yet
                     if (System.DateTime.Now > _waveEnd)
                     {
@@ -142,13 +142,13 @@ namespace NPC
 
         private int UpdateRemainingSeconds()
         {
-            int remainingSecondsImminentWaves = (_maxWaves - CurrentWave)*_waveDurationSeconds; //time based on remaining waves (not including running one)
-            TimeSpan remainingSecondsCurrentWave = _waveEnd-DateTime.Now; //the time of the current running wave
+            int remainingSecondsImminentWaves = (_maxWaves - CurrentWave) * _waveDurationSeconds; //time based on remaining waves (not including running one)
+            TimeSpan remainingSecondsCurrentWave = _waveEnd - DateTime.Now; //the time of the current running wave
 
-            int remainingSeconds = remainingSecondsImminentWaves + (int) remainingSecondsCurrentWave.TotalSeconds;
-            
+            int remainingSeconds = remainingSecondsImminentWaves + (int)remainingSecondsCurrentWave.TotalSeconds;
+
             //preventing negative remaining time
-            if(remainingSeconds < 0)
+            if (remainingSeconds < 0)
             {
                 remainingSeconds = 0;
             }
