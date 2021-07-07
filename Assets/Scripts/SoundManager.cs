@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using Data;
+using NPC;
 
 
 public class SoundManager : MonoBehaviour
@@ -24,6 +25,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip  _throw, _useVaccine, _switchAmmo;
     [SerializeField] private AudioClip _levelComplete, _gameOver, _waveIncoming;
 
+    private NPCWaveManager _np;
+
     private void Awake()
     {
         soundManager = this;
@@ -41,6 +44,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
+        _np = FindObjectOfType<NPCWaveManager>();
         StartCoroutine(GetUserVolume());
     }
 
@@ -60,6 +64,7 @@ public class SoundManager : MonoBehaviour
     /// </summary>
     void Update()
     {
+
         if (!_isSettingsAccessible)
         {
             _dataManager = FindObjectOfType<PlayerDataManager>();
@@ -72,18 +77,20 @@ public class SoundManager : MonoBehaviour
 
     public void PlayRandomInfectedSounds(int sound, Vector3 position)
     {
-        switch (sound)
-        {
-            case 1:
-            case 3:
-            case 5:
-                Cough(position);
-                break;
-            case 2:
-            case 4:
-            case 6:
-                Sneeze(position);
-                break;
+        if(!_np.IsPaused){
+            switch (sound)
+            {
+                case 1:
+                case 3:
+                case 5:
+                    Cough(position);
+                    break;
+                case 2:
+                case 4:
+                case 6:
+                    Sneeze(position);
+                    break;
+            }
         }
     }
 

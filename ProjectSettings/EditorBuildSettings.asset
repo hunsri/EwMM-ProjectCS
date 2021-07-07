@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 10a125949e36d9d41bae9ea73ecd1b62
   - enabled: 1
-    path: Assets/Scenes/FeaturePreviews/FINISHED/ShootingScene.unity
+    path: Assets/Scenes/ShootingScene.unity
     guid: df2b5206ad70e4a27955c0cc70133196
   m_configObjects: {}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using NPC;
 
 
 namespace PauseMenu
@@ -16,11 +17,17 @@ namespace PauseMenu
 
         private Animator _animator;
 
+        [SerializeField]
+        private GameObject _contoller;
+
         private bool _isDown = false; // equivalent to isPaused
+
+        private NPCWaveManager _np;
 
         // Start is called before the first frame update
         void Start()
         {
+            _np = _contoller.GetComponent<NPCWaveManager>();
             _animator = _tent.GetComponent<Animator>();
         }
 
@@ -34,14 +41,15 @@ namespace PauseMenu
                     _animator.ResetTrigger("shouldDespawn");
                     _animator.SetTrigger("shouldSpawn");
                     _isDown = true;
-                    //DisableUI();
+                    _np.IsPaused = true;
+
                 }
                 else if (_isDown)
                 {
                     _animator.ResetTrigger("shouldSpawn");
                     _animator.SetTrigger("shouldDespawn");
                     _isDown = false;
-                    //Time.timeScale = 1;
+                    _np.IsPaused = false;
                 }
                 else
                 {
@@ -63,7 +71,7 @@ namespace PauseMenu
         }
 
         public void pauseTime(){
-            Time.timeScale = 0; 
+           // _np.IsPaused = true;
         }
     }
 }
