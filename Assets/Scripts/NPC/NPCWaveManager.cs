@@ -30,6 +30,7 @@ namespace NPC
         private DateTime _pauseStart;
 
         public GameObject newWavePanel;
+        private ManagerScript _ms;
 
         //holds if the wave is paused
         //ONLY ACCESS THIS FIELD THROUGH ITS PROPERTY - things will break if you ignore this
@@ -72,6 +73,7 @@ namespace NPC
         // Start is called before the first frame update
         void Start()
         {
+            _ms = FindObjectOfType<ManagerScript>();
             _powerupManager = GetComponent<PowerupManager>();
             CurrentWave = 0; // Initialized default value for current wave, otherwise the wave won't start at 1 on load game
         }
@@ -87,9 +89,10 @@ namespace NPC
                     //checking if the current wave is over yet
                     if (System.DateTime.Now > _waveEnd)
                     {
-                        if (newWavePanel != null)
+                        if (newWavePanel != null && !_ms.isComplete){
                             newWavePanel.SetActive(true);
-                        SoundManager.soundManager.LevelSounds(2);
+                            SoundManager.soundManager.LevelSounds(2);
+                        }
                         StartNewWave();
                     }
                 }

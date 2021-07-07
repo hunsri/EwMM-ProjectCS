@@ -164,6 +164,7 @@ public class SoundManager : MonoBehaviour
         }
         if(_audioSource != null)
         {
+            _audioSource.loop = false;
             _audioSource.volume = 0.2f;
             _audioSource.Play();
         }
