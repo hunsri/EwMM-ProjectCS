@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using NPC;
 
+using Data;
+
 /**
 * Add to player 
 * Need to add EnemyHealth script to the player for this to work
@@ -13,10 +15,6 @@ public class PlayerHealth : MonoBehaviour
     /* the player */
     [SerializeField]
     private GameObject player;
-    /*
-    [SerializeField]
-    private bool _isFFP = false; //if player is wearing a ffp2 mask, the risk lowers?
-    */
 
     /* player health displayed on the screen */
     private EnemyHealth _health;
@@ -24,16 +22,31 @@ public class PlayerHealth : MonoBehaviour
     /* infection risk percentage */
     private int _spreadingPercent;
 
-    /* infection "damange" of the player */
+    /* infection "damage" of the player */
     private const int _infection = 10;
+
+    //represents if the player has the improved mask or not
+    private bool _hasFFP2;
 
     void Start()
     {
-        //connect healthbar and it's functions to the player
+        //determines whether the player has the improved mask or not
+        _hasFFP2 = new PlayerStats().GetHasMaskReward();
+
+        //connect healthbar and its functions to the player
         _health = player.GetComponent<EnemyHealth>();
-        // TODO: Delete later, once masktypes are implemented
-        // just for testing
-        _spreadingPercent = 90;
+
+        //setting the probability of loosing health
+        if(_hasFFP2)
+        {   
+            //with improved mask
+            _spreadingPercent = 30;
+        }
+        else
+        {   
+            //default
+            _spreadingPercent = 60;
+        }
     }
 
     /**
@@ -58,18 +71,15 @@ public class PlayerHealth : MonoBehaviour
             //if an npc is infected 
             if (behaviors == Behaviors.INFECTED)
             {
-
                 // randomize probabilty of getting infected
                 int probability = UnityEngine.Random.Range(1, 100);
 
-                // TODO repalace if masktypes get implemented
-                //if(probability < mask)
                 if (probability < _spreadingPercent)
                 {
                     //drop in "health" (healthbar gets filled because infection risk increased)
+                    //>>this is kinda confusing, but apparently the "improvement" is that the infection bar gets filled
                     _health.HealthImproved(_infection);
                 }
-
             }
         }
 
