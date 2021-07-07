@@ -163,13 +163,22 @@ namespace Data
         public float GetMusicVolume()
         {
             float[] settings = LoadSettings();
-            return GetNormalizedVolume(settings[1]); 
+            return GetNormalizedVolume(settings[1]);
         }
 
         public int GetDifficulty()
         {
             float[] settings = LoadSettings();
             return (int)settings[2];
+        }
+
+        /// <summary>
+        /// Add FFP Mask to the player's weapon
+        /// </summary>
+        public void AddFFPMask()
+        {
+            _data.AddWeapon(Weapons.FFPMask());
+            SaveGame();
         }
     }
 }

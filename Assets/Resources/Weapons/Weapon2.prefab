@@ -49,7 +49,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _projectile: {fileID: 1807572895492832264, guid: b61a614292819491782d0b225f187aab, type: 3}
   _projectileSpeed: 30
-  _maxAmmo: 50
+  _maxAmmo: 25
   _weaponIndex: 2
 --- !u!95 &-5027584727682340492
 Animator:
