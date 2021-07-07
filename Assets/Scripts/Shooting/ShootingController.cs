@@ -77,10 +77,13 @@ public class ShootingController : MonoBehaviour
         }
 
         projectileObj.GetComponent<Rigidbody>().velocity = (_projectileDestination - projectileStartPoint).normalized * _projectileSpeed;
-        if(!_np.IsPaused){
-            if (_weaponIndex != Weapons.WeaponTags.MenuWeapon)
-            {
-                SetAmmo(_ammo - 1);
+        if(_np != null)
+        {
+            if(!_np.IsPaused){
+                if (_weaponIndex != Weapons.WeaponTags.MenuWeapon)
+                {
+                    SetAmmo(_ammo - 1);
+                }
             }
         }
     }
