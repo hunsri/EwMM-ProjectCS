@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using NPC;
 
 namespace PauseMenu
 {
     public class ContinueLevelScript : MonoBehaviour
     {
+        // VR Variables
+        [SerializeField]
+        private InputActionReference _pressReference = null;
+
         [SerializeField]
         private GameObject _tent;
 
@@ -97,6 +102,22 @@ namespace PauseMenu
 
         public void UnPause(){
             _np.IsPaused = false;
+        }
+
+        // VR funtions
+        private void Awake()
+        {
+            _pressReference.action.started += OnPressPause;
+        }
+
+        private void OnDestroy()
+        {
+            _pressReference.action.started += OnPressPause;
+        }
+
+        private void OnPressPause(InputAction.CallbackContext context)
+        {
+            _isTriggered = true;
         }
     }
 }

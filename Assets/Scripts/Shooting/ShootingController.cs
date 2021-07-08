@@ -22,10 +22,21 @@ public class ShootingController : MonoBehaviour
 
     private NPCWaveManager _np;
 
+    // VR component
+    private Camera _gunCamera;
+
     void Start()
     {
-        if (!_camera)
+        // Try to find the camera which is on the right arm
+        _gunCamera = GameObject.Find("GunCamera").GetComponent<Camera>();
+        if (_gunCamera != null)
         {
+            // For VR
+            _camera = _gunCamera;
+        }
+        else
+        {
+            // Normal
             _camera = Camera.main;
         }
         GetWeaponHolder();

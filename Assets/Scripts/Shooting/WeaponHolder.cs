@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using System;
 using UnityEngine.SceneManagement;
 using Data;
 
 public class WeaponHolder : MonoBehaviour
 {
+    // VR Variable
+    [SerializeField]
+    private InputActionReference _pressReference = null;
+    private bool _isVRActive = false;
 
     [SerializeField] private int _activeWeapon = 1;
 
@@ -81,6 +86,25 @@ public class WeaponHolder : MonoBehaviour
                 {
                     _activeWeapon--;
                 };
+            }
+
+            if(_isVRActive)
+            {
+                if (_activeWeapon == weaponCount)
+                {
+                    _activeWeapon = 1;
+                }
+                else
+                {
+                    _activeWeapon++;
+                }
+
+                if (currentActive != _activeWeapon)
+                {
+                    SelectWeapon();
+                }
+
+                _isVRActive = false;
             }
 
             if (currentActive != _activeWeapon)
@@ -240,7 +264,7 @@ public class WeaponHolder : MonoBehaviour
         }
 
         // instantiate weapon "just for" main menu
-        if (SceneManager.GetActiveScene().name == "MainMenu")
+        if (SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "MainMenuVR")
         {
             _playerData.LoadResource("Weapons/MenuWeapon", transform, Vector3.zero); // instantiate syringe just for now
             return;
@@ -256,5 +280,21 @@ public class WeaponHolder : MonoBehaviour
                 _playerData.LoadResource("Weapons/Weapon" + (int)weaponData.GetWeaponIndex(), transform, position);
             }
         }
+    }
+
+    // VR funtions
+    private void Awake()
+    {
+        _pressReference.action.started += OnPressPause;
+    }
+
+    private void OnDestroy()
+    {
+        _pressReference.action.started += OnPressPause;
+    }
+
+    private void OnPressPause(InputAction.CallbackContext context)
+    {
+        _isVRActive = true;
     }
 }
