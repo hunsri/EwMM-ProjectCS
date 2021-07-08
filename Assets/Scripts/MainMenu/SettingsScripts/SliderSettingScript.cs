@@ -21,11 +21,40 @@ namespace MainMenu
         private bool _sfxIsUpdated = false;
         private float _sfxVolumeNumber;
 
+        private bool _isSettingsAccessible = false;
+
+        private PlayerDataManager _dataManager;
+
         // Start is called before the first frame update
         void Start()
         {
-            PlayerDataManager dataManager = FindObjectOfType<PlayerDataManager>();
-            float[] settingData = dataManager.LoadSettings();
+            StartCoroutine(GetSettings());
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (!_isSettingsAccessible)
+            {
+                _dataManager = FindObjectOfType<PlayerDataManager>();
+                _isSettingsAccessible = _dataManager.IsDataLoaded();
+            }
+            if (_musicIsUpdated)
+            {
+                SetMusicVolume(_musicVolumeNumber);
+                _musicIsUpdated = false;
+            }
+            if (_sfxIsUpdated)
+            {
+                SetSFXVolume(_sfxVolumeNumber);
+                _sfxIsUpdated = false;
+            }
+        }
+
+        IEnumerator GetSettings()
+        {
+            yield return new WaitUntil(() => _isSettingsAccessible);
+            float[] settingData = _dataManager.LoadSettings();
             float vfxVol = settingData[0];
             float musicVol = settingData[1];
 
@@ -44,20 +73,6 @@ namespace MainMenu
             }
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            if (_musicIsUpdated)
-            {
-                SetMusicVolume(_musicVolumeNumber);
-                _musicIsUpdated = false;
-            }
-            if (_sfxIsUpdated)
-            {
-                SetSFXVolume(_sfxVolumeNumber);
-                _sfxIsUpdated = false;
-            }
-        }
 
         // Will set the current volume to the slider and the audio mixer
         // The audio mixer will ajust the music volume of the game

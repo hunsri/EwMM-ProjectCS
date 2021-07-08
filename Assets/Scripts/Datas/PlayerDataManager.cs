@@ -15,17 +15,10 @@ namespace Data
         // Start is called before the first frame update
         void Start()
         {
-            if (!SceneParameters.UseLoadedGame)
+            LoadGame(false);
+            if (_data == null)
             {
                 _data = new PlayerData();
-            }
-            else
-            {
-                _data = SceneParameters.PlayerData;
-
-                // cleanup
-                SceneParameters.PlayerData = null;
-                // SceneParameters.UseLoadedGame = false;
             }
         }
 
@@ -96,9 +89,6 @@ namespace Data
                 PlayerData playerData = _formatter.Deserialize(stream) as PlayerData;
                 if (reloadScene)
                 {
-                    SceneParameters.PlayerData = playerData;
-                    // reload scene
-                    SceneParameters.UseLoadedGame = true;
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // todo: integrate scene name to `LoadScene`
                 }
                 else
@@ -122,7 +112,6 @@ namespace Data
         {
             _data.UpdateSettings(vfxVolume, musicVolume, difficulty);
             SaveGame();
-            SceneParameters.UseLoadedGame = true;
         }
         public bool IsDataLoaded()
         {
@@ -135,8 +124,7 @@ namespace Data
         /// </summary>\
         public float[] LoadSettings()
         {
-
-            if (!SceneParameters.UseLoadedGame)
+            if (_data == null)
             {
                 LoadGame(false);
             }

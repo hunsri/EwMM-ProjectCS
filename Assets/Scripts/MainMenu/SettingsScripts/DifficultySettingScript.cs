@@ -25,6 +25,10 @@ namespace MainMenu
         private string _shaderPropertyName = "_Color";
         private Color _colorWhite = Color.white;
         private Color _colorBlack = Color.black;
+        private bool _isSettingsAccessible = false;
+
+        private PlayerDataManager _dataManager;
+
 
         // Start is called before the first frame update
         void Start()
@@ -35,22 +39,24 @@ namespace MainMenu
             _mediumRenderer.material.SetColor(_shaderPropertyName, _colorWhite);
             _hardRenderer = _hardPlane.GetComponent<MeshRenderer>();
             _hardRenderer.material.SetColor(_shaderPropertyName, _colorWhite);
-
-            PlayerDataManager dataManager = FindObjectOfType<PlayerDataManager>();
-            _difficulty = dataManager.LoadSettings()[2];
-            PlaneColorChange();
+            StartCoroutine(GetSettings());
         }
 
         // Update is called once per frame
         void Update()
         {
-            // Curently not needed
+            if (!_isSettingsAccessible)
+            {
+                _dataManager = FindObjectOfType<PlayerDataManager>();
+                _isSettingsAccessible = _dataManager.IsDataLoaded();
+            }
         }
 
-        // Changes the difficulty of all levels
-        public void SetDifficulty()
+        IEnumerator GetSettings()
         {
-            // TODO
+            yield return new WaitUntil(() => _isSettingsAccessible);
+            _difficulty = _dataManager.LoadSettings()[2];
+            PlaneColorChange();
         }
 
         // Changes the color of the planes which are showing the difficulty
@@ -114,7 +120,7 @@ namespace MainMenu
                 if (_difficulty != _minDif)
                 {
                     _difficulty--;
-                    SetDifficulty();
+                    // SetDifficulty();
                     PlaneColorChange();
                 }
                 else
@@ -127,7 +133,7 @@ namespace MainMenu
                 if (_difficulty != _maxDif)
                 {
                     _difficulty++;
-                    SetDifficulty();
+                    // SetDifficulty();
                     PlaneColorChange();
                 }
                 else
@@ -140,7 +146,7 @@ namespace MainMenu
                 if (_difficulty != _minDif)
                 {
                     _difficulty = 0;
-                    SetDifficulty();
+                    // SetDifficulty();
                     PlaneColorChange();
                 }
                 else
@@ -153,7 +159,7 @@ namespace MainMenu
                 if (_difficulty != 1)
                 {
                     _difficulty = 1;
-                    SetDifficulty();
+                    // SetDifficulty();
                     PlaneColorChange();
                 }
                 else
@@ -166,7 +172,7 @@ namespace MainMenu
                 if (_difficulty != _maxDif)
                 {
                     _difficulty = 2;
-                    SetDifficulty();
+                    // SetDifficulty();
                     PlaneColorChange();
                 }
                 else
