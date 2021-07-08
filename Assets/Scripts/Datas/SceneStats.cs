@@ -173,5 +173,26 @@ namespace Data
                 Debug.Log("All waves over, SaveFile deleted!");
             }
         }
+
+        public int GetMask(){
+            return _sceneStatsData.MasksShot;
+        }
+
+        public int GetVaccine(){
+            return _sceneStatsData.VaccinesShot;
+        }
+
+        public int GetCured(){
+            return _sceneStatsData.CuredNPCS;
+        }
+
+        //TODO change if exp caluclation is outsourced
+        public int GetEXP(){
+            return (_sceneStatsData.Score/200); 
+        }
+
+        public int GetScore(){
+            return _sceneStatsData.Score;
+        }
     }
 }

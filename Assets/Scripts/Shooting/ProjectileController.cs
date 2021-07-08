@@ -27,11 +27,11 @@ public class ProjectileController : MonoBehaviour
                 target.ReduceHitpoint(_damage);
             }
 
-            if (tag == "Enemy")
-            {
-                EnemyHealth enemyHealth = collision.transform.GetComponent<EnemyHealth>();
-                enemyHealth.HealthImproved(_damage);
-            }
+            // if (tag == "Enemy")
+            // {
+            //     EnemyHealth enemyHealth = collision.transform.GetComponent<EnemyHealth>();
+            //     enemyHealth.HealthImproved(_damage);
+            // }
 
             if (tag == "Save")
             {

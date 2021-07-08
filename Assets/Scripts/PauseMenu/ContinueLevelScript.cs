@@ -80,8 +80,11 @@ namespace PauseMenu
         // Will be used when the current object is triggered
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Hit Continue");
-            _isTriggered = true;
+            if (other.CompareTag("Projectile"))
+            {
+                Debug.Log("Hit Continue");
+                _isTriggered = true;
+            }
         }
 
         public void DisableUI(){

@@ -113,8 +113,7 @@ namespace Data
         {
             return _playerStatsData.XP;
         }
-
-
+        
         //getter and setter for the reward
         public void SetHasMaskReward(bool status)
         {
