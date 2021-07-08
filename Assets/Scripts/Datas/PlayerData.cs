@@ -27,14 +27,15 @@ namespace Data
         public void AddWeapon(WeaponData weapon)
         {
             int currentLength = 3;
+
+
             if (WeaponDatas[currentLength] != null)
             {
                 // weapon is full
                 return;
             }
 
-            _weaponDatas[currentLength] = weapon;
-            return;
+            WeaponDatas[currentLength] = weapon;
         }
 
         /// <summary>

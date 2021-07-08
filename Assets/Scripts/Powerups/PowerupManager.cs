@@ -42,6 +42,9 @@ namespace Powerup
         {
             yield return new WaitUntil(() => _isDataLoaded);
 
+            AddAmmo(Weapons.WeaponTags.Syringe, _syringeAmmo);
+            AddAmmo(Weapons.WeaponTags.OpMask, _maskAmmo);
+
             _hasFFP = new PlayerStats().GetHasMaskReward();
             if (_hasFFP)
             {
@@ -61,7 +64,7 @@ namespace Powerup
 
             if (_hasFFP)
             {
-                AddAmmo(Weapons.WeaponTags.OpMask, _ffpAmmo + (withAdditional ? GetAdditional(_ffpAmmo) : 0));
+                AddAmmo(Weapons.WeaponTags.FFPMask, _ffpAmmo + (withAdditional ? GetAdditional(_ffpAmmo) : 0));
             }
 
             FindObjectOfType<WeaponHolder>().ReloadWeaponData();
@@ -96,7 +99,7 @@ namespace Powerup
         /// </summary>
         void UnlockFFPMask()
         {
-            _dataManager.AddFFPMask();
+            _dataManager.AddFFPMask(_ffpAmmo);
             FindObjectOfType<WeaponHolder>().ReloadWeaponData();
         }
 
