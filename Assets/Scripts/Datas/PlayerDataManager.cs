@@ -163,10 +163,16 @@ namespace Data
         /// <summary>
         /// Add FFP Mask to the player's weapon
         /// </summary>
-        public void AddFFPMask()
+        public void AddFFPMask(int ammo)
         {
             _data.AddWeapon(Weapons.FFPMask());
+            _data.WeaponDatas[3].SetAmmoCount(ammo);
             SaveGame();
+        }
+
+        public void LockMask()
+        {
+            _data.WeaponDatas[3] = null;
         }
     }
 }

@@ -20,6 +20,7 @@ namespace Powerup
         private PlayerDataManager _dataManager;
         private bool _hasFFP;
         private bool _isDataLoaded = false;
+        public bool FirstRender = true;
 
         void Start()
         {
@@ -47,6 +48,10 @@ namespace Powerup
             {
                 UnlockFFPMask();
             }
+            else
+            {
+                LockMask();
+            }
         }
 
 
@@ -61,7 +66,7 @@ namespace Powerup
 
             if (_hasFFP)
             {
-                AddAmmo(Weapons.WeaponTags.OpMask, _ffpAmmo + (withAdditional ? GetAdditional(_ffpAmmo) : 0));
+                AddAmmo(Weapons.WeaponTags.FFPMask, _ffpAmmo + (withAdditional ? GetAdditional(_ffpAmmo) : 0));
             }
 
             FindObjectOfType<WeaponHolder>().ReloadWeaponData();
@@ -75,9 +80,10 @@ namespace Powerup
         void AddAmmo(Weapons.WeaponTags weaponTag, int value)
         {
             WeaponData weapon = _dataManager.GetWeapon(weaponTag);
+            Debug.Log(weaponTag + " Is null: " + (weapon == null));
             if (weapon != null)
             {
-                weapon.SetAmmoCount(weapon.GetAmmoCount() + value);
+                weapon.SetAmmoCount((FirstRender ? 0 : weapon.GetAmmoCount()) + value);
             }
         }
 
@@ -96,7 +102,13 @@ namespace Powerup
         /// </summary>
         void UnlockFFPMask()
         {
-            _dataManager.AddFFPMask();
+            _dataManager.AddFFPMask(_ffpAmmo);
+            FindObjectOfType<WeaponHolder>().ReloadWeaponData();
+        }
+
+        void LockMask()
+        {
+            _dataManager.LockMask();
             FindObjectOfType<WeaponHolder>().ReloadWeaponData();
         }
 
