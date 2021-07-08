@@ -36,7 +36,7 @@ public class ShootingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool isAmmoEmpty = _weaponIndex == Weapons.WeaponTags.MenuWeapon ? false : _ammo < 0;
+        bool isAmmoEmpty = _weaponIndex == Weapons.WeaponTags.MenuWeapon ? false : _ammo <= 0;
         // get mouse left click, check if ammo is more than 0 and check if "Equip" animation is finished, check if animation is done
         if (Input.GetButtonDown("Fire1") && !isAmmoEmpty && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Equip") && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
         {

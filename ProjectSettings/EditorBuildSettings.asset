@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: 10a125949e36d9d41bae9ea73ecd1b62
   - enabled: 1
     path: Assets/Scenes/Final/SubwayStation.unity
-    guid: b083587782bb66240844cb1249c673ed
+    guid: 6ceedc46bdb68e149b650427a21d19c8
   - enabled: 1
     path: Assets/Scenes/PauseMenuScene.unity
     guid: 0a143aac192538b4196181213c82e3b0
