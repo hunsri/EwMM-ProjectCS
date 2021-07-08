@@ -113,7 +113,7 @@ namespace Data
         {
             return _playerStatsData.XP;
         }
-        
+
         //getter and setter for the reward
         public void SetHasMaskReward(bool status)
         {
@@ -123,7 +123,7 @@ namespace Data
         public bool GetHasMaskReward()
         {
             return _playerStatsData.HasMaskReward;
-            // return true;
+            // return false;
         }
 
         public void SetHasMoreAmmunitionReward(bool status)

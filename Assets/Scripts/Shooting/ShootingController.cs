@@ -37,8 +37,9 @@ public class ShootingController : MonoBehaviour
     void Update()
     {
         bool isAmmoEmpty = _weaponIndex == Weapons.WeaponTags.MenuWeapon ? false : _ammo <= 0;
+        bool isOnPause = _np != null && _np.IsPaused;
         // get mouse left click, check if ammo is more than 0 and check if "Equip" animation is finished, check if animation is done
-        if (Input.GetButtonDown("Fire1") && !isAmmoEmpty && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Equip") && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
+        if (Input.GetButtonDown("Fire1") && (isOnPause || !isAmmoEmpty) && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Equip") && !_animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
         {
 
             ShootProjectile();
@@ -77,9 +78,10 @@ public class ShootingController : MonoBehaviour
         }
 
         projectileObj.GetComponent<Rigidbody>().velocity = (_projectileDestination - projectileStartPoint).normalized * _projectileSpeed;
-        if(_np != null)
+        if (_np != null)
         {
-            if(!_np.IsPaused){
+            if (!_np.IsPaused)
+            {
                 if (_weaponIndex != Weapons.WeaponTags.MenuWeapon)
                 {
                     SetAmmo(_ammo - 1);

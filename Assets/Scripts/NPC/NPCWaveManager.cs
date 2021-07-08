@@ -89,7 +89,8 @@ namespace NPC
                     //checking if the current wave is over yet
                     if (System.DateTime.Now > _waveEnd)
                     {
-                        if (newWavePanel != null && !_ms.isComplete){
+                        if (newWavePanel != null && !_ms.isComplete)
+                        {
                             newWavePanel.SetActive(true);
                             SoundManager.soundManager.LevelSounds(2);
                         }
@@ -128,6 +129,10 @@ namespace NPC
 
                         Debug.Log("Wave " + CurrentWave + " started!");
                         _powerupManager.CheckForPowerups(); // apply powerups on start of every wave
+                        if (CurrentWave == 1)
+                        {
+                            _powerupManager.FirstRender = false;
+                        }
                     }
                     else
                     {
