@@ -13,8 +13,6 @@ TagManager:
   - Save
   - Load
   - Hand
-  - OP
-  - FFP2
   - Indicator
   - Mask
   - FFPMask
@@ -34,8 +32,6 @@ TagManager:
   - Extra
   - Menu
   - Indicator
-  - 
-  - 
   - 
   - 
   - 
